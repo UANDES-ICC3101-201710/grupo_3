@@ -709,8 +709,6 @@ namespace Hearthstone
             TheCoin.tipo = "Hechizo";
             TheCoin.habilidad = "Gana una gema por este Turno";
 
-            //Consola Consola1 = new Consola();
-            //Consola1.Bienvenida();
             Jugador Jugador1 = new Jugador();
             Jugador Jugador2 = new Jugador();
             Jugador1.identificador = 1;
