@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HearthstoneWPF.Properties
+namespace Hearthstone.Properties
 {
 
 

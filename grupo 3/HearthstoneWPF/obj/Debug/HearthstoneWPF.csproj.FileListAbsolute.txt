@@ -1,5 +1,0 @@
-C:\Users\IEUser\Desktop\Entrega3\grupo 3\HearthstoneWPF\obj\Debug\HearthstoneWPF.csprojResolveAssemblyReference.cache
-C:\Users\IEUser\Desktop\Entrega3\grupo 3\HearthstoneWPF\obj\Debug\MainWindow.g.cs
-C:\Users\IEUser\Desktop\Entrega3\grupo 3\HearthstoneWPF\obj\Debug\App.g.cs
-C:\Users\IEUser\Desktop\Entrega3\grupo 3\HearthstoneWPF\obj\Debug\HearthstoneWPF_MarkupCompile.cache
-C:\Users\IEUser\Desktop\Entrega3\grupo 3\HearthstoneWPF\obj\Debug\HearthstoneWPF_MarkupCompile.lref
