@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proyecto.Hearthstone
+namespace Hearthstone
 {
     [Serializable]
     public abstract class Carta

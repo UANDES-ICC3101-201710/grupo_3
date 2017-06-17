@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Image x:Name="FondoPantallaInicio" HorizontalAlignment="Left" Height="309" Margin="10,0,0,0" VerticalAlignment="Top" Width="497" Source="download.jpg"/>
+
+        <Button x:Name="BotonInicio" Content="Jugar" HorizontalAlignment="Left" Margin="219,224,0,0" VerticalAlignment="Top" Width="75" Click="BotonInicio_Click"/>
+        <Image x:Name="Fondo_Partida" HorizontalAlignment="Left" Height="309" Margin="10,0,0,0" VerticalAlignment="Top" Width="497" RenderTransformOrigin="-0.121,-0.28" Source="images.jpg" Visibility="Hidden"/>
+        <Button x:Name="Partida_Nueva" Content="Partida Nueva" HorizontalAlignment="Left" Margin="144,229,0,0" VerticalAlignment="Top" Width="75" Click="Partida_Nueva_Click" Visibility="Hidden"/>
+        <Button x:Name="Cargar_Partida" Content="Cargar Partida" HorizontalAlignment="Left" Margin="299,229,0,0" VerticalAlignment="Top" Width="75" Click="Cargar_Partida_Click" Visibility="Hidden"/>
+
     </Grid>
 </Window>
