@@ -28,7 +28,7 @@ namespace Hearthstone
         {
             //Datos esbirros
 
-            /*
+            
             Esbirro Wisp = new Esbirro();
 
             Wisp.nombre = "Wisp";
@@ -715,7 +715,7 @@ namespace Hearthstone
             Jugador2.identificador = 2;
             //Jugador1.nombrejugador = Consola1.Nombrejugador(Jugador1);
             //Jugador2.nombrejugador = Consola1.Nombrejugador(Jugador2);
-            if (Consola1.ElegirHeroe(Jugador1) == 1)
+            /*if (Consola1.ElegirHeroe(Jugador1) == 1)
             {
                 Jugador1.nombreheroe = "Warrior";
             }
@@ -732,6 +732,7 @@ namespace Hearthstone
             {
                 Jugador2.nombreheroe = "Hunter";
             }
+            */
             
             //Jugador1.habilidadheroe = Consola1.Asignarhabilidad(Jugador1);
             //Jugador2.habilidadheroe = Consola1.Asignarhabilidad(Jugador2);
@@ -830,8 +831,8 @@ namespace Hearthstone
             TheCoin.OtorgarMoneda(Jugador2, dice, TheCoin);
 
 
-
-
+            /*
+            
             while (Jugador1.ganper == false && Jugador2.ganper == false)
             {
                 if (dice == Jugador1.turno)
@@ -861,8 +862,8 @@ namespace Hearthstone
 
             }
 
-          
-            */
+          */
+            
         }
 
         public static void SaveGame(Jugador Game)
