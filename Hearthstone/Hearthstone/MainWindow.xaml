@@ -7,12 +7,47 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Image x:Name="FondoPantallaInicio" HorizontalAlignment="Left" Height="309" Margin="10,0,0,0" VerticalAlignment="Top" Width="497" Source="download.jpg"/>
+        <Image x:Name="FondoPantallaInicio" HorizontalAlignment="Left" Height="335" VerticalAlignment="Top" Width="568" Source="download.jpg" Margin="0,-16,-51,0"/>
 
-        <Button x:Name="BotonInicio" Content="Jugar" HorizontalAlignment="Left" Margin="219,224,0,0" VerticalAlignment="Top" Width="75" Click="BotonInicio_Click"/>
-        <Image x:Name="Fondo_Partida" HorizontalAlignment="Left" Height="309" Margin="10,0,0,0" VerticalAlignment="Top" Width="497" RenderTransformOrigin="-0.121,-0.28" Source="images.jpg" Visibility="Hidden"/>
-        <Button x:Name="Partida_Nueva" Content="Partida Nueva" HorizontalAlignment="Left" Margin="144,229,0,0" VerticalAlignment="Top" Width="75" Click="Partida_Nueva_Click" Visibility="Hidden"/>
-        <Button x:Name="Cargar_Partida" Content="Cargar Partida" HorizontalAlignment="Left" Margin="299,229,0,0" VerticalAlignment="Top" Width="75" Click="Cargar_Partida_Click" Visibility="Hidden"/>
-
+        <Button x:Name="BotonInicio" Content="Jugar" HorizontalAlignment="Left" Margin="233,215,0,0" VerticalAlignment="Top" Width="75" Click="BotonInicio_Click"/>
+        <Image x:Name="Fondo_Partida" HorizontalAlignment="Left" Height="309" Margin="10,76,0,-66" VerticalAlignment="Top" Width="497" RenderTransformOrigin="-0.121,-0.28" Source="images.jpg" Visibility="Hidden"/>
+        <Button x:Name="Partida_Nueva" Content="Partida Nueva" HorizontalAlignment="Left" Margin="98,215,0,0" VerticalAlignment="Top" Width="104" Click="Partida_Nueva_Click" Visibility="Hidden"/>
+        <Button x:Name="Cargar_Partida" Content="Cargar Partida" HorizontalAlignment="Left" Margin="334,215,0,0" VerticalAlignment="Top" Width="104" Click="Cargar_Partida_Click" Visibility="Hidden"/>
+        <Label x:Name="Label1" Content="Ingrese el nombre de los jugadores" HorizontalAlignment="Left" Margin="160,76,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <TextBox x:Name="tb1" HorizontalAlignment="Left" Height="23" Margin="69,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <TextBox x:Name="tb2" HorizontalAlignment="Left" Height="23" Margin="332,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <Label x:Name="jugador1" Content="Jugador 1" HorizontalAlignment="Left" Margin="98,137,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label x:Name="label2" Content="Jugador 2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="367,137,0,0" Visibility="Hidden"/>
+        <Button x:Name="Siguiente" Content="Siguiente" HorizontalAlignment="Left" Margin="223,247,0,0" VerticalAlignment="Top" Width="75" Click="NombreJugadores" Visibility="Hidden"/>
+        <Label x:Name="EH" Content="Eligan el heroe con el que desean jugar" HorizontalAlignment="Left" Margin="156,45,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label x:Name="label21" Content="Jugador 1" HorizontalAlignment="Left" Margin="61,99,0,0" VerticalAlignment="Top" Height="33" Width="84" Visibility="Hidden"/>
+        <Label x:Name="label22" Content="Jugador 2" HorizontalAlignment="Left" Margin="332,99,0,0" VerticalAlignment="Top" Height="33" Width="71" Visibility="Hidden"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="61,141,0,0" VerticalAlignment="Top" Width="112" Height="22" SelectionChanged="comboBox_SelectionChanged" Visibility="Hidden">
+            <ComboBoxItem Content="Druid"/>
+            <ComboBoxItem Content="Hunter"/>
+            <ComboBoxItem Content="Mage"/>
+            <ComboBoxItem Content="Paladin"/>
+            <ComboBoxItem Content="Priest"/>
+            <ComboBoxItem Content="Rogue"/>
+            <ComboBoxItem Content="Shaman"/>
+            <ComboBoxItem Content="Warlock"/>
+            <ComboBoxItem Content="Warrior"/>
+        </ComboBox>
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="323,141,0,0" VerticalAlignment="Top" Width="112" Height="22" SelectionChanged="comboBox1_SelectionChanged" Visibility="Hidden">
+            <ComboBoxItem Content="Druid"/>
+            <ComboBoxItem Content="Hunter"/>
+            <ComboBoxItem Content="Mage"/>
+            <ComboBoxItem Content="Paladin"/>
+            <ComboBoxItem Content="Priest"/>
+            <ComboBoxItem Content="Rogue"/>
+            <ComboBoxItem Content="Shaman"/>
+            <ComboBoxItem Content="Warlock"/>
+            <ComboBoxItem Content="Warrior"/>
+        </ComboBox>
+        <Button x:Name="Jugar" Content="JUGAR" HorizontalAlignment="Left" Margin="223,240,0,0" VerticalAlignment="Top" Width="75" Click="SeleccionHeroes" Visibility="Hidden"/>
+        <Label x:Name="HabilidadJ1" Content="" HorizontalAlignment="Left" Margin="61,204,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label x:Name="HabilidadJ2" Content="" HorizontalAlignment="Left" Margin="323,203,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label x:Name="label" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="61,173,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label x:Name="label1" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="323,173,0,0" VerticalAlignment="Top" Width="115" Visibility="Hidden"/>
     </Grid>
 </Window>

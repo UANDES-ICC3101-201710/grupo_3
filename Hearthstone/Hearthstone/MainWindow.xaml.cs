@@ -866,6 +866,11 @@ namespace Hearthstone
             
         }
 
+        string NombreJ1 { get; set; }
+        string NombreJ2 { get; set; }
+        string HeroeJ1 { get; set; }
+        string HeroeJ2 { get; set; }
+
         public static void SaveGame(Jugador Game)
         {
             Console.WriteLine("Nombre del archivo: ");
@@ -905,7 +910,13 @@ namespace Hearthstone
             Cargar_Partida.Visibility = Visibility.Hidden;
             Partida_Nueva.Visibility = Visibility.Hidden;
             Fondo_Partida.Visibility = Visibility.Hidden;
-            
+            Label1.Visibility = Visibility.Visible;
+            tb1.Visibility = Visibility.Visible;
+            tb2.Visibility = Visibility.Visible;
+            jugador1.Visibility = Visibility.Visible;
+            label2.Visibility = Visibility.Visible;
+            Siguiente.Visibility = Visibility.Visible;
+
         }
 
         private void Cargar_Partida_Click(object sender, RoutedEventArgs e)
@@ -914,5 +925,143 @@ namespace Hearthstone
             Partida_Nueva.Visibility = Visibility.Hidden;
             Fondo_Partida.Visibility = Visibility.Hidden;
         }
+
+        private void NombreJugadores(object sender, RoutedEventArgs e)
+        {
+            NombreJ1 = tb1.Text;
+            NombreJ2 = tb2.Text;
+
+            Label1.Visibility = Visibility.Hidden;
+            tb1.Visibility = Visibility.Hidden;
+            tb2.Visibility = Visibility.Hidden;
+            jugador1.Visibility = Visibility.Hidden;
+            label2.Visibility = Visibility.Hidden;
+            Siguiente.Visibility = Visibility.Hidden;
+            EH.Visibility = Visibility.Visible;
+            label21.Visibility = Visibility.Visible;
+            label22.Visibility = Visibility.Visible;
+            comboBox.Visibility = Visibility.Visible;
+            comboBox1.Visibility = Visibility.Visible;
+            Jugar.Visibility = Visibility.Visible;
+            HabilidadJ1.Visibility = Visibility.Visible;
+            HabilidadJ2.Visibility = Visibility.Visible;
+            label.Visibility = Visibility.Visible;
+            label1.Visibility = Visibility.Visible;
+
+        }
+
+        private void SeleccionHeroes(object sender, RoutedEventArgs e)
+        {
+
+            EH.Visibility = Visibility.Hidden;
+            label21.Visibility = Visibility.Hidden;
+            label22.Visibility = Visibility.Hidden;
+            comboBox.Visibility = Visibility.Hidden;
+            comboBox1.Visibility = Visibility.Hidden;
+            Jugar.Visibility = Visibility.Hidden;
+            HabilidadJ1.Visibility = Visibility.Hidden;
+            HabilidadJ2.Visibility = Visibility.Hidden;
+            label.Visibility = Visibility.Hidden;
+            label1.Visibility = Visibility.Hidden;
+
+
+        }
+
+
+        private void CargarPartida_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            ComboBoxItem cbi = (ComboBoxItem)comboBox.SelectedItem;
+            string HeroeJ1 = cbi.Content.ToString();
+
+            if (HeroeJ1 == "Druid")
+            {
+                HabilidadJ1.Content = "+1 en ataque por su turno \ny +1 de armadura";
+            }
+            else if (HeroeJ1 == "Hunter")
+            {
+                HabilidadJ1.Content = "Le hace 2 de daño \nal heroe enemigo";
+            }
+            else if (HeroeJ1 == "Mage")
+            {
+                HabilidadJ1.Content = "Puede hacer 1 de daño\n(Heroe enemigo o esbirro)";
+            }
+            else if (HeroeJ1 == "Paladin")
+            {
+                HabilidadJ1.Content = "Obtiene un soldado 1/1";
+            }
+            else if (HeroeJ1 == "Priest")
+            {
+                HabilidadJ1.Content = "Recupera 2 de vida";
+            }
+            else if (HeroeJ1 == "Rogue")
+            {
+                HabilidadJ1.Content = "Obtiene una daga 1/2";
+            }
+            else if (HeroeJ1 == "Shaman")
+            {
+                HabilidadJ1.Content = "Puede obtener un totem con\n2 de vida o con 1/1";
+            }
+            else if (HeroeJ1 == "Warlock")
+            {
+                HabilidadJ1.Content = "Pierde 2 puntos de vida\npara robar una carta del mazo";
+            }
+            else if (HeroeJ1 == "Warrior")
+            {
+                HabilidadJ1.Content = "Obtiene +2 de armadura";
+            }
+
+        }
+
+        private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cbi = (ComboBoxItem)comboBox1.SelectedItem;
+            string HeroeJ2 = cbi.Content.ToString();
+            HabilidadJ2.Content = HeroeJ2;
+
+            if (HeroeJ2 == "Druid")
+            {
+                HabilidadJ2.Content = "+1 en ataque por su turno \ny +1 de armadura";
+            }
+            else if (HeroeJ2 == "Hunter")
+            {
+                HabilidadJ2.Content = "Le hace 2 de daño \nal heroe enemigo";
+            }
+            else if (HeroeJ2 == "Mage")
+            {
+                HabilidadJ2.Content = "Puede hacer 1 de daño\n(Heroe enemigo o esbirro)";
+            }
+            else if (HeroeJ2 == "Paladin")
+            {
+                HabilidadJ2.Content = "Obtiene un soldado 1/1";
+            }
+            else if (HeroeJ2 == "Priest")
+            {
+                HabilidadJ2.Content = "Recupera 2 de vida";
+            }
+            else if (HeroeJ2 == "Rogue")
+            {
+                HabilidadJ2.Content = "Obtiene una daga 1/2";
+            }
+            else if (HeroeJ2 == "Shaman")
+            {
+                HabilidadJ2.Content = "Puede obtener un totem \ncon 2 de vida o con 1/1";
+            }
+            else if (HeroeJ2 == "Warlock")
+            {
+                HabilidadJ2.Content = "Pierde 2 puntos de vida\n para robar una carta del mazo";
+            }
+            else if (HeroeJ2 == "Warrior")
+            {
+                HabilidadJ2.Content = "Obtiene +2 de armadura";
+            }
+        }
+
+
     }
 }
