@@ -18,6 +18,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
+using System.Media;
+using Microsoft.Win32;
 
 namespace Hearthstone
 {
@@ -29,7 +31,9 @@ namespace Hearthstone
 
     public partial class MainWindow : Window
     {
-        private Jugador jugador1;
+        private MediaPlayer mediaPlayer = new MediaPlayer();
+       
+    private Jugador jugador1;
         public Jugador Jugador1 { get { return jugador1; }   }
 
         private Jugador jugador2;
@@ -40,6 +44,10 @@ namespace Hearthstone
         public MainWindow()
         {
             //Datos esbirros
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+                mediaPlayer.Open(new Uri(openFileDialog.FileName));
 
             this.jugador1 = new Jugador();
             this.jugador2 = new Jugador();
