@@ -31,7 +31,6 @@ namespace Hearthstone
 
     public partial class MainWindow : Window
     {
-        private MediaPlayer mediaPlayer = new MediaPlayer();
        
     private Jugador jugador1;
         public Jugador Jugador1 { get { return jugador1; }   }
@@ -44,10 +43,7 @@ namespace Hearthstone
         public MainWindow()
         {
             //Datos esbirros
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "MP3 files (*.mp3)|*.mp3|All files (*.*)|*.*";
-            if (openFileDialog.ShowDialog() == true)
-                mediaPlayer.Open(new Uri(openFileDialog.FileName));
+            
 
             this.jugador1 = new Jugador();
             this.jugador2 = new Jugador();
@@ -916,6 +912,12 @@ namespace Hearthstone
             fs.Close();
             return Game;
 
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            mediaelement1.Source = new Uri("C:\\Users\\IEUser\\Desktop\\Entrega3\\Hearthstone\\Hearthstone Soundtrack OST - Full Themes.mp3");
+            mediaelement1.Play(); 
         }
 
         private void BotonInicio_Click(object sender, RoutedEventArgs e)
