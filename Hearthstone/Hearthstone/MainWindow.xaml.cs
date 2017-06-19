@@ -934,6 +934,7 @@ namespace Hearthstone
             njugador1.Visibility = Visibility.Visible;
             njugador2.Visibility = Visibility.Visible;
             Siguiente.Visibility = Visibility.Visible;
+            
 
         }
 
@@ -947,7 +948,8 @@ namespace Hearthstone
 
         private void NombreJugadores(object sender, RoutedEventArgs e)
         {
-
+            label21.Content = tb1.Text;
+            label22.Content = tb2.Text;
             Label1.Visibility = Visibility.Hidden;
             tb1.Visibility = Visibility.Hidden;
             tb2.Visibility = Visibility.Hidden;
