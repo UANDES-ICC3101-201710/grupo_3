@@ -728,8 +728,8 @@ namespace Hearthstone
             TheCoin.habilidad = "Gana una gema por este Turno";
 
             
-            this.jugador1.identificador = 1;
-            this.jugador2.identificador = 2;
+            jugador1.identificador = 1;
+            jugador2.identificador = 2;
             //Jugador1.nombrejugador = Consola1.Nombrejugador(Jugador1);
             //Jugador2.nombrejugador = Consola1.Nombrejugador(Jugador2);
             /*if (Consola1.ElegirHeroe(Jugador1) == 1)
@@ -934,6 +934,7 @@ namespace Hearthstone
             njugador1.Visibility = Visibility.Visible;
             njugador2.Visibility = Visibility.Visible;
             Siguiente.Visibility = Visibility.Visible;
+            
 
         }
 
@@ -947,7 +948,8 @@ namespace Hearthstone
 
         private void NombreJugadores(object sender, RoutedEventArgs e)
         {
-
+            label21.Content = tb1.Text;
+            label22.Content = tb2.Text;
             Label1.Visibility = Visibility.Hidden;
             tb1.Visibility = Visibility.Hidden;
             tb2.Visibility = Visibility.Hidden;
@@ -984,6 +986,7 @@ namespace Hearthstone
             label.Visibility = Visibility.Hidden;
             label1.Visibility = Visibility.Hidden;
             Tablero.Visibility = Visibility.Visible;
+<<<<<<< HEAD
             if (HeroeJ1 == "Druid")
             {
                 Druid1.Visibility = Visibility.Visible;
@@ -1056,6 +1059,14 @@ namespace Hearthstone
             {
                 Warrior2.Visibility = Visibility.Visible;
             }
+=======
+            Jug1.Content = label21.Content;
+            Jug2.Content = label22.Content;
+            Jug1.Visibility = Visibility.Visible;
+            Jug2.Visibility = Visibility.Visible;
+
+
+>>>>>>> 302da9405d76491873d1b7142bc5ccdb5c0f21c4
         }
 
 
