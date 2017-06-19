@@ -18,8 +18,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
-using System.Media;
-using Microsoft.Win32;
+
 
 namespace Hearthstone
 {
@@ -914,11 +913,7 @@ namespace Hearthstone
 
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            mediaelement1.Source = new Uri("C:\\Users\\IEUser\\Desktop\\Entrega3\\Hearthstone\\Hearthstone Soundtrack OST - Full Themes.mp3");
-            mediaelement1.Play(); 
-        }
+       
 
         private void BotonInicio_Click(object sender, RoutedEventArgs e)
         {

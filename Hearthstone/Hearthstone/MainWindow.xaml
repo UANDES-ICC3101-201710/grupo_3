@@ -51,6 +51,6 @@
         <Label x:Name="HabilidadJ2" Content="" HorizontalAlignment="Left" Margin="323,203,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
         <Label x:Name="label" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="61,173,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
         <Label x:Name="label1" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="323,173,0,0" VerticalAlignment="Top" Width="115" Visibility="Hidden"/>
-        <MediaElement Name ="mediaelement1" LoadedBehavior="Manual" HorizontalAlignment="Left" Height="100" Margin="45,199,0,0" VerticalAlignment="Top" Width="100"/>
+         
     </Grid>
 </Window>
