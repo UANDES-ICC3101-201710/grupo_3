@@ -975,7 +975,6 @@ namespace Hearthstone
         private void SeleccionHeroes(object sender, RoutedEventArgs e)
         {
             
-            MessageBox.Show(jugador1.nombrejugador);
             EH.Visibility = Visibility.Hidden;
             label21.Visibility = Visibility.Hidden;
             label22.Visibility = Visibility.Hidden;
@@ -986,6 +985,7 @@ namespace Hearthstone
             HabilidadJ2.Visibility = Visibility.Hidden;
             label.Visibility = Visibility.Hidden;
             label1.Visibility = Visibility.Hidden;
+            Tablero.Visibility = Visibility.Visible;
 
 
         }
