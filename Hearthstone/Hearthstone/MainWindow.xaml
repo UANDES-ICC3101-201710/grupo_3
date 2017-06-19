@@ -61,5 +61,7 @@
         <Label x:Name="label" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="426,440,0,0" VerticalAlignment="Top" Visibility="Hidden" Foreground="White"/>
         <Label x:Name="label1" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="763,440,0,0" VerticalAlignment="Top" Width="116" Visibility="Hidden" Foreground="White"/>
         <Image x:Name="Tablero"  Margin="-14,0,10,10" Source="Tablero.jpg" Stretch="Fill" Visibility="Hidden"/>
+        <Label x:Name="Jug1" Content="" HorizontalAlignment="Left" Margin="616,704,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" Visibility="Hidden"/>
+        <Label x:Name="Jug2" Content=""  HorizontalAlignment="Left" Margin="616,32,0,0" VerticalAlignment="Top" FontSize="16" Foreground="White" Visibility="Hidden"/>
     </Grid>
 </Window>
