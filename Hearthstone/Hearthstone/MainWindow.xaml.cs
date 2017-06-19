@@ -30,12 +30,12 @@ namespace Hearthstone
     public partial class MainWindow : Window
     {
         private Jugador jugador1;
-        public Jugador Jugador1 { get { return jugador1; } }
+        public Jugador Jugador1 { get { return jugador1; }   }
 
         private Jugador jugador2;
-        public Jugador Jugador2 { get { return jugador2; } }
+        public Jugador Jugador2 { get { return jugador2; }   }
 
-
+        
 
         public MainWindow()
         {
@@ -43,7 +43,7 @@ namespace Hearthstone
 
             this.jugador1 = new Jugador();
             this.jugador2 = new Jugador();
-            
+           
 
             Esbirro Wisp = new Esbirro();
             Wisp.nombre = "Wisp";

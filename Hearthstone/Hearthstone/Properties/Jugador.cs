@@ -23,11 +23,7 @@ namespace Hearthstone
     [Serializable]
     public class Jugador : IJugadas, INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        
         private int Vida;
         private int Defensa;
         private int LimiteGema;
@@ -42,6 +38,12 @@ namespace Hearthstone
         public List<Carta> Mazo = new List<Carta>();
         public List<Carta> Mano = new List<Carta>();
         public List<Esbirro> Tablerojugador = new List<Esbirro>();
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public int vida
         {
@@ -65,7 +67,10 @@ namespace Hearthstone
         public int identificador
         {
             get { return Identificador; }
-            set { Identificador = value; }
+            set { Identificador = value;
+                OnPropertyChanged();
+            }
+
         }
 
         public int gema

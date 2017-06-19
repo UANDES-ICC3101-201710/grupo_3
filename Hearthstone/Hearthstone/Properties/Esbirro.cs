@@ -20,7 +20,7 @@ using System.ComponentModel;
 
 namespace Hearthstone
 {
-    public class Esbirro : Carta, INotifyPropertyChanged
+    public class Esbirro : Carta
     {
         private int Ataque;
         private int Defensa;
@@ -39,7 +39,7 @@ namespace Hearthstone
         {
             get { return Defensa; }
             set { Defensa = value;
-                OnPropertyChanged();
+             
 
             }
         }
@@ -54,7 +54,7 @@ namespace Hearthstone
         {
             get { return Despierto; }
             set { Despierto = value;
-                OnPropertyChanged();
+              
             }
         }
 
@@ -62,7 +62,7 @@ namespace Hearthstone
         {
             get { return Ataco; }
             set { Ataco = value;
-                OnPropertyChanged();
+              
             }
         }
 

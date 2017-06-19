@@ -21,17 +21,13 @@ using System.ComponentModel;
 namespace Hearthstone
 {
     [Serializable]
-    public abstract class Carta : INotifyPropertyChanged
+    public abstract class Carta 
     {
         private string Nombre;
         private int Costo;
         private string Tipo;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        
         public string nombre
         {
             get { return Nombre; }
