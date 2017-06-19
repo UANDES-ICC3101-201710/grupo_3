@@ -972,7 +972,7 @@ namespace Hearthstone
 
         private void SeleccionHeroes(object sender, RoutedEventArgs e)
         {
-            
+
             EH.Visibility = Visibility.Hidden;
             label21.Visibility = Visibility.Hidden;
             label22.Visibility = Visibility.Hidden;
@@ -984,8 +984,78 @@ namespace Hearthstone
             label.Visibility = Visibility.Hidden;
             label1.Visibility = Visibility.Hidden;
             Tablero.Visibility = Visibility.Visible;
-
-
+            if (HeroeJ1 == "Druid")
+            {
+                Druid1.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ1 == "Hunter")
+            {
+                Hunter1.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ1 == "Mage")
+            {
+                Mage1.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ1 == "Paladin")
+            {
+                Paladin1.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ1 == "Priest")
+            {
+                Priest1.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ1 == "Rogue")
+            {
+                Rogue1.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ1 == "Shaman")
+            {
+                Shaman1.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ1 == "Warlock")
+            {
+                Warlock1.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ1 == "Warrior")
+            {
+                Warrior1.Visibility = Visibility.Visible;
+            }
+            if (HeroeJ2 == "Druid")
+            {
+                Druid2.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ2 == "Hunter")
+            {
+                Hunter2.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ2 == "Mage")
+            {
+                Mage2.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ2 == "Paladin")
+            {
+                Paladin2.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ2 == "Priest")
+            {
+                Priest2.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ2 == "Rogue")
+            {
+                Rogue2.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ2 == "Shaman")
+            {
+                Shaman2.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ2 == "Warlock")
+            {
+                Warlock2.Visibility = Visibility.Visible;
+            }
+            else if (HeroeJ2 == "Warrior")
+            {
+                Warrior2.Visibility = Visibility.Visible;
+            }
         }
 
 

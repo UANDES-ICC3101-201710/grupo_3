@@ -108,5 +108,32 @@
   <ItemGroup>
     <Resource Include="Tablero.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Druid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hunter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Mage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Paladin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Priest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Rogue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Shaman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Warlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Warrior.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
