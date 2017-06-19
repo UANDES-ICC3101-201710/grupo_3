@@ -3,16 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using System.Runtime.CompilerServices;
+using System.ComponentModel;
 
 namespace Hearthstone
 {
-    public class Esbirro : Carta
+    public class Esbirro : Carta, INotifyPropertyChanged
     {
         private int Ataque;
         private int Defensa;
         private string SubTipo;
         private bool Despierto;
         private bool Ataco;
+       
 
         public int ataque
         {
@@ -23,7 +38,10 @@ namespace Hearthstone
         public int defensa
         {
             get { return Defensa; }
-            set { Defensa = value; }
+            set { Defensa = value;
+                OnPropertyChanged();
+
+            }
         }
 
         public string subtipo
@@ -35,13 +53,17 @@ namespace Hearthstone
         public bool despierto
         {
             get { return Despierto; }
-            set { Despierto = value; }
+            set { Despierto = value;
+                OnPropertyChanged();
+            }
         }
 
         public bool ataco
         {
             get { return Ataco; }
-            set { Ataco = value; }
+            set { Ataco = value;
+                OnPropertyChanged();
+            }
         }
 
     }

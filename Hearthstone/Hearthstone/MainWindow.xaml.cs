@@ -16,21 +16,36 @@ using System.Windows.Shapes;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+using System.Runtime.CompilerServices;
+using System.ComponentModel;
 
 namespace Hearthstone
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
+
+
     public partial class MainWindow : Window
     {
+        private Jugador jugador1;
+        public Jugador Jugador1 { get { return jugador1; } }
+
+        private Jugador jugador2;
+        public Jugador Jugador2 { get { return jugador2; } }
+
+
+
         public MainWindow()
         {
             //Datos esbirros
 
+            this.jugador1 = new Jugador();
+            this.jugador2 = new Jugador();
             
-            Esbirro Wisp = new Esbirro();
 
+            Esbirro Wisp = new Esbirro();
             Wisp.nombre = "Wisp";
             Wisp.costo = 0;
             Wisp.ataque = 1;
@@ -709,10 +724,9 @@ namespace Hearthstone
             TheCoin.tipo = "Hechizo";
             TheCoin.habilidad = "Gana una gema por este Turno";
 
-            Jugador Jugador1 = new Jugador();
-            Jugador Jugador2 = new Jugador();
-            Jugador1.identificador = 1;
-            Jugador2.identificador = 2;
+            
+            this.jugador1.identificador = 1;
+            this.jugador2.identificador = 2;
             //Jugador1.nombrejugador = Consola1.Nombrejugador(Jugador1);
             //Jugador2.nombrejugador = Consola1.Nombrejugador(Jugador2);
             /*if (Consola1.ElegirHeroe(Jugador1) == 1)
@@ -737,96 +751,96 @@ namespace Hearthstone
             //Jugador1.habilidadheroe = Consola1.Asignarhabilidad(Jugador1);
             //Jugador2.habilidadheroe = Consola1.Asignarhabilidad(Jugador2);
             Random rnd = new Random();
-            Jugador1.turno = 1;
-            Jugador2.turno = 2;
+            jugador1.turno = 1;
+            jugador2.turno = 2;
             int dice = rnd.Next(1, 3);
             //Consola1.Iniciopartida(Jugador1, dice);
             //Consola1.Iniciopartida(Jugador2, dice);
 
-            Jugador1.vida = 30;
-            Jugador2.vida = 30;
-            Jugador1.gema = 0;
-            Jugador2.gema = 0;
-            Jugador1.limitegema = 0;
-            Jugador2.limitegema = 0;
-            Jugador1.ganper = false;
-            Jugador2.ganper = false;
-            Jugador1.habilidadusada = false;
-            Jugador1.habilidadusada = false;
+            jugador1.vida = 30;
+            jugador2.vida = 30;
+            jugador1.gema = 0;
+            jugador2.gema = 0;
+            jugador1.limitegema = 0;
+            jugador2.limitegema = 0;
+            jugador1.ganper = false;
+            jugador2.ganper = false;
+            jugador1.habilidadusada = false;
+            jugador1.habilidadusada = false;
 
-            Jugador1.Agregarcartamazo(MurlocRaider);
-            Jugador1.Agregarcartamazo(Wisp);
-            Jugador1.Agregarcartamazo(BloodfenRaptor);
-            Jugador1.Agregarcartamazo(RiverCrocolisk);
-            Jugador1.Agregarcartamazo(MagmaRager);
-            Jugador1.Agregarcartamazo(ChillwindYeti);
-            Jugador1.Agregarcartamazo(OasisSnapjaw);
-            Jugador1.Agregarcartamazo(BoulderfistOgre);
-            Jugador1.Agregarcartamazo(WarGolem);
-            Jugador1.Agregarcartamazo(CoreHound);
-            Jugador2.Agregarcartamazo(MurlocRaider2);
-            Jugador2.Agregarcartamazo(Wisp2);
-            Jugador2.Agregarcartamazo(BloodfenRaptor2);
-            Jugador2.Agregarcartamazo(RiverCrocolisk2);
-            Jugador2.Agregarcartamazo(MagmaRager2);
-            Jugador2.Agregarcartamazo(ChillwindYeti2);
-            Jugador2.Agregarcartamazo(OasisSnapjaw2);
-            Jugador2.Agregarcartamazo(BoulderfistOgre2);
-            Jugador2.Agregarcartamazo(WarGolem2);
-            Jugador2.Agregarcartamazo(CoreHound2);
+            jugador1.Agregarcartamazo(MurlocRaider);
+            jugador1.Agregarcartamazo(Wisp);
+            jugador1.Agregarcartamazo(BloodfenRaptor);
+            jugador1.Agregarcartamazo(RiverCrocolisk);
+            jugador1.Agregarcartamazo(MagmaRager);
+            jugador1.Agregarcartamazo(ChillwindYeti);
+            jugador1.Agregarcartamazo(OasisSnapjaw);
+            jugador1.Agregarcartamazo(BoulderfistOgre);
+            jugador1.Agregarcartamazo(WarGolem);
+            jugador1.Agregarcartamazo(CoreHound);
+            jugador2.Agregarcartamazo(MurlocRaider2);
+            jugador2.Agregarcartamazo(Wisp2);
+            jugador2.Agregarcartamazo(BloodfenRaptor2);
+            jugador2.Agregarcartamazo(RiverCrocolisk2);
+            jugador2.Agregarcartamazo(MagmaRager2);
+            jugador2.Agregarcartamazo(ChillwindYeti2);
+            jugador2.Agregarcartamazo(OasisSnapjaw2);
+            jugador2.Agregarcartamazo(BoulderfistOgre2);
+            jugador2.Agregarcartamazo(WarGolem2);
+            jugador2.Agregarcartamazo(CoreHound2);
 
-            Jugador1.Agregarcartamazo(MurlocRaider3);
-            Jugador1.Agregarcartamazo(Wisp3);
-            Jugador1.Agregarcartamazo(BloodfenRaptor3);
-            Jugador1.Agregarcartamazo(RiverCrocolisk3);
-            Jugador1.Agregarcartamazo(MagmaRager3);
-            Jugador1.Agregarcartamazo(ChillwindYeti3);
-            Jugador1.Agregarcartamazo(OasisSnapjaw3);
-            Jugador1.Agregarcartamazo(BoulderfistOgre3);
-            Jugador1.Agregarcartamazo(WarGolem3);
-            Jugador1.Agregarcartamazo(CoreHound3);
-            Jugador2.Agregarcartamazo(MurlocRaider4);
-            Jugador2.Agregarcartamazo(Wisp4);
-            Jugador2.Agregarcartamazo(BloodfenRaptor4);
-            Jugador2.Agregarcartamazo(RiverCrocolisk4);
-            Jugador2.Agregarcartamazo(MagmaRager4);
-            Jugador2.Agregarcartamazo(ChillwindYeti4);
-            Jugador2.Agregarcartamazo(OasisSnapjaw4);
-            Jugador2.Agregarcartamazo(BoulderfistOgre4);
-            Jugador2.Agregarcartamazo(WarGolem4);
-            Jugador2.Agregarcartamazo(CoreHound4);
+            jugador1.Agregarcartamazo(MurlocRaider3);
+            jugador1.Agregarcartamazo(Wisp3);
+            jugador1.Agregarcartamazo(BloodfenRaptor3);
+            jugador1.Agregarcartamazo(RiverCrocolisk3);
+            jugador1.Agregarcartamazo(MagmaRager3);
+            jugador1.Agregarcartamazo(ChillwindYeti3);
+            jugador1.Agregarcartamazo(OasisSnapjaw3);
+            jugador1.Agregarcartamazo(BoulderfistOgre3);
+            jugador1.Agregarcartamazo(WarGolem3);
+            jugador1.Agregarcartamazo(CoreHound3);
+            jugador2.Agregarcartamazo(MurlocRaider4);
+            jugador2.Agregarcartamazo(Wisp4);
+            jugador2.Agregarcartamazo(BloodfenRaptor4);
+            jugador2.Agregarcartamazo(RiverCrocolisk4);
+            jugador2.Agregarcartamazo(MagmaRager4);
+            jugador2.Agregarcartamazo(ChillwindYeti4);
+            jugador2.Agregarcartamazo(OasisSnapjaw4);
+            jugador2.Agregarcartamazo(BoulderfistOgre4);
+            jugador2.Agregarcartamazo(WarGolem4);
+            jugador2.Agregarcartamazo(CoreHound4);
 
-            Jugador1.Agregarcartamazo(MurlocRaider5);
-            Jugador1.Agregarcartamazo(Wisp5);
-            Jugador1.Agregarcartamazo(BloodfenRaptor5);
-            Jugador1.Agregarcartamazo(RiverCrocolisk5);
-            Jugador1.Agregarcartamazo(MagmaRager5);
-            Jugador1.Agregarcartamazo(ChillwindYeti5);
-            Jugador1.Agregarcartamazo(OasisSnapjaw5);
-            Jugador1.Agregarcartamazo(BoulderfistOgre5);
-            Jugador1.Agregarcartamazo(WarGolem5);
-            Jugador1.Agregarcartamazo(CoreHound5);
-            Jugador2.Agregarcartamazo(MurlocRaider6);
-            Jugador2.Agregarcartamazo(Wisp6);
-            Jugador2.Agregarcartamazo(BloodfenRaptor6);
-            Jugador2.Agregarcartamazo(RiverCrocolisk6);
-            Jugador2.Agregarcartamazo(MagmaRager6);
-            Jugador2.Agregarcartamazo(ChillwindYeti6);
-            Jugador2.Agregarcartamazo(OasisSnapjaw6);
-            Jugador2.Agregarcartamazo(BoulderfistOgre6);
-            Jugador2.Agregarcartamazo(WarGolem6);
-            Jugador2.Agregarcartamazo(CoreHound6);
+            jugador1.Agregarcartamazo(MurlocRaider5);
+            jugador1.Agregarcartamazo(Wisp5);
+            jugador1.Agregarcartamazo(BloodfenRaptor5);
+            jugador1.Agregarcartamazo(RiverCrocolisk5);
+            jugador1.Agregarcartamazo(MagmaRager5);
+            jugador1.Agregarcartamazo(ChillwindYeti5);
+            jugador1.Agregarcartamazo(OasisSnapjaw5);
+            jugador1.Agregarcartamazo(BoulderfistOgre5);
+            jugador1.Agregarcartamazo(WarGolem5);
+            jugador1.Agregarcartamazo(CoreHound5);
+            jugador2.Agregarcartamazo(MurlocRaider6);
+            jugador2.Agregarcartamazo(Wisp6);
+            jugador2.Agregarcartamazo(BloodfenRaptor6);
+            jugador2.Agregarcartamazo(RiverCrocolisk6);
+            jugador2.Agregarcartamazo(MagmaRager6);
+            jugador2.Agregarcartamazo(ChillwindYeti6);
+            jugador2.Agregarcartamazo(OasisSnapjaw6);
+            jugador2.Agregarcartamazo(BoulderfistOgre6);
+            jugador2.Agregarcartamazo(WarGolem6);
+            jugador2.Agregarcartamazo(CoreHound6);
 
-            Jugador1.Shuffle(rnd);
-            Jugador2.Shuffle(rnd);
-            Jugador1.Agregarcartamano();
-            Jugador1.Agregarcartamano();
-            Jugador1.Agregarcartamano();
-            Jugador2.Agregarcartamano();
-            Jugador2.Agregarcartamano();
-            Jugador2.Agregarcartamano();
-            Jugador1.CambioMano(Jugador1, rnd);
-            Jugador2.CambioMano(Jugador2, rnd);
+            jugador1.Shuffle(rnd);
+            jugador2.Shuffle(rnd);
+            jugador1.Agregarcartamano();
+            jugador1.Agregarcartamano();
+            jugador1.Agregarcartamano();
+            jugador2.Agregarcartamano();
+            jugador2.Agregarcartamano();
+            jugador2.Agregarcartamano();
+            jugador1.CambioMano(Jugador1, rnd);
+            jugador2.CambioMano(Jugador2, rnd);
             TheCoin.OtorgarMoneda(Jugador1, dice, TheCoin);
             TheCoin.OtorgarMoneda(Jugador2, dice, TheCoin);
 
@@ -863,11 +877,12 @@ namespace Hearthstone
             }
 
           */
+
+            InitializeComponent();
             
         }
 
-        string NombreJ1 { get; set; }
-        string NombreJ2 { get; set; }
+       
         string HeroeJ1 { get; set; }
         string HeroeJ2 { get; set; }
 
@@ -898,8 +913,8 @@ namespace Hearthstone
         private void BotonInicio_Click(object sender, RoutedEventArgs e)
         {
             BotonInicio.Visibility = Visibility.Hidden;
-            FondoPantallaInicio.Visibility = Visibility.Hidden;
-            Fondo_Partida.Visibility = Visibility.Visible;
+            Fondoinicio.Visibility = Visibility.Hidden;
+            Imagen2.Visibility = Visibility.Visible;
             Cargar_Partida.Visibility = Visibility.Visible;
             Partida_Nueva.Visibility = Visibility.Visible;
 
@@ -909,12 +924,11 @@ namespace Hearthstone
         {
             Cargar_Partida.Visibility = Visibility.Hidden;
             Partida_Nueva.Visibility = Visibility.Hidden;
-            Fondo_Partida.Visibility = Visibility.Hidden;
             Label1.Visibility = Visibility.Visible;
             tb1.Visibility = Visibility.Visible;
             tb2.Visibility = Visibility.Visible;
-            jugador1.Visibility = Visibility.Visible;
-            label2.Visibility = Visibility.Visible;
+            njugador1.Visibility = Visibility.Visible;
+            njugador2.Visibility = Visibility.Visible;
             Siguiente.Visibility = Visibility.Visible;
 
         }
@@ -923,19 +937,18 @@ namespace Hearthstone
         {
             Cargar_Partida.Visibility = Visibility.Hidden;
             Partida_Nueva.Visibility = Visibility.Hidden;
-            Fondo_Partida.Visibility = Visibility.Hidden;
+           
+            
         }
 
         private void NombreJugadores(object sender, RoutedEventArgs e)
         {
-            NombreJ1 = tb1.Text;
-            NombreJ2 = tb2.Text;
 
             Label1.Visibility = Visibility.Hidden;
             tb1.Visibility = Visibility.Hidden;
             tb2.Visibility = Visibility.Hidden;
-            jugador1.Visibility = Visibility.Hidden;
-            label2.Visibility = Visibility.Hidden;
+            njugador1.Visibility = Visibility.Hidden;
+            njugador2.Visibility = Visibility.Hidden;
             Siguiente.Visibility = Visibility.Hidden;
             EH.Visibility = Visibility.Visible;
             label21.Visibility = Visibility.Visible;
@@ -947,12 +960,16 @@ namespace Hearthstone
             HabilidadJ2.Visibility = Visibility.Visible;
             label.Visibility = Visibility.Visible;
             label1.Visibility = Visibility.Visible;
+            
+
+            
 
         }
 
         private void SeleccionHeroes(object sender, RoutedEventArgs e)
         {
-
+            
+            MessageBox.Show(jugador1.nombrejugador);
             EH.Visibility = Visibility.Hidden;
             label21.Visibility = Visibility.Hidden;
             label22.Visibility = Visibility.Hidden;

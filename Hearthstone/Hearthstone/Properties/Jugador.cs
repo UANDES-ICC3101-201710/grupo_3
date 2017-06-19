@@ -3,12 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using System.Runtime.CompilerServices;
+using System.ComponentModel;
 
 namespace Hearthstone
 {
     [Serializable]
-    public class Jugador : IJugadas
+    public class Jugador : IJugadas, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         private int Vida;
         private int Defensa;
         private int LimiteGema;
@@ -27,13 +46,20 @@ namespace Hearthstone
         public int vida
         {
             get { return Vida; }
-            set { Vida = value; }
+            set { Vida = value;
+                OnPropertyChanged();
+            }
+            
+            
+
         }
 
-        public int defensa
+    public int defensa
         {
             get { return Defensa; }
-            set { Defensa = value; }
+            set { Defensa = value;
+                OnPropertyChanged();
+            }
         }
 
         public int identificador
@@ -45,50 +71,66 @@ namespace Hearthstone
         public int gema
         {
             get { return Gema; }
-            set { Gema = value; }
+            set { Gema = value;
+                OnPropertyChanged();
+            }
         }
 
         public int limitegema
         {
             get { return LimiteGema; }
-            set { LimiteGema = value; }
+            set { LimiteGema = value;
+                OnPropertyChanged();
+            }
         }
 
         public string nombrejugador
         {
             get { return Nombrejugador; }
-            set { Nombrejugador = value; }
+            set { Nombrejugador = value;
+                OnPropertyChanged();
+            }
         }
 
         public bool ganper
         {
             get { return GanPer; }
-            set { GanPer = value; }
+            set { GanPer = value;
+                OnPropertyChanged();
+            }
         }
 
         public bool habilidadusada
         {
             get { return HabilidadaUsada; }
-            set { HabilidadaUsada = value; }
+            set { HabilidadaUsada = value;
+                OnPropertyChanged();
+            }
         }
 
 
         public int turno
         {
             get { return Turno; }
-            set { Turno = value; }
+            set { Turno = value;
+                OnPropertyChanged();
+            }
         }
 
         public string nombreheroe
         {
             get { return Nombreheroe; }
-            set { Nombreheroe = value; }
+            set { Nombreheroe = value;
+                OnPropertyChanged();
+            }
         }
 
         public string habilidadheroe
         {
             get { return Habilidadheroe; }
-            set { Habilidadheroe = value; }
+            set { Habilidadheroe = value;
+                OnPropertyChanged();
+            }
         }
 
         public void Agregarcartamazo(Carta carta)
