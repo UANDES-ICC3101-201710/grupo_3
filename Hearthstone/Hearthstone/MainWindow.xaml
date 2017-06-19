@@ -5,26 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hearthstone"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="800" Width="1280" MinHeight="800" MinWidth ="1280" MaxHeight="800" MaxWidth="1280" VerticalContentAlignment="Center">
     <Grid>
 
         <Image x:Name="Imagen2" Source="images.jpg" Stretch="Fill"  Visibility="Hidden"/>
 
-        <Image x:Name ="Fondoinicio" Source="download.jpg" Stretch="Fill"/>
+        <Image x:Name ="Fondoinicio" Source="download.jpg" Stretch="Fill" Visibility="Visible"/>
 
-        <Button x:Name="BotonInicio" Content="Jugar" HorizontalAlignment="Left" Margin="233,215,0,0" VerticalAlignment="Top" Width="75" Click="BotonInicio_Click"/>
-        <Button x:Name="Partida_Nueva" Content="Partida Nueva" HorizontalAlignment="Left" Margin="98,215,0,0" VerticalAlignment="Top" Width="104" Click="Partida_Nueva_Click" Visibility="Hidden"/>
-        <Button x:Name="Cargar_Partida" Content="Cargar Partida" HorizontalAlignment="Left" Margin="334,215,0,0" VerticalAlignment="Top" Width="104" Click="Cargar_Partida_Click" Visibility="Hidden"/>
-        <Label x:Name="Label1" Content="Ingrese el nombre de los jugadores" HorizontalAlignment="Left" Margin="160,76,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <TextBox x:Name="tb1" Text="{Binding Jugador1.nombrejugador}" HorizontalAlignment="Left" Height="23" Margin="69,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
-        <TextBox x:Name="tb2" Text="{Binding Jugador2.nombrejugador}" HorizontalAlignment="Left" Height="23" Margin="332,176,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
-        <Label x:Name="njugador1" Content="Jugador 1" HorizontalAlignment="Left" Margin="98,137,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Label x:Name="njugador2" Content="Jugador 2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="367,137,0,0" Visibility="Hidden"/>
-        <Button x:Name="Siguiente" Content="Siguiente" HorizontalAlignment="Left" Margin="223,247,0,0" VerticalAlignment="Top" Width="75" Click="NombreJugadores" Visibility="Hidden"/>
-        <Label x:Name="EH" Content="Eligan el heroe con el que desean jugar" HorizontalAlignment="Left" Margin="156,45,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Label x:Name="label21" Content= "{Binding Jugador1.nombrejugador}" HorizontalAlignment="Left" Margin="61,99,0,0" VerticalAlignment="Top" Height="33" Width="84" Visibility="Hidden"/>
-        <Label x:Name="label22" Content="{Binding Jugador2.nombrejugador}" HorizontalAlignment="Left" Margin="332,99,0,0" VerticalAlignment="Top" Height="33" Width="71" Visibility="Hidden"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="61,141,0,0" VerticalAlignment="Top" Width="112" Height="22" SelectionChanged="comboBox_SelectionChanged" Visibility="Hidden">
+        <Button x:Name="BotonInicio" Content="Jugar" Margin="548,0,544,202" Click="BotonInicio_Click" RenderTransformOrigin="0.5,0.5" MaxHeight="48" MaxWidth="154" MinHeight="48" MinWidth="154" Visibility="Visible" Width="154" HorizontalAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Bottom" Height="48">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="Partida_Nueva" Content="Partida Nueva" Margin="407,471,711,250" Click="Partida_Nueva_Click" Visibility="Hidden" MinWidth="154" MinHeight="48" MaxWidth="154" MaxHeight="48" HorizontalAlignment="Center" RenderTransformOrigin="0.487,0.104"/>
+        <Button x:Name="Cargar_Partida" Content="Cargar Partida" Margin="712,471,406,250" Click="Cargar_Partida_Click" Visibility="Hidden" MinWidth="154" MinHeight="48" MaxWidth="154" MaxHeight="48" UseLayoutRounding="True" RenderTransformOrigin="0.597,0"/>
+        <Label x:Name="Label1" Content="Ingrese el nombre de los jugadores" HorizontalAlignment="Left" Margin="478,318,0,0" VerticalAlignment="Top" Visibility="Hidden" Width="330" FontSize="20" Background="#00000000" Foreground="#FFF7EFEF" RenderTransformOrigin="0.505,-1.73"/>
+        <TextBox x:Name="tb1" Text="{Binding Jugador1.nombrejugador}" HorizontalAlignment="Left" Height="23" Margin="426,409,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tb2" Text="{Binding Jugador2.nombrejugador}" HorizontalAlignment="Left" Height="23" Margin="763,409,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Visibility="Hidden" VerticalContentAlignment="Center"/>
+        <Label x:Name="njugador1" Content="Jugador 1" HorizontalAlignment="Left" Margin="426,387,0,0" VerticalAlignment="Top" Visibility="Hidden" RenderTransformOrigin="0.549,-0.826" Height="31" Width="80" FontSize="16" Foreground="White"/>
+        <Label x:Name="njugador2" Content="Jugador 2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="763,382,0,0" Visibility="Hidden" FontSize="16" Foreground="White"/>
+        <Button x:Name="Siguiente" Content="Siguiente" Margin="561,524,557,197" Click="NombreJugadores" Visibility="Hidden" MinWidth="154" MinHeight="48" MaxWidth="154" MaxHeight="48"/>
+        <Label x:Name="EH" Content="Eligan el heroe con el que desean jugar" HorizontalAlignment="Left" Margin="463,318,0,0" VerticalAlignment="Top" Visibility="Hidden" Foreground="#FFFBF7F7" Height="38" Width="356" FontSize="20"/>
+        <Label x:Name="label21" Content= "{Binding Jugador1.nombrejugador}" HorizontalAlignment="Left" Margin="426,376,0,0" VerticalAlignment="Top" Height="33" Width="84" Visibility="Hidden"/>
+        <Label x:Name="label22" Content="{Binding Jugador2.nombrejugador}" HorizontalAlignment="Left" Margin="763,376,0,0" VerticalAlignment="Top" Height="33" Width="84" Visibility="Hidden"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="426,409,0,0" VerticalAlignment="Top" Width="112" Height="22" SelectionChanged="comboBox_SelectionChanged" Visibility="Hidden">
             <ComboBoxItem Content="Druid"/>
             <ComboBoxItem Content="Hunter"/>
             <ComboBoxItem Content="Mage"/>
@@ -35,7 +44,7 @@
             <ComboBoxItem Content="Warlock"/>
             <ComboBoxItem Content="Warrior"/>
         </ComboBox>
-        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="323,141,0,0" VerticalAlignment="Top" Width="112" Height="22" SelectionChanged="comboBox1_SelectionChanged" Visibility="Hidden">
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="763,409,0,0" VerticalAlignment="Top" Width="112" Height="22" SelectionChanged="comboBox1_SelectionChanged" Visibility="Hidden">
             <ComboBoxItem Content="Druid"/>
             <ComboBoxItem Content="Hunter"/>
             <ComboBoxItem Content="Mage"/>
@@ -46,11 +55,11 @@
             <ComboBoxItem Content="Warlock"/>
             <ComboBoxItem Content="Warrior"/>
         </ComboBox>
-        <Button x:Name="Jugar" Content="JUGAR" HorizontalAlignment="Left" Margin="223,240,0,0" VerticalAlignment="Top" Width="75" Click="SeleccionHeroes" Visibility="Hidden"/>
-        <Label x:Name="HabilidadJ1" Content="" HorizontalAlignment="Left" Margin="61,204,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Label x:Name="HabilidadJ2" Content="" HorizontalAlignment="Left" Margin="323,203,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Label x:Name="label" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="61,173,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Label x:Name="label1" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="323,173,0,0" VerticalAlignment="Top" Width="115" Visibility="Hidden"/>
-         
+        <Button x:Name="Jugar" Content="JUGAR" HorizontalAlignment="Left" Margin="561,524,0,197" VerticalAlignment="Center" Width="154" Click="SeleccionHeroes" Visibility="Hidden" Height="48"/>
+        <Label x:Name="HabilidadJ1" Content="" HorizontalAlignment="Left" Margin="426,471,0,0" VerticalAlignment="Top" Visibility="Hidden" Background="{x:Null}" Foreground="White"/>
+        <Label x:Name="HabilidadJ2" Content="" HorizontalAlignment="Left" Margin="763,471,0,0" VerticalAlignment="Top" Visibility="Hidden" RenderTransformOrigin="0.967,0.103" Foreground="White" Background="#00000000"/>
+        <Label x:Name="label" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="426,440,0,0" VerticalAlignment="Top" Visibility="Hidden" Foreground="White"/>
+        <Label x:Name="label1" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="763,440,0,0" VerticalAlignment="Top" Width="116" Visibility="Hidden" Foreground="White"/>
+        <MediaElement Name ="mediaelement1" LoadedBehavior="Manual" HorizontalAlignment="Left" Height="100" Margin="593,599,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>

@@ -913,7 +913,6 @@ namespace Hearthstone
 
         }
 
-       
 
         private void BotonInicio_Click(object sender, RoutedEventArgs e)
         {
