@@ -30,23 +30,23 @@ namespace Hearthstone
 
     public partial class MainWindow : Window
     {
-       
-    private Jugador jugador1;
-        public Jugador Jugador1 { get { return jugador1; }   }
+
+        private Jugador jugador1;
+        public Jugador Jugador1 { get { return jugador1; } }
 
         private Jugador jugador2;
-        public Jugador Jugador2 { get { return jugador2; }   }
+        public Jugador Jugador2 { get { return jugador2; } }
 
-        
+
 
         public MainWindow()
         {
             //Datos esbirros
-            
+
 
             this.jugador1 = new Jugador();
             this.jugador2 = new Jugador();
-           
+
 
             Esbirro Wisp = new Esbirro();
             Wisp.nombre = "Wisp";
@@ -727,7 +727,7 @@ namespace Hearthstone
             TheCoin.tipo = "Hechizo";
             TheCoin.habilidad = "Gana una gema por este Turno";
 
-            
+
             jugador1.identificador = 1;
             jugador2.identificador = 2;
             //Jugador1.nombrejugador = Consola1.Nombrejugador(Jugador1);
@@ -750,7 +750,7 @@ namespace Hearthstone
                 Jugador2.nombreheroe = "Hunter";
             }
             */
-            
+
             //Jugador1.habilidadheroe = Consola1.Asignarhabilidad(Jugador1);
             //Jugador2.habilidadheroe = Consola1.Asignarhabilidad(Jugador2);
             Random rnd = new Random();
@@ -882,14 +882,12 @@ namespace Hearthstone
           */
 
             InitializeComponent();
-            
+
         }
 
-       
+
         string HeroeJ1 { get; set; }
         string HeroeJ2 { get; set; }
-        string opcion1 { get; set; }
-        string opcion2 { get; set; }
 
         public static void SaveGame(Jugador Game)
         {
@@ -936,7 +934,7 @@ namespace Hearthstone
             njugador1.Visibility = Visibility.Visible;
             njugador2.Visibility = Visibility.Visible;
             Siguiente.Visibility = Visibility.Visible;
-            
+
 
         }
 
@@ -944,8 +942,8 @@ namespace Hearthstone
         {
             Cargar_Partida.Visibility = Visibility.Hidden;
             Partida_Nueva.Visibility = Visibility.Hidden;
-           
-            
+
+
         }
 
         private void NombreJugadores(object sender, RoutedEventArgs e)
@@ -968,9 +966,9 @@ namespace Hearthstone
             HabilidadJ2.Visibility = Visibility.Visible;
             label.Visibility = Visibility.Visible;
             label1.Visibility = Visibility.Visible;
-            
 
-            
+
+
 
         }
 
@@ -989,6 +987,24 @@ namespace Hearthstone
             label1.Visibility = Visibility.Hidden;
             Tablero.Visibility = Visibility.Visible;
             Imagen2.Visibility = Visibility.Hidden;
+            g1.Visibility = Visibility.Visible;
+            g2.Visibility = Visibility.Visible;
+            gritosj1.Visibility = Visibility.Visible;
+            gritosj2.Visibility = Visibility.Visible;
+            imagen1.Visibility = Visibility.Visible;
+            imagen2.Visibility = Visibility.Visible;
+            imagen3.Visibility = Visibility.Visible;
+            imagen4.Visibility = Visibility.Visible;
+            imagen5.Visibility = Visibility.Visible;
+            imagen6.Visibility = Visibility.Visible;
+            Bcambiar1.Visibility = Visibility.Visible;
+            Bcambiar2.Visibility = Visibility.Visible;
+            Bcambiar3.Visibility = Visibility.Visible;
+            Bcambiar4.Visibility = Visibility.Visible;
+            Bcambiar5.Visibility = Visibility.Visible;
+            Bcambiar6.Visibility = Visibility.Visible;
+            Seguir.Visibility = Visibility.Visible;
+
 
             if ((string)nheroe1.Content == "Druid")
             {
@@ -1068,23 +1084,6 @@ namespace Hearthstone
             Jug1.Visibility = Visibility.Visible;
             Jug2.Visibility = Visibility.Visible;
 
-            imagen1.Visibility = Visibility.Visible;
-            imagen2.Visibility = Visibility.Visible;
-            imagen3.Visibility = Visibility.Visible;
-            imagen4.Visibility = Visibility.Visible;
-            imagen5.Visibility = Visibility.Visible;
-            imagen6.Visibility = Visibility.Visible;
-
-            Bcambiar1.Visibility = Visibility.Visible;
-            Bcambiar2.Visibility = Visibility.Visible;
-            Bcambiar3.Visibility = Visibility.Visible;
-            Bcambiar4.Visibility = Visibility.Visible;
-            Bcambiar5.Visibility = Visibility.Visible;
-            Bcambiar6.Visibility = Visibility.Visible;
-
-
-
-
 
 
         }
@@ -1100,7 +1099,6 @@ namespace Hearthstone
 
             ComboBoxItem cbi = (ComboBoxItem)comboBox.SelectedItem;
             string HeroeJ1 = cbi.Content.ToString();
-            HabilidadJ1.Content = HeroeJ1;
 
             if (HeroeJ1 == "Druid")
             {
@@ -1160,7 +1158,7 @@ namespace Hearthstone
             {
                 nheroe2.Content = "Druid";
                 HabilidadJ2.Content = "+1 en ataque por su turno \ny +1 de armadura";
-                
+
             }
             else if (HeroeJ2 == "Hunter")
             {
@@ -1202,34 +1200,12 @@ namespace Hearthstone
                 nheroe2.Content = "Warrior";
                 HabilidadJ2.Content = "Obtiene +2 de armadura";
             }
+
         }
+        
+      
 
-<<<<<<< HEAD
-        private void gritosj2_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBoxItem cb1 = (ComboBoxItem)gritosj2.SelectedItem;
-            string opcion1 = cb1.Content.ToString();
-            
-
-            if (opcion1 == "Saludar")
-            {
-                MessageBox.Show("Hola maldito...");
-            }
-            else if (opcion1 == "Amenaza")
-            {
-                MessageBox.Show("Mi furia caera sobre ti");
-            }
-            else if (opcion1 == "Buena Jugada")
-            {
-                MessageBox.Show("Esa es una buena jugada");
-            }
-            else if (opcion1 == "Burla")
-            {
-                MessageBox.Show("Hahaha pobre idiota");
-            }
-        }
-
-        private void gritosj1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void gritosj1_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem cb = (ComboBoxItem)gritosj1.SelectedItem;
             string opcion2 = cb.Content.ToString();
@@ -1251,7 +1227,32 @@ namespace Hearthstone
             {
                 MessageBox.Show("Hahaha pobre idiota");
             }
-=======
+        }
+
+        private void gritosj2_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cb1 = (ComboBoxItem)gritosj2.SelectedItem;
+            string opcion1 = cb1.Content.ToString();
+
+
+            if (opcion1 == "Saludar")
+            {
+                MessageBox.Show("Hola maldito...");
+            }
+            else if (opcion1 == "Amenaza")
+            {
+                MessageBox.Show("Mi furia caera sobre ti");
+            }
+            else if (opcion1 == "Buena Jugada")
+            {
+                MessageBox.Show("Esa es una buena jugada");
+            }
+            else if (opcion1 == "Burla")
+            {
+                MessageBox.Show("Hahaha pobre idiota");
+            }
+        }
+
         private void Cambiar1(object sender, RoutedEventArgs e)
         {
             imagen6.Visibility = Visibility.Hidden;
@@ -1293,7 +1294,29 @@ namespace Hearthstone
             imagen3.Visibility = Visibility.Hidden;
             Bcambiar6.Visibility = Visibility.Hidden;
             Cambio6.Visibility = Visibility.Visible;
->>>>>>> 8a314c9dbab4c37b45b22aa9620fcf718e0d6b05
+        }
+
+        private void Seguir_Click(object sender, RoutedEventArgs e)
+        {
+            Cambio1.Visibility = Visibility.Hidden;
+            Cambio2.Visibility = Visibility.Hidden;
+            Cambio3.Visibility = Visibility.Hidden;
+            Cambio4.Visibility = Visibility.Hidden;
+            Cambio5.Visibility = Visibility.Hidden;
+            Cambio6.Visibility = Visibility.Hidden;
+            imagen1.Visibility = Visibility.Hidden;
+            imagen2.Visibility = Visibility.Hidden;
+            imagen3.Visibility = Visibility.Hidden;
+            imagen4.Visibility = Visibility.Hidden;
+            imagen5.Visibility = Visibility.Hidden;
+            imagen6.Visibility = Visibility.Hidden;
+            Bcambiar1.Visibility = Visibility.Hidden;
+            Bcambiar2.Visibility = Visibility.Hidden;
+            Bcambiar3.Visibility = Visibility.Hidden;
+            Bcambiar4.Visibility = Visibility.Hidden;
+            Bcambiar5.Visibility = Visibility.Hidden;
+            Bcambiar6.Visibility = Visibility.Hidden;
+
         }
     }
 }

@@ -109,21 +109,6 @@
     <Resource Include="Tablero.jpg" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Resource Include="Bloodfen_Raptor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Core_Hound.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Murloc_Raider.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Oasis_Snapjaw.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Wisp.png" />
-=======
     <Resource Include="Druid.png" />
   </ItemGroup>
   <ItemGroup>
@@ -149,7 +134,27 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Warrior.png" />
->>>>>>> e877c020721eac5e9d9f4e7522540144a59f089b
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bloodfen_Raptor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Boulderfist_Ogre.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Magma_Rager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Core_Hound.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Chillwind_Yeti.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="River_Crocolisk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Murloc_Raider.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
