@@ -991,6 +991,23 @@ namespace Hearthstone
             Jug1.Visibility = Visibility.Visible;
             Jug2.Visibility = Visibility.Visible;
 
+            imagen1.Visibility = Visibility.Visible;
+            imagen2.Visibility = Visibility.Visible;
+            imagen3.Visibility = Visibility.Visible;
+            imagen4.Visibility = Visibility.Visible;
+            imagen5.Visibility = Visibility.Visible;
+            imagen6.Visibility = Visibility.Visible;
+
+            Bcambiar1.Visibility = Visibility.Visible;
+            Bcambiar2.Visibility = Visibility.Visible;
+            Bcambiar3.Visibility = Visibility.Visible;
+            Bcambiar4.Visibility = Visibility.Visible;
+            Bcambiar5.Visibility = Visibility.Visible;
+            Bcambiar6.Visibility = Visibility.Visible;
+
+
+
+
 
         }
 
@@ -1089,6 +1106,47 @@ namespace Hearthstone
             }
         }
 
+        private void Cambiar1(object sender, RoutedEventArgs e)
+        {
+            imagen6.Visibility = Visibility.Hidden;
+            Bcambiar1.Visibility = Visibility.Hidden;
+            Cambio1.Visibility = Visibility.Visible;
 
+        }
+
+        private void Cambiar2(object sender, RoutedEventArgs e)
+        {
+            imagen4.Visibility = Visibility.Hidden;
+            Bcambiar2.Visibility = Visibility.Hidden;
+            Cambio2.Visibility = Visibility.Visible;
+        }
+
+        private void Cambiar3(object sender, RoutedEventArgs e)
+        {
+            imagen5.Visibility = Visibility.Hidden;
+            Bcambiar3.Visibility = Visibility.Hidden;
+            Cambio3.Visibility = Visibility.Visible;
+        }
+
+        private void Cambiar4(object sender, RoutedEventArgs e)
+        {
+            imagen1.Visibility = Visibility.Hidden;
+            Bcambiar4.Visibility = Visibility.Hidden;
+            Cambio4.Visibility = Visibility.Visible;
+        }
+
+        private void Cambiar5(object sender, RoutedEventArgs e)
+        {
+            imagen2.Visibility = Visibility.Hidden;
+            Bcambiar5.Visibility = Visibility.Hidden;
+            Cambio5.Visibility = Visibility.Visible;
+        }
+
+        private void Cambiar6(object sender, RoutedEventArgs e)
+        {
+            imagen3.Visibility = Visibility.Hidden;
+            Bcambiar6.Visibility = Visibility.Hidden;
+            Cambio6.Visibility = Visibility.Visible;
+        }
     }
 }

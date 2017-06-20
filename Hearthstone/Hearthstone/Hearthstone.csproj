@@ -108,5 +108,20 @@
   <ItemGroup>
     <Resource Include="Tablero.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bloodfen_Raptor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Core_Hound.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Murloc_Raider.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Oasis_Snapjaw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Wisp.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
