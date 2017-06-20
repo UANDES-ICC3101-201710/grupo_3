@@ -1318,5 +1318,7 @@ namespace Hearthstone
             Bcambiar6.Visibility = Visibility.Hidden;
 
         }
+
+      
     }
 }
