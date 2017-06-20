@@ -8,9 +8,11 @@
         Title="MainWindow" Height="800" Width="1280" MinHeight="800" MinWidth ="1280" MaxHeight="800" MaxWidth="1280" VerticalContentAlignment="Center">
     <Grid>
 
-        <Image x:Name="Imagen2" Source="images.jpg" Stretch="Fill"  Visibility="Hidden"/>
-
         <Image x:Name ="Fondoinicio" Source="download.jpg" Stretch="Fill" Visibility="Visible"/>
+
+        <Image x:Name="Tablero"  Margin="-14,0,10,10" Source="Tablero.jpg" Stretch="Fill" Visibility="Hidden"/>
+
+        <Image x:Name="Imagen2" Source="images.jpg" Stretch="Fill"  Visibility="Hidden"/>
 
         <Button x:Name="BotonInicio" Content="Jugar" Margin="548,0,544,202" Click="BotonInicio_Click" RenderTransformOrigin="0.5,0.5" MaxHeight="48" MaxWidth="154" MinHeight="48" MinWidth="154" Visibility="Visible" Width="154" HorizontalAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Bottom" Height="48">
             <Button.RenderTransform>
@@ -60,8 +62,22 @@
         <Label x:Name="HabilidadJ2" Content="" HorizontalAlignment="Left" Margin="763,471,0,0" VerticalAlignment="Top" Visibility="Hidden" RenderTransformOrigin="0.967,0.103" Foreground="White" Background="#00000000"/>
         <Label x:Name="label" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="426,440,0,0" VerticalAlignment="Top" Visibility="Hidden" Foreground="White"/>
         <Label x:Name="label1" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="763,440,0,0" VerticalAlignment="Top" Width="116" Visibility="Hidden" Foreground="White"/>
-        <Image x:Name="Tablero"  Margin="-14,0,10,10" Source="Tablero.jpg" Stretch="Fill" Visibility="Hidden"/>
-        <Label x:Name="Jug1" Content="" HorizontalAlignment="Left" Margin="616,704,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" Visibility="Hidden"/>
-        <Label x:Name="Jug2" Content=""  HorizontalAlignment="Left" Margin="616,32,0,0" VerticalAlignment="Top" FontSize="16" Foreground="White" Visibility="Hidden"/>
+        <Label x:Name="Jug1" Content="" HorizontalAlignment="Left" Margin="561,665,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" Visibility="Hidden" Width="116" RenderTransformOrigin="0.496,0.565"/>
+        <Label x:Name="Jug2" Content=""  HorizontalAlignment="Left" Margin="561,32,0,0" VerticalAlignment="Top" FontSize="16" Foreground="White" Visibility="Hidden" Width="116"/>
+        <ComboBox x:Name="gritosj1" HorizontalAlignment="Left" Margin="712,146,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="gritosj1_SelectionChanged" Visibility="Hidden">
+            <ComboBoxItem Content="Saludar"/>
+            <ComboBoxItem Content="Amenaza"/>
+            <ComboBoxItem Content="Buena Jugada"/>
+            <ComboBoxItem Content="Burla"/>
+
+        </ComboBox>
+        <ComboBox x:Name ="gritosj2" HorizontalAlignment="Left" Margin="715,572,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="gritosj2_SelectionChanged" Visibility="Hidden">
+            <ComboBoxItem Content="Saludar"/>
+            <ComboBoxItem Content="Amenaza"/>
+            <ComboBoxItem Content="Buena Jugada"/>
+            <ComboBoxItem Content="Burla"/>
+        </ComboBox>
+        <Label Content="Hablar Oponente" HorizontalAlignment="Left" Margin="712,594,0,0" VerticalAlignment="Top" FontSize="16" Width="151" Foreground="White" Visibility="Hidden"/>
+        <Label Content="Hablar Oponente" HorizontalAlignment="Left" Margin="712,115,0,0" VerticalAlignment="Top" Width="131" Foreground="White" FontSize="16" Visibility="Hidden"/>
     </Grid>
 </Window>

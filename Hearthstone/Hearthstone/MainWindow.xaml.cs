@@ -888,6 +888,8 @@ namespace Hearthstone
        
         string HeroeJ1 { get; set; }
         string HeroeJ2 { get; set; }
+        string opcion1 { get; set; }
+        string opcion2 { get; set; }
 
         public static void SaveGame(Jugador Game)
         {
@@ -1005,6 +1007,7 @@ namespace Hearthstone
 
             ComboBoxItem cbi = (ComboBoxItem)comboBox.SelectedItem;
             string HeroeJ1 = cbi.Content.ToString();
+            HabilidadJ1.Content = HeroeJ1;
 
             if (HeroeJ1 == "Druid")
             {
@@ -1089,6 +1092,52 @@ namespace Hearthstone
             }
         }
 
+        private void gritosj2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cb1 = (ComboBoxItem)gritosj2.SelectedItem;
+            string opcion1 = cb1.Content.ToString();
+            
 
+            if (opcion1 == "Saludar")
+            {
+                MessageBox.Show("Hola maldito...");
+            }
+            else if (opcion1 == "Amenaza")
+            {
+                MessageBox.Show("Mi furia caera sobre ti");
+            }
+            else if (opcion1 == "Buena Jugada")
+            {
+                MessageBox.Show("Esa es una buena jugada");
+            }
+            else if (opcion1 == "Burla")
+            {
+                MessageBox.Show("Hahaha pobre idiota");
+            }
+        }
+
+        private void gritosj1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem cb = (ComboBoxItem)gritosj1.SelectedItem;
+            string opcion2 = cb.Content.ToString();
+
+
+            if (opcion2 == "Saludar")
+            {
+                MessageBox.Show("Hola maldito...");
+            }
+            else if (opcion2 == "Amenaza")
+            {
+                MessageBox.Show("Mi furia caera sobre ti");
+            }
+            else if (opcion2 == "Buena Jugada")
+            {
+                MessageBox.Show("Esa es una buena jugada");
+            }
+            else if (opcion2 == "Burla")
+            {
+                MessageBox.Show("Hahaha pobre idiota");
+            }
+        }
     }
 }
