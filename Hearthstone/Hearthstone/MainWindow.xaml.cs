@@ -986,6 +986,81 @@ namespace Hearthstone
             label.Visibility = Visibility.Hidden;
             label1.Visibility = Visibility.Hidden;
             Tablero.Visibility = Visibility.Visible;
+            Imagen2.Visibility = Visibility.Hidden;
+
+            if ((string)nheroe1.Content == "Druid")
+            {
+                Druid1.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe1.Content == "Hunter")
+            {
+                Hunter1.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe1.Content == "Mage")
+            {
+                Mage1.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe1.Content == "Paladin")
+            {
+                Paladin1.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe1.Content == "Priest")
+            {
+                Priest1.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe1.Content == "Rogue")
+            {
+                Rogue1.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe1.Content == "Shaman")
+            {
+                Shaman1.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe1.Content == "Warlock")
+            {
+                Warlock1.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe1.Content == "Warrior")
+            {
+                Warrior1.Visibility = Visibility.Visible;
+            }
+            if ((string)nheroe2.Content == "Druid")
+            {
+                Druid2.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe2.Content == "Hunter")
+            {
+                Hunter2.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe2.Content == "Mage")
+            {
+                Mage2.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe2.Content == "Paladin")
+            {
+                Paladin2.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe2.Content == "Priest")
+            {
+                Priest2.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe2.Content == "Rogue")
+            {
+                Rogue2.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe2.Content == "Shaman")
+            {
+                Shaman2.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe2.Content == "Warlock")
+            {
+                Warlock2.Visibility = Visibility.Visible;
+            }
+            else if ((string)nheroe2.Content == "Warrior")
+            {
+                Warrior2.Visibility = Visibility.Visible;
+            }
+
             Jug1.Content = label21.Content;
             Jug2.Content = label22.Content;
             Jug1.Visibility = Visibility.Visible;
@@ -1009,6 +1084,7 @@ namespace Hearthstone
 
 
 
+
         }
 
 
@@ -1025,38 +1101,47 @@ namespace Hearthstone
 
             if (HeroeJ1 == "Druid")
             {
+                nheroe1.Content = "Druid";
                 HabilidadJ1.Content = "+1 en ataque por su turno \ny +1 de armadura";
             }
             else if (HeroeJ1 == "Hunter")
             {
+                nheroe1.Content = "Hunter";
                 HabilidadJ1.Content = "Le hace 2 de daño \nal heroe enemigo";
             }
             else if (HeroeJ1 == "Mage")
             {
+                nheroe1.Content = "Mage";
                 HabilidadJ1.Content = "Puede hacer 1 de daño\n(Heroe enemigo o esbirro)";
             }
             else if (HeroeJ1 == "Paladin")
             {
+                nheroe1.Content = "Paladin";
                 HabilidadJ1.Content = "Obtiene un soldado 1/1";
             }
             else if (HeroeJ1 == "Priest")
             {
+                nheroe1.Content = "Priest";
                 HabilidadJ1.Content = "Recupera 2 de vida";
             }
             else if (HeroeJ1 == "Rogue")
             {
+                nheroe1.Content = "Rogue";
                 HabilidadJ1.Content = "Obtiene una daga 1/2";
             }
             else if (HeroeJ1 == "Shaman")
             {
+                nheroe1.Content = "Shaman";
                 HabilidadJ1.Content = "Puede obtener un totem con\n2 de vida o con 1/1";
             }
             else if (HeroeJ1 == "Warlock")
             {
+                nheroe1.Content = "Warlock";
                 HabilidadJ1.Content = "Pierde 2 puntos de vida\npara robar una carta del mazo";
             }
             else if (HeroeJ1 == "Warrior")
             {
+                nheroe1.Content = "Warrior";
                 HabilidadJ1.Content = "Obtiene +2 de armadura";
             }
 
@@ -1070,38 +1155,48 @@ namespace Hearthstone
 
             if (HeroeJ2 == "Druid")
             {
+                nheroe2.Content = "Druid";
                 HabilidadJ2.Content = "+1 en ataque por su turno \ny +1 de armadura";
+                
             }
             else if (HeroeJ2 == "Hunter")
             {
+                nheroe2.Content = "Druid";
                 HabilidadJ2.Content = "Le hace 2 de daño \nal heroe enemigo";
             }
             else if (HeroeJ2 == "Mage")
             {
+                nheroe2.Content = "Mage";
                 HabilidadJ2.Content = "Puede hacer 1 de daño\n(Heroe enemigo o esbirro)";
             }
             else if (HeroeJ2 == "Paladin")
             {
+                nheroe2.Content = "Paladin";
                 HabilidadJ2.Content = "Obtiene un soldado 1/1";
             }
             else if (HeroeJ2 == "Priest")
             {
+                nheroe2.Content = "Priest";
                 HabilidadJ2.Content = "Recupera 2 de vida";
             }
             else if (HeroeJ2 == "Rogue")
             {
+                nheroe2.Content = "Rogue";
                 HabilidadJ2.Content = "Obtiene una daga 1/2";
             }
             else if (HeroeJ2 == "Shaman")
             {
+                nheroe2.Content = "Shaman";
                 HabilidadJ2.Content = "Puede obtener un totem \ncon 2 de vida o con 1/1";
             }
             else if (HeroeJ2 == "Warlock")
             {
+                nheroe2.Content = "Warlock";
                 HabilidadJ2.Content = "Pierde 2 puntos de vida\n para robar una carta del mazo";
             }
             else if (HeroeJ2 == "Warrior")
             {
+                nheroe2.Content = "Warrior";
                 HabilidadJ2.Content = "Obtiene +2 de armadura";
             }
         }

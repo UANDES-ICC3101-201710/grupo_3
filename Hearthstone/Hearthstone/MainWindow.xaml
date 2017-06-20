@@ -8,7 +8,13 @@
         Title="MainWindow" Height="800" Width="1280" MinHeight="800" MinWidth ="1280" MaxHeight="800" MaxWidth="1280" VerticalContentAlignment="Center">
     <Grid Visibility="Hidden">
 
+<<<<<<< HEAD
         <Image x:Name="Imagen2" Source="images.jpg" Stretch="Fill"/>
+=======
+        <Image x:Name="Tablero"  Margin="-14,0,10,10" Source="Tablero.jpg" Stretch="Fill" Visibility="Hidden"/>
+
+        <Image x:Name="Imagen2" Source="images.jpg" Stretch="Fill"  Visibility="Hidden"/>
+>>>>>>> e877c020721eac5e9d9f4e7522540144a59f089b
 
         <Image x:Name ="Fondoinicio" Source="download.jpg" Stretch="Fill"/>
 
@@ -60,6 +66,7 @@
         <Label x:Name="HabilidadJ2" Content="" HorizontalAlignment="Left" Margin="763,471,0,0" VerticalAlignment="Top" Visibility="Hidden" RenderTransformOrigin="0.967,0.103" Foreground="White" Background="#00000000"/>
         <Label x:Name="label" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="426,440,0,0" VerticalAlignment="Top" Visibility="Hidden" Foreground="White"/>
         <Label x:Name="label1" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="763,440,0,0" VerticalAlignment="Top" Width="116" Visibility="Hidden" Foreground="White"/>
+<<<<<<< HEAD
         <Image x:Name="Tablero"  Margin="-4,0,0,10" Source="Tablero.jpg" Stretch="Fill"/>
         <Label x:Name="Jug1" Content="" HorizontalAlignment="Left" Margin="616,704,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" Visibility="Hidden"/>
         <Label x:Name="Jug2" Content=""  HorizontalAlignment="Left" Margin="616,32,0,0" VerticalAlignment="Top" FontSize="16" Foreground="White" Visibility="Hidden"/>
@@ -82,5 +89,38 @@
         <Label x:Name="Cambio5" Content="Cambiaste tu carta" HorizontalAlignment="Left" Margin="577,449,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
         <Label x:Name="Cambio6" Content="Cambiaste tu carta" HorizontalAlignment="Left" Margin="805,450,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
         <Button Content="Jugar" HorizontalAlignment="Left" Margin="980,328,0,0" VerticalAlignment="Top" Width="76" Height="41" Visibility="Hidden"/>
+=======
+        <Image x:Name="Druid1" Margin="524,471,536,64" Source="Druid.png" Stretch="Fill" Visibility="Hidden"/>
+        <Image x:Name="Druid2" Margin="522,67,538,468" Source="Druid.png" Stretch="Fill" Width="212" Height="234" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.606"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="Mage1" Margin="524,472,536,64" Source="Mage.png" Stretch="Fill" Width="212" Height="233" Visibility="Hidden"/>
+        <Image x:Name="Mage2" Margin="524,66,536,469" Source="Mage.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Image x:Name="Paladin1" Margin="524,472,536,63" Source="Paladin.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Image x:Name="Paladin2" Margin="524,66,536,469" Source="Paladin.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Image x:Name="Priest1" Margin="524,472,536,63" Source="Priest.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Image x:Name="Priest2" Margin="524,66,536,469" Source="Priest.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Image x:Name="Rogue1" Margin="524,472,536,63" Source="Rogue.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Image x:Name="Rogue2" Margin="524,66,536,469" Source="Rogue.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Image x:Name="Shaman1" Margin="524,472,536,63" Source="Shaman.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Image x:Name="Shaman2" Margin="524,66,536,469" Source="Shaman.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Image x:Name="Warlock1" Margin="524,472,536,63" Source="Warlock.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Image x:Name="Warlock2" Margin="524,66,536,469" Source="Warlock.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Image x:Name="Warrior1" Margin="524,472,536,63" Source="Warrior.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Image x:Name="Warrior2" Margin="524,66,536,469" Source="Warrior.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Label x:Name="Jug1" Content="" HorizontalAlignment="Left" Margin="616,704,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" Visibility="Hidden"/>
+        <Label x:Name="Jug2" Content=""  HorizontalAlignment="Left" Margin="616,32,0,0" VerticalAlignment="Top" FontSize="16" Foreground="White" Visibility="Hidden"/>
+        <Image x:Name="Hunter1" Margin="524,471,536,64" Source="Hunter.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Image x:Name="Hunter2" Margin="524,66,536,469" Source="Hunter.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Label x:Name="nheroe1" Content="" HorizontalAlignment="Left" Margin="377,472,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label x:Name="nheroe2" Content="" HorizontalAlignment="Left" Margin="377,519,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+>>>>>>> e877c020721eac5e9d9f4e7522540144a59f089b
     </Grid>
 </Window>

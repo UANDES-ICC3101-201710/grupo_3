@@ -109,6 +109,7 @@
     <Resource Include="Tablero.jpg" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Resource Include="Bloodfen_Raptor.png" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +123,33 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Wisp.png" />
+=======
+    <Resource Include="Druid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hunter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Mage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Paladin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Priest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Rogue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Shaman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Warlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Warrior.png" />
+>>>>>>> e877c020721eac5e9d9f4e7522540144a59f089b
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
