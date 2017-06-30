@@ -26,7 +26,7 @@ namespace Hearthstone
 
         void Agregarcartamano();
 
-        void Agregarcartalado(Jugador jugador);
+        void Agregarcartalado(Jugador jugador, int indice);
 
         void Aumentargema();
 
@@ -38,7 +38,7 @@ namespace Hearthstone
 
         void Enfrentar(Jugador jugador1, Jugador jugador2);
 
-        void Jugar(Jugador jugador1, Jugador jugador2);
+       // void Jugar(Jugador jugador1, Jugador jugador2);
 
         void Despertar(Jugador jugador);
 
@@ -46,7 +46,7 @@ namespace Hearthstone
 
         void Rendirse(Jugador jugador1, Jugador jugador2);
 
-        void CambioMano(Jugador jugador, Random rnd);
+        void CambioMano(Jugador jugador, Random rnd, Carta carta, int i);
 
 
 

@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Juego.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -95,6 +96,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Recursos\Spritesguldan.psd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -106,55 +108,80 @@
     <Resource Include="images.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Tablero.jpg" />
+    <Resource Include="Recursos\635468707078430980.png" />
+    <Resource Include="Recursos\Cartas\Airtotem.png" />
+    <Resource Include="Recursos\Cartas\Bloodfenraptor.png" />
+    <Resource Include="Recursos\Cartas\Boulderfistogre.png" />
+    <Resource Include="Recursos\Cartas\Chillwindyeti.png" />
+    <Resource Include="Recursos\Cartas\Corehound.png" />
+    <Resource Include="Recursos\Cartas\Healingtotem.png" />
+    <Resource Include="Recursos\Cartas\Magmarager.png" />
+    <Resource Include="Recursos\Cartas\Murlocraider.png" />
+    <Resource Include="Recursos\Cartas\Oasissnapjaw.png" />
+    <Resource Include="Recursos\Cartas\Poisoneddagger.png" />
+    <Resource Include="Recursos\Cartas\Rivercrocolisk.png" />
+    <Resource Include="Recursos\Cartas\Searingtotem.png" />
+    <Resource Include="Recursos\Cartas\Silverhand.png" />
+    <Resource Include="Recursos\Cartas\Stoneclawtotem.png" />
+    <Resource Include="Recursos\Cartas\Thecoin.png" />
+    <Resource Include="Recursos\Cartas\Vacio.png" />
+    <Resource Include="Recursos\Cartas\Wargolem.png" />
+    <Resource Include="Recursos\Cartas\Wickedknife.png" />
+    <Resource Include="Recursos\Cartas\Wisp.png" />
+    <Resource Include="Recursos\hearthstone_screenshot_1-29-2014-00-53-39.png" />
+    <Resource Include="Recursos\Heroes\Anduin.png" />
+    <Resource Include="Recursos\Heroes\Base.png" />
+    <Resource Include="Recursos\Heroes\DropVida.png" />
+    <Resource Include="Recursos\Heroes\Druid.png" />
+    <Resource Include="Recursos\Heroes\Garrosh.png" />
+    <Resource Include="Recursos\Heroes\Guldan.png" />
+    <Resource Include="Recursos\Heroes\HabilidadMage.png" />
+    <Resource Include="Recursos\Heroes\Hunter.png" />
+    <Resource Include="Recursos\Heroes\Mage.png" />
+    <Resource Include="Recursos\Heroes\Malfurion.png" />
+    <Resource Include="Recursos\Heroes\Paladin.png" />
+    <Resource Include="Recursos\Heroes\Priest.png" />
+    <Resource Include="Recursos\Heroes\Rexxar.png" />
+    <Resource Include="Recursos\Heroes\Rogue.png" />
+    <Resource Include="Recursos\Heroes\Shaman.png" />
+    <Resource Include="Recursos\Heroes\Thrall.png" />
+    <Resource Include="Recursos\Heroes\Uther.png" />
+    <Resource Include="Recursos\Heroes\Valeera.png" />
+    <Resource Include="Recursos\Heroes\Warlock.png" />
+    <Resource Include="Recursos\Heroes\Warrior.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Druid.png" />
+    <Resource Include="Recursos\Airtotem.png" />
+    <Resource Include="Recursos\Bloodfenraptor.png" />
+    <Resource Include="Recursos\Boulderfistogre.png" />
+    <Resource Include="Recursos\Chillwindyeti.png" />
+    <Resource Include="Recursos\Corehound.png" />
+    <Resource Include="Recursos\Healingtotem.png" />
+    <Resource Include="Recursos\Magmarager.png" />
+    <Resource Include="Recursos\Murlocraider.png" />
+    <Resource Include="Recursos\Oasissnapjaw.png" />
+    <Resource Include="Recursos\Poisoneddagger.png" />
+    <Resource Include="Recursos\Rivercrocolisk.png" />
+    <Resource Include="Recursos\Searingtotem.png" />
+    <Resource Include="Recursos\Silverhand.png" />
+    <Resource Include="Recursos\Stoneclawtotem.png" />
+    <Resource Include="Recursos\Thecoin.png" />
+    <Resource Include="Recursos\Vacio.png" />
+    <Resource Include="Recursos\Wargolem.png" />
+    <Resource Include="Recursos\Wickedknife.png" />
+    <Resource Include="Recursos\Wisp.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Hunter.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Mage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Paladin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Priest.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Rogue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Shaman.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Warlock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Warrior.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Bloodfen_Raptor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Boulderfist_Ogre.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Magma_Rager.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Core_Hound.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Chillwind_Yeti.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="River_Crocolisk.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Murloc_Raider.png" />
+    <Resource Include="Recursos\HabilidadHeroe\HabilidadDruid.png" />
+    <Resource Include="Recursos\HabilidadHeroe\HabilidadHunter.png" />
+    <Resource Include="Recursos\HabilidadHeroe\HabilidadMage.png" />
+    <Resource Include="Recursos\HabilidadHeroe\HabilidadPaladin.png" />
+    <Resource Include="Recursos\HabilidadHeroe\HabilidadPriest.png" />
+    <Resource Include="Recursos\HabilidadHeroe\HabilidadRogue.png" />
+    <Resource Include="Recursos\HabilidadHeroe\HabilidadShaman.png" />
+    <Resource Include="Recursos\HabilidadHeroe\HabilidadUsada.png" />
+    <Resource Include="Recursos\HabilidadHeroe\HabilidadWarlock.png" />
+    <Resource Include="Recursos\HabilidadHeroe\HabilidadWarrior.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

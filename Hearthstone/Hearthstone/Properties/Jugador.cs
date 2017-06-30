@@ -157,7 +157,7 @@ namespace Hearthstone
             }
         }
         //esta funcion pone la carta en el tablerodeljugador y elimina la carta de la mano
-        public void Agregarcartalado(Jugador jugador)
+        public void Agregarcartalado(Jugador jugador, int indice)
         {
             if(Tablerojugador.Count == 7)
             {
@@ -167,8 +167,7 @@ namespace Hearthstone
             }
             else
             {
-                // pedir indice por interfaz
-                int indice = 0;
+                
                 if (Mano.ElementAt(indice).costo <= gema)
                 {
                     if (Mano.ElementAt(indice).tipo == "Esbirro")
@@ -406,7 +405,8 @@ namespace Hearthstone
             {
                 jugador1.habilidadusada = true;
                 jugador1.gema = jugador1.gema - 2;
-                //pendiente
+                jugador1.defensa = jugador1.defensa + 1;
+                //pendiente ataque por el turno
             }
             else if (jugador1.habilidadheroe == "Reinforce" && jugador1.habilidadusada == false)
             {
@@ -430,7 +430,7 @@ namespace Hearthstone
                     SilverHandRecruit.ataco = false;
                     jugador1.Tablerojugador.Add(SilverHandRecruit);
                 }
-                
+
             }
             else if (jugador1.habilidadheroe == "Dagger Mastery" && jugador1.habilidadusada == false)
             {
@@ -440,8 +440,26 @@ namespace Hearthstone
             }
             else if (jugador1.habilidadheroe == "Totemic Call" && jugador1.habilidadusada == false)
             {
-                jugador1.habilidadusada = true;
-                jugador1.gema = jugador1.gema - 2;
+                if (jugador1.Tablerojugador.Count == 7)
+                {
+                    //avisar maxima carta tablero
+
+                }
+                else
+                {
+                    jugador1.habilidadusada = true;
+                    jugador1.gema = jugador1.gema - 2;
+                    Esbirro Healingtotem = new Esbirro();
+                    Healingtotem.nombre = "Healing Totem";
+                    Healingtotem.costo = 1;
+                    Healingtotem.ataque = 0;
+                    Healingtotem.defensa = 2;
+                    Healingtotem.tipo = "Esbirro";
+                    Healingtotem.subtipo = null;
+                    Healingtotem.despierto = false;
+                    Healingtotem.ataco = false;
+                    jugador1.Tablerojugador.Add(Healingtotem);
+                }
                 //pediente
             }
             else
@@ -456,7 +474,7 @@ namespace Hearthstone
             //avisar rendirse
         }
 
-        public void Jugar(Jugador jugador1, Jugador jugador2)
+       /* public void Jugar(Jugador jugador1, Jugador jugador2)
         {
             //avisar nuevo turno jugador1
             jugador1.Agregarcartamano();
@@ -540,39 +558,15 @@ namespace Hearthstone
                 }
               //finalizar el turno
             }
-        }
+        }*/
 
-        public void CambioMano(Jugador jugador, Random rnd)
+        public void CambioMano(Jugador jugador, Random rnd, Carta carta, int i)
         {
-            int count = 0;
-            int cambiarcarta=0;
-            int cartacambiar=0;
-            //cambiar mano
-            //cambiarcarta = consola.CambiarMano(jugador);
 
-            while (count <= 2 && cambiarcarta != 2)
-            {
-                //cartacambiar = consola.AvisarCambioMano(jugador);
-                jugador.Agregarcartamazo(jugador.Mano[cartacambiar]);
-                jugador.Mano.RemoveAt(cartacambiar);
-                count++;
-                if (count <= 2)
-                {
-                    //cambiarcarta 
-                   // cambiarcarta = consola.CambiarMano(jugador);
-                }
-                
-            }
+            jugador.Agregarcartamazo(carta);
+            jugador.Mano.RemoveAt(i);
             jugador.Shuffle(rnd);
-            while (count >0)
-            {
-                jugador.Agregarcartamano();
-                count--;
-            }
-
-
-            //consola.ImprimirMano(jugador);
-            // imprimir mano
+            jugador.Agregarcartamano();
         }
     }
 }

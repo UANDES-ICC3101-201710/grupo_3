@@ -10,9 +10,13 @@
 
         <Image x:Name ="Fondoinicio" Source="download.jpg" Stretch="Fill" Visibility="Visible"/>
 
-        <Image x:Name="Tablero"  Margin="-14,0,10,10" Source="Tablero.jpg" Stretch="Fill" Visibility="Hidden"/>
+        <Image x:Name="Tablero"  Margin="-14,0,10,10" Source="Recursos/hearthstone_screenshot_1-29-2014-00-53-39.png" Stretch="Fill" Visibility="Hidden"/>
 
-        <Image x:Name="Imagen2" Source="images.jpg" Stretch="Fill"  Visibility="Hidden"/>
+        <Image x:Name="Imagen2" Source="images.jpg" Stretch="Fill"  Visibility="Hidden" Margin="10,0,-10,0">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="images.jpg"/>
+            </Image.OpacityMask>
+        </Image>
 
         <Button x:Name="BotonInicio" Content="Jugar" Margin="548,0,544,202" Click="BotonInicio_Click" RenderTransformOrigin="0.5,0.5" MaxHeight="48" MaxWidth="154" MinHeight="48" MinWidth="154" Visibility="Visible" Width="154" HorizontalAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Bottom" Height="48">
             <Button.RenderTransform>
@@ -62,70 +66,87 @@
         <Label x:Name="HabilidadJ2" Content="" HorizontalAlignment="Left" Margin="763,471,0,0" VerticalAlignment="Top" Visibility="Hidden" RenderTransformOrigin="0.967,0.103" Foreground="White" Background="#00000000"/>
         <Label x:Name="label" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="426,440,0,0" VerticalAlignment="Top" Visibility="Hidden" Foreground="White"/>
         <Label x:Name="label1" Content="Habilidad Heroe:" HorizontalAlignment="Left" Margin="763,440,0,0" VerticalAlignment="Top" Width="116" Visibility="Hidden" Foreground="White"/>
-        <Image x:Name="Druid1" Margin="524,471,536,64" Source="Druid.png" Stretch="Fill" Visibility="Hidden"/>
-        <Image x:Name="Druid2" Margin="522,67,538,468" Source="Druid.png" Stretch="Fill" Width="212" Height="234" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.606"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Image x:Name="Mage1" Margin="524,472,536,64" Source="Mage.png" Stretch="Fill" Width="212" Height="233" Visibility="Hidden"/>
-        <Image x:Name="Mage2" Margin="524,66,536,469" Source="Mage.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
-        <Image x:Name="Paladin1" Margin="524,472,536,63" Source="Paladin.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
-        <Image x:Name="Paladin2" Margin="524,66,536,469" Source="Paladin.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
-        <Image x:Name="Priest1" Margin="524,472,536,63" Source="Priest.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
-        <Image x:Name="Priest2" Margin="524,66,536,469" Source="Priest.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
-        <Image x:Name="Rogue1" Margin="524,472,536,63" Source="Rogue.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
-        <Image x:Name="Rogue2" Margin="524,66,536,469" Source="Rogue.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
-        <Image x:Name="Shaman1" Margin="524,472,536,63" Source="Shaman.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
-        <Image x:Name="Shaman2" Margin="524,66,536,469" Source="Shaman.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
-        <Image x:Name="Warlock1" Margin="524,472,536,63" Source="Warlock.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
-        <Image x:Name="Warlock2" Margin="524,66,536,469" Source="Warlock.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
-        <Image x:Name="Warrior1" Margin="524,472,536,63" Source="Warrior.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
-        <Image x:Name="Warrior2" Margin="524,66,536,469" Source="Warrior.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
-        <Label x:Name="Jug1" Content="" HorizontalAlignment="Left" Margin="616,704,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" Visibility="Hidden"/>
-        <Label x:Name="Jug2" Content=""  HorizontalAlignment="Left" Margin="616,32,0,0" VerticalAlignment="Top" FontSize="16" Foreground="White" Visibility="Hidden"/>
-        <Image x:Name="Hunter1" Margin="524,471,536,64" Source="Hunter.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
-        <Image x:Name="Hunter2" Margin="524,66,536,469" Source="Hunter.png" Stretch="Fill" Width="212" Height="234" Visibility="Hidden"/>
+        <Label x:Name="Jug1" Content="" HorizontalAlignment="Left" Margin="564,647,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" Visibility="Hidden" Width="117" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="Jug2" Content=""  HorizontalAlignment="Left" Margin="564,44,0,0" VerticalAlignment="Top" FontSize="16" Foreground="White" Visibility="Hidden" Width="117" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label x:Name="nheroe1" Content="" HorizontalAlignment="Left" Margin="377,472,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
         <Label x:Name="nheroe2" Content="" HorizontalAlignment="Left" Margin="377,519,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <ComboBox x:Name="gritosj1"  HorizontalAlignment="Left" Margin="712,127,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="gritosj1_SelectionChanged_1" Visibility="Hidden">
+        <ComboBox x:Name="gritosj1"  HorizontalAlignment="Left" Margin="897,592,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="gritosj1_SelectionChanged_1" Visibility="Hidden">
             <ComboBoxItem Content="Saludar"/>
             <ComboBoxItem Content="Amenaza"/>
             <ComboBoxItem Content="Buena Jugada"/>
             <ComboBoxItem Content="Burla"/>
         </ComboBox>
-        <ComboBox x:Name="gritosj2" HorizontalAlignment="Left" Margin="723,586,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="gritosj2_SelectionChanged_1" Visibility="Hidden">
+        <ComboBox x:Name="gritosj2" HorizontalAlignment="Left" Margin="897,117,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="gritosj2_SelectionChanged_1" Visibility="Hidden">
             <ComboBoxItem Content="Saludar"/>
             <ComboBoxItem Content="Amenaza"/>
             <ComboBoxItem Content="Buena Jugada"/>
             <ComboBoxItem Content="Burla"/>
         </ComboBox>
-        <Label x:Name="g1" Content="Hablar a Oponente" HorizontalAlignment="Left" Margin="712,154,0,0" VerticalAlignment="Top" Width="154" Foreground="White" FontSize="16" Visibility="Hidden"/>
-        <Label x:Name="g2"  Content="Hablar a Oponente" HorizontalAlignment="Left" Margin="722,550,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" Visibility="Hidden"/>
-        <Label x:Name="Cambio1" Content="Cambiaste tu carta" HorizontalAlignment="Left" Margin="368,256,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Label x:Name="Cambio2" Content="Cambiaste tu carta" HorizontalAlignment="Left" Margin="572,282,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Label x:Name="Cambio3" Content="Cambiaste tu carta" HorizontalAlignment="Left" Margin="770,282,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Label x:Name="Cambio4" Content="Cambiaste tu carta" HorizontalAlignment="Left" Margin="368,449,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Label x:Name="Cambio5" Content="Cambiaste tu carta" HorizontalAlignment="Left" Margin="561,441,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Label x:Name="Cambio6" Content="Cambiaste tu carta" HorizontalAlignment="Left" Margin="766,448,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-        <Button x:Name="Seguir" Content="Seguir" HorizontalAlignment="Left" Margin="980,328,0,0" VerticalAlignment="Top" Width="76" Height="41" Visibility="Hidden" Click="Seguir_Click"/>
-        <Image x:Name="imagen1" Margin="368,354,784,255" Source="Bloodfen_Raptor.png" Stretch="Fill" Width="120" Height="160" Visibility="Hidden"/>
-        <Image x:Name="imagen2" Margin="561,354,591,255" Source="Boulderfist_Ogre.png" Stretch="Fill" Width="120" Height="160" Visibility="Hidden"/>
-        <Image x:Name="imagen3" Margin="763,356,389,253" Source="Chillwind_Yeti.png" Stretch="Fill" Width="120" Height="160" Visibility="Hidden"/>
-        <Image x:Name="imagen4" Margin="561,178,591,431" Source="Magma_Rager.png" Stretch="Fill" Height="160" Width="120" Visibility="Hidden"/>
-        <Image x:Name="imagen5" Margin="763,178,389,431" Source="River_Crocolisk.png" Stretch="Fill" Width="120" Height="160" Visibility="Hidden"/>
-        <Image x:Name="imagen6" Margin="368,178,784,431" Source="Murloc_Raider.png" Stretch="Fill" Width="120" Height="160" Visibility="Hidden"/>
-        <Button x:Name="Bcambiar4" Content="Cambiar" HorizontalAlignment="Left" Margin="391,467,0,0" VerticalAlignment="Top" Width="75" Click="Cambiar4" Visibility="Hidden"/>
-        <Button x:Name="Bcambiar5" Content="Cambiar" HorizontalAlignment="Left" Margin="583,467,0,0" VerticalAlignment="Top" Width="75" Click="Cambiar5" Visibility="Hidden"/>
-        <Button x:Name="Bcambiar6" Content="Cambiar" HorizontalAlignment="Left" Margin="785,469,0,0" VerticalAlignment="Top" Width="75" Click="Cambiar6" Visibility="Hidden"/>
-        <Button x:Name="Bcambiar1" Content="Cambiar" HorizontalAlignment="Left" Margin="390,290,0,0" VerticalAlignment="Top" Width="75" Click="Cambiar1" Visibility="Hidden"/>
-        <Button x:Name="Bcambiar2" Content="Cambiar" HorizontalAlignment="Left" Margin="585,287,0,0" VerticalAlignment="Top" Width="75" Click="Cambiar2" Visibility="Hidden"/>
-        <Button x:Name="Bcambiar3" Content="Cambiar" HorizontalAlignment="Left" Margin="786,291,0,0" VerticalAlignment="Top" Width="75" Click="Cambiar3" Visibility="Hidden"/>
+        <Label x:Name="g1" Content="Hablar a Oponente" HorizontalAlignment="Left" Margin="891,80,0,0" VerticalAlignment="Top" Width="144" Foreground="White" FontSize="16" Visibility="Hidden"/>
+        <Label x:Name="g2"  Content="Hablar a Oponente" HorizontalAlignment="Left" Margin="891,619,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" Visibility="Hidden"/>
+
+        <Button x:Name="Seguir" Content="" HorizontalAlignment="Left" Margin="971,328,0,0" VerticalAlignment="Top" Width="85" Height="41" Visibility="Hidden" Click="Seguir_Click" Background="{x:Null}"/>
+
+
+        <Button x:Name="BotonHeroeJ1" Content="" HorizontalAlignment="Left" Margin="564,510,0,0" VerticalAlignment="Top" Width="120" Height="137" Visibility="Hidden" Background="{x:Null}"/>
+        <Button x:Name="BotonHeroeJ2" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="564,80,0,0" Height="137" Visibility="Hidden" Background="{x:Null}"/>
+        <Button x:Name="BotonHabilidadHeroeJ1" Content="" HorizontalAlignment="Left" Margin="684,530,0,0" VerticalAlignment="Top" Width="75" Height="75" Visibility="Hidden" Background="{x:Null}" Click="BotonHabilidadHeroeJ1_Click"/>
+        <Button x:Name="BotonHabilidadHeroeJ2" Content="" HorizontalAlignment="Left" Margin="684,135,0,0" VerticalAlignment="Top" Width="75" Height="75" Visibility="Hidden" Background="{x:Null}"/>
+        <Button x:Name="BotonArmaJ1" Content="" HorizontalAlignment="Left" Margin="478,524,0,0" VerticalAlignment="Top" Width="85" Height="105" Visibility="Hidden" Background="{x:Null}"/>
+        <Button x:Name="BotonArmaJ2" Content="" HorizontalAlignment="Left" Margin="479,94,0,0" VerticalAlignment="Top" Width="85"  Height="105" Visibility="Hidden" Background="{x:Null}"/>
+        <Label x:Name="LabelVidaJ1"  Content="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="656,613,0,0" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Visibility="Hidden"/>
+        <Label x:Name="LabelVidaJ2"  Content="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="656,183,0,0" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Visibility="Hidden"/>
+        <Label x:Name="LabelGemasJ1" Content="0" HorizontalAlignment="Left" Margin="792,673,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Visibility="Hidden" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="LabelGemasJ2" Content="0" HorizontalAlignment="Left" Margin="771,44,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Visibility="Hidden"/>
+
+        <Button x:Name="CambioC1" Content="" HorizontalAlignment="Left" Margin="319,362,0,0" VerticalAlignment="Top" Width="117" Height="163" Visibility="Hidden" Click="CambioC1_Click"/>
+        <Button x:Name="CambioC2" Content="" HorizontalAlignment="Left" Margin="493,360,0,0" VerticalAlignment="Top" Width="117" Height="163" Visibility="Hidden" Click="CambioC2_Click"/>
+        <Button x:Name="CambioC3" Content="" HorizontalAlignment="Left" Margin="656,362,0,0" VerticalAlignment="Top" Width="117" Height="163" Visibility="Hidden" Click="CambioC3_Click"/>
+        <Button x:Name="CambioC4" Content="" HorizontalAlignment="Left" Margin="319,185,0,0" VerticalAlignment="Top" Width="117" Height="163" Visibility="Hidden" Click="CambioC4_Click"/>
+        <Button x:Name="CambioC5" Content="" HorizontalAlignment="Left" Margin="493,183,0,0" VerticalAlignment="Top" Width="117" Height="163" Visibility="Hidden" Click="CambioC5_Click"/>
+        <Button x:Name="CambioC6" Content="" HorizontalAlignment="Left" Margin="656,183,0,0" VerticalAlignment="Top" Width="117" Height="163" Visibility="Hidden" Click="CambioC6_Click"/>
+        <Button x:Name="CambioC7" Content="" HorizontalAlignment="Left" Margin="824,185,0,0" VerticalAlignment="Top" Width="117" Height="163" Visibility="Hidden" Click="CambioC7_Click"/>
+        <Button x:Name="CambioC8" Content="" HorizontalAlignment="Left" Margin="824,362,0,0" VerticalAlignment="Top" Width="117" Height="163" Visibility="Hidden" Click="CambioC8_Click"/>
+
+        <Button x:Name="CT1J1" Content="" HorizontalAlignment="Left" Margin="271,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
+        <Button x:Name="CT2J1" Content="" HorizontalAlignment="Left" Margin="371,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
+        <Button x:Name="CT3J1" Content="" HorizontalAlignment="Left" Margin="471,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
+        <Button x:Name="CT4J1" Content="" HorizontalAlignment="Left" Margin="571,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
+        <Button x:Name="CT5J1" Content="" HorizontalAlignment="Left" Margin="771,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
+        <Button x:Name="CT6J1" Content="" HorizontalAlignment="Left" Margin="671,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
+        <Button x:Name="CT7J1" Content="" HorizontalAlignment="Left" Margin="871,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
+        <Button x:Name="CT1J2" Content="" HorizontalAlignment="Left" Margin="271,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
+        <Button x:Name="CT2J2" Content="" HorizontalAlignment="Left" Margin="371,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
+        <Button x:Name="CT3J2" Content="" HorizontalAlignment="Left" Margin="471,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
+        <Button x:Name="CT4J2" Content="" HorizontalAlignment="Left" Margin="571,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
+        <Button x:Name="CT5J2" Content="" HorizontalAlignment="Left" Margin="671,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
+        <Button x:Name="CT6J2" Content="" HorizontalAlignment="Left" Margin="771,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
+        <Button x:Name="CT7J2" Content="" HorizontalAlignment="Left" Margin="871,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
+
+        <Button x:Name="CM1J1" HorizontalAlignment="Left" Margin="468,492,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM1J1_Click"/>
+        <Button x:Name="CM2J1" HorizontalAlignment="Left" Margin="377,492,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM2J1_Click"/>
+        <Button x:Name="CM3J1" HorizontalAlignment="Left" Margin="287,492,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM3J1_Click"/>
+        <Button x:Name="CM4J1" HorizontalAlignment="Left" Margin="192,492,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM4J1_Click"/>
+        <Button x:Name="CM5J1" HorizontalAlignment="Left" Margin="101,492,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM5J1_Click"/>
+        <Button x:Name="CM6J1" HorizontalAlignment="Left" Margin="468,586,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM6J1_Click"/>
+        <Button x:Name="CM7J1" HorizontalAlignment="Left" Margin="377,586,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM7J1_Click"/>
+        <Button x:Name="CM8J1" HorizontalAlignment="Left" Margin="287,586,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM8J1_Click"/>
+        <Button x:Name="CM9J1" HorizontalAlignment="Left" Margin="192,586,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM9J1_Click"/>
+        <Button x:Name="CM10J1" HorizontalAlignment="Left" Margin="101,586,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM10J1_Click"/>
+
+        <Button x:Name="CM1J2" HorizontalAlignment="Left" Margin="476,154,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM1J2_Click"/>
+        <Button x:Name="CM2J2" HorizontalAlignment="Left" Margin="392,154,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM2J2_Click"/>
+        <Button x:Name="CM3J2" HorizontalAlignment="Left" Margin="302,154,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM3J2_Click"/>
+        <Button x:Name="CM4J2" HorizontalAlignment="Left" Margin="207,154,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM4J2_Click"/>
+        <Button x:Name="CM5J2" HorizontalAlignment="Left" Margin="119,154,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM5J2_Click"/>
+        <Button x:Name="CM6J2" HorizontalAlignment="Left" Margin="476,52,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM6J2_Click"/>
+        <Button x:Name="CM7J2" HorizontalAlignment="Left" Margin="392,52,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM7J2_Click"/>
+        <Button x:Name="CM8J2" HorizontalAlignment="Left" Margin="302,52,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM8J2_Click"/>
+        <Button x:Name="CM9J2" HorizontalAlignment="Left" Margin="207,52,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden"  Click="CM9J2_Click"/>
+        <Button x:Name="CM10J2" HorizontalAlignment="Left" Margin="119,52,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM10J2_Click"/>
+
+
+
 
 
     </Grid>
