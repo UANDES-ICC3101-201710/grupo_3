@@ -243,23 +243,19 @@ namespace Hearthstone
             }
         }
 
-        public void Enfrentar(Jugador jugador1, Jugador jugador2)
+        public void Enfrentar(Jugador jugador1, Jugador jugador2, int indicej1, int indicej2, int eleccion)
         {
-            //Si ataca al jugador
 
-            //indice 1 eleccion atacante
-            int indice1 = 0;
-            if (jugador1.Tablerojugador[indice1].despierto == true)
+            if (jugador1.Tablerojugador[indicej1].despierto == true)
             {
-                if (jugador1.Tablerojugador[indice1].ataco == false)
+                if (jugador1.Tablerojugador[indicej1].ataco == false)
                 {
-                    //string eleccion objetivo
-                    string eleccion = "1";
-                    if (eleccion == "1")
+
+                    if (eleccion == 1)
                     {
                         if (jugador2.defensa <= 0)
                         {
-                            jugador2.vida -= jugador1.Tablerojugador[indice1].ataque;
+                            jugador2.vida -= jugador1.Tablerojugador[indicej1].ataque;
                             if (jugador2.vida <= 0)
                             {
                                 jugador2.ganper = true;
@@ -268,7 +264,7 @@ namespace Hearthstone
                         }
                         else
                         {
-                            jugador2.defensa -= jugador1.Tablerojugador[indice1].ataque;
+                            jugador2.defensa -= jugador1.Tablerojugador[indicej1].ataque;
                             if (jugador2.defensa <= 0)
                             {
                                 jugador2.vida += jugador2.defensa;
@@ -280,29 +276,25 @@ namespace Hearthstone
                                 }
                             }
                         }
-                        jugador1.Tablerojugador[indice1].ataco = true;
+                        jugador1.Tablerojugador[indicej1].ataco = true;
                     }
-                    //si ataca a un esbirro oponente
+
                     else
                     {
-                        if (jugador2.Tablerojugador.Count == 0)
-                        {
-                            //avisar no puede atacar a esbirro
-                        }
-                        else
-                        {
-                            //indice2 eleccion esbirro objetivo
-                            int indice2 = 0;
-                            jugador2.Tablerojugador[indice2].defensa -= jugador1.Tablerojugador[indice1].ataque;
-                            jugador1.Tablerojugador[indice1].defensa -= jugador2.Tablerojugador[indice2].ataque;
-                            jugador1.Tablerojugador[indice1].ataco = true;
-                            jugador1.Morir(jugador1, indice1);
-                            jugador2.Morir(jugador2, indice2);
-                        }
-                        
+                        //si ataca a un esbirro oponente
+
+                        jugador2.Tablerojugador[indicej2].defensa -= jugador1.Tablerojugador[indicej1].ataque;
+                        jugador1.Tablerojugador[indicej1].defensa -= jugador2.Tablerojugador[indicej2].ataque;
+                        jugador1.Tablerojugador[indicej1].ataco = true;
+                        jugador1.Morir(jugador1, indicej1);
+                        jugador2.Morir(jugador2, indicej2);
                     }
-                    
+
+
+
                 }
+
+
                 else
                 {
                     //avisar esbirro ya ataco
@@ -312,7 +304,7 @@ namespace Hearthstone
             {
                 //avisar esbirro dormido
             }
-            
+
         }
 
         public void Despertar(Jugador jugador)
@@ -335,9 +327,9 @@ namespace Hearthstone
                 }
         }
 
-        public void HabilidadHeroe(Jugador jugador1, Jugador jugador2)
+        public void HabilidadHeroe(Jugador jugador1, Jugador jugador2, int indiceJ1, int indiceJ2, int eleccion)
         {
-            if (jugador1.habilidadheroe == "ataque" && jugador1.habilidadusada == false)
+            if (jugador1.habilidadheroe == "Steady Shot")
             {
                 jugador1.habilidadusada = true;
                 jugador1.gema = jugador1.gema - 2;
@@ -366,27 +358,36 @@ namespace Hearthstone
                     }
                 }
             }
-            else if (jugador1.habilidadheroe == "armadura" && jugador1.habilidadusada == false)
+            else if (jugador1.habilidadheroe == "Armor Up!")
             {
                 jugador1.habilidadusada = true;
                 jugador1.gema = jugador1.gema - 2;
                 jugador1.defensa += 2;
             }
-            else if (jugador1.habilidadheroe == "Lesser Heal" && jugador1.habilidadusada == false)
+            else if (jugador1.habilidadheroe == "Lesser Heal")
             {
                 jugador1.habilidadusada = true;
                 jugador1.gema = jugador1.gema - 2;
-                jugador1.vida += 2;
-                if (jugador1.vida > 30)
+                if (eleccion == 1)
                 {
-                    jugador1.vida = 30;
+                    if (jugador1.vida <= 28)
+                    {
+                        jugador1.vida += 2;
+                    }
+                    else
+                    {
+                        jugador1.vida = 30;
+                    }
+                }
+                else
+                {
+                    jugador1.Tablerojugador[indiceJ1].defensa += 2;
                 }
             }
-            else if (jugador1.habilidadheroe == "Life Tap" && jugador1.habilidadusada == false)
+            else if (jugador1.habilidadheroe == "Life Tap")
             {
                 jugador1.habilidadusada = true;
                 jugador1.gema = jugador1.gema - 2;
-                //
                 jugador1.Agregarcartamano();
                 jugador1.vida = jugador1.vida - 2;
                 if (jugador1.vida <= 0)
@@ -395,76 +396,77 @@ namespace Hearthstone
                     //avisar fin de partida
                 }
             }
-            else if (jugador1.habilidadheroe == "Fireblast" && jugador1.habilidadusada == false)
+            else if (jugador1.habilidadheroe == "Fireblast")
             {
                 jugador1.habilidadusada = true;
                 jugador1.gema = jugador1.gema - 2;
-                // pendiente
+                if (eleccion == 1)
+                {
+                    //ataque al heroe
+                }
+                else
+                {
+                    jugador2.Tablerojugador[indiceJ2].defensa -= 1;
+                    jugador2.Morir(jugador2, indiceJ2);
+                }
             }
-            else if (jugador1.habilidadheroe == "Shapeshift" && jugador1.habilidadusada == false)
+            else if (jugador1.habilidadheroe == "Shapeshift")
             {
                 jugador1.habilidadusada = true;
                 jugador1.gema = jugador1.gema - 2;
                 jugador1.defensa = jugador1.defensa + 1;
-                //pendiente ataque por el turno
-            }
-            else if (jugador1.habilidadheroe == "Reinforce" && jugador1.habilidadusada == false)
-            {
-                if (jugador1.Tablerojugador.Count == 7)
+                if (eleccion == 1)
                 {
-                    //avisar maxima carta tablero
-
+                    //ataque al heroe
                 }
                 else
                 {
-                    jugador1.habilidadusada = true;
-                    jugador1.gema = jugador1.gema - 2;
-                    Esbirro SilverHandRecruit = new Esbirro();
-                    SilverHandRecruit.nombre = "Silver Hand Recruit";
-                    SilverHandRecruit.costo = 1;
-                    SilverHandRecruit.ataque = 1;
-                    SilverHandRecruit.defensa = 1;
-                    SilverHandRecruit.tipo = "Esbirro";
-                    SilverHandRecruit.subtipo = null;
-                    SilverHandRecruit.despierto = false;
-                    SilverHandRecruit.ataco = false;
-                    jugador1.Tablerojugador.Add(SilverHandRecruit);
+                    jugador2.Tablerojugador[indiceJ2].defensa -= 1;
+                    jugador2.Morir(jugador2, indiceJ2);
                 }
-
+               
             }
-            else if (jugador1.habilidadheroe == "Dagger Mastery" && jugador1.habilidadusada == false)
+            else if (jugador1.habilidadheroe == "Reinforce")
             {
                 jugador1.habilidadusada = true;
                 jugador1.gema = jugador1.gema - 2;
-                //pediente
+                Esbirro SilverHandRecruit = new Esbirro();
+                SilverHandRecruit.nombre = "Silver Hand Recruit";
+                SilverHandRecruit.costo = 1;
+                SilverHandRecruit.ataque = 1;
+                SilverHandRecruit.defensa = 1;
+                SilverHandRecruit.tipo = "Esbirro";
+                SilverHandRecruit.subtipo = null;
+                SilverHandRecruit.despierto = false;
+                SilverHandRecruit.ataco = false;
+                jugador1.Tablerojugador.Add(SilverHandRecruit);
             }
-            else if (jugador1.habilidadheroe == "Totemic Call" && jugador1.habilidadusada == false)
+            else if (jugador1.habilidadheroe == "Dagger Mastery")
             {
-                if (jugador1.Tablerojugador.Count == 7)
+                if (eleccion == 1)
                 {
-                    //avisar maxima carta tablero
 
                 }
                 else
                 {
-                    jugador1.habilidadusada = true;
-                    jugador1.gema = jugador1.gema - 2;
-                    Esbirro Healingtotem = new Esbirro();
-                    Healingtotem.nombre = "Healing Totem";
-                    Healingtotem.costo = 1;
-                    Healingtotem.ataque = 0;
-                    Healingtotem.defensa = 2;
-                    Healingtotem.tipo = "Esbirro";
-                    Healingtotem.subtipo = null;
-                    Healingtotem.despierto = false;
-                    Healingtotem.ataco = false;
-                    jugador1.Tablerojugador.Add(Healingtotem);
+                    jugador2.Tablerojugador[indiceJ2].defensa -= 1;
+                    jugador2.Morir(jugador2, indiceJ2);
                 }
-                //pediente
             }
-            else
+            else if (jugador1.habilidadheroe == "Totemic Call")
             {
-                //avisar habilidad ya usada
+                jugador1.habilidadusada = true;
+                jugador1.gema = jugador1.gema - 2;
+                Esbirro Healingtotem = new Esbirro();
+                Healingtotem.nombre = "Healing Totem";
+                Healingtotem.costo = 1;
+                Healingtotem.ataque = 0;
+                Healingtotem.defensa = 2;
+                Healingtotem.tipo = "Esbirro";
+                Healingtotem.subtipo = null;
+                Healingtotem.despierto = false;
+                Healingtotem.ataco = false;
+                jugador1.Tablerojugador.Add(Healingtotem);
             }
         }
 

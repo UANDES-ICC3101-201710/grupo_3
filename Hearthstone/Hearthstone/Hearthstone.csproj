@@ -96,7 +96,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Recursos\Spritesguldan.psd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -127,7 +126,6 @@
     <Resource Include="Recursos\Cartas\Vacio.png" />
     <Resource Include="Recursos\Cartas\Wargolem.png" />
     <Resource Include="Recursos\Cartas\Wickedknife.png" />
-    <Resource Include="Recursos\Cartas\Wisp.png" />
     <Resource Include="Recursos\hearthstone_screenshot_1-29-2014-00-53-39.png" />
     <Resource Include="Recursos\Heroes\Anduin.png" />
     <Resource Include="Recursos\Heroes\Base.png" />
@@ -169,7 +167,6 @@
     <Resource Include="Recursos\Vacio.png" />
     <Resource Include="Recursos\Wargolem.png" />
     <Resource Include="Recursos\Wickedknife.png" />
-    <Resource Include="Recursos\Wisp.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Recursos\HabilidadHeroe\HabilidadDruid.png" />
@@ -182,6 +179,18 @@
     <Resource Include="Recursos\HabilidadHeroe\HabilidadUsada.png" />
     <Resource Include="Recursos\HabilidadHeroe\HabilidadWarlock.png" />
     <Resource Include="Recursos\HabilidadHeroe\HabilidadWarrior.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="escudo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\escudo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Wisp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Cartas\Wisp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

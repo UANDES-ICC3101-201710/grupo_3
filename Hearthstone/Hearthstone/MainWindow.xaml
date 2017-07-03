@@ -88,12 +88,12 @@
         <Button x:Name="Seguir" Content="" HorizontalAlignment="Left" Margin="971,328,0,0" VerticalAlignment="Top" Width="85" Height="41" Visibility="Hidden" Click="Seguir_Click" Background="{x:Null}"/>
 
 
-        <Button x:Name="BotonHeroeJ1" Content="" HorizontalAlignment="Left" Margin="564,510,0,0" VerticalAlignment="Top" Width="120" Height="137" Visibility="Hidden" Background="{x:Null}"/>
-        <Button x:Name="BotonHeroeJ2" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="564,80,0,0" Height="137" Visibility="Hidden" Background="{x:Null}"/>
-        <Button x:Name="BotonHabilidadHeroeJ1" Content="" HorizontalAlignment="Left" Margin="684,530,0,0" VerticalAlignment="Top" Width="75" Height="75" Visibility="Hidden" Background="{x:Null}" Click="BotonHabilidadHeroeJ1_Click"/>
-        <Button x:Name="BotonHabilidadHeroeJ2" Content="" HorizontalAlignment="Left" Margin="684,135,0,0" VerticalAlignment="Top" Width="75" Height="75" Visibility="Hidden" Background="{x:Null}"/>
-        <Button x:Name="BotonArmaJ1" Content="" HorizontalAlignment="Left" Margin="478,524,0,0" VerticalAlignment="Top" Width="85" Height="105" Visibility="Hidden" Background="{x:Null}"/>
-        <Button x:Name="BotonArmaJ2" Content="" HorizontalAlignment="Left" Margin="479,94,0,0" VerticalAlignment="Top" Width="85"  Height="105" Visibility="Hidden" Background="{x:Null}"/>
+        <Button x:Name="BotonHeroeJ1" HorizontalAlignment="Left" Margin="564,510,0,0" VerticalAlignment="Top" Width="120" Height="137" Visibility="Hidden" Background="{x:Null}" Click="BotonHeroeJ1_Click"/>
+        <Button x:Name="BotonHeroeJ2" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="564,80,0,0" Height="137" Visibility="Hidden" Background="{x:Null}" Click="BotonHeroeJ2_Click"/>
+        <Button x:Name="BotonHabilidadHeroeJ1" Content="" HorizontalAlignment="Left" Margin="684,530,0,0" VerticalAlignment="Top" Width="75" Height="75" Visibility="Hidden" Click="BotonHabilidadHeroeJ1_Click" Background="{x:Null}"/>
+        <Button x:Name="BotonHabilidadHeroeJ2" Content="" HorizontalAlignment="Left" Margin="684,135,0,0" VerticalAlignment="Top" Width="75" Height="75" Visibility="Hidden" Click="BotonHabilidadHeroeJ2_Click" Background="{x:Null}"/>
+        <Button x:Name="BotonArmaJ1" Content="" HorizontalAlignment="Left" Margin="758,524,0,0" VerticalAlignment="Top" Width="85" Height="105" Visibility="Hidden" Background="{x:Null}" Click="BotonArmaJ1_Click"/>
+        <Button x:Name="BotonArmaJ2" Content="" HorizontalAlignment="Left" Margin="759,112,0,0" VerticalAlignment="Top" Width="85"  Height="105" Visibility="Hidden" Background="{x:Null}" Click="BotonArmaJ2_Click"/>
         <Label x:Name="LabelVidaJ1"  Content="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="656,613,0,0" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Visibility="Hidden"/>
         <Label x:Name="LabelVidaJ2"  Content="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="656,183,0,0" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Visibility="Hidden"/>
         <Label x:Name="LabelGemasJ1" Content="0" HorizontalAlignment="Left" Margin="792,673,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" Visibility="Hidden" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
@@ -108,20 +108,20 @@
         <Button x:Name="CambioC7" Content="" HorizontalAlignment="Left" Margin="824,185,0,0" VerticalAlignment="Top" Width="117" Height="163" Visibility="Hidden" Click="CambioC7_Click"/>
         <Button x:Name="CambioC8" Content="" HorizontalAlignment="Left" Margin="824,362,0,0" VerticalAlignment="Top" Width="117" Height="163" Visibility="Hidden" Click="CambioC8_Click"/>
 
-        <Button x:Name="CT1J1" Content="" HorizontalAlignment="Left" Margin="271,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
-        <Button x:Name="CT2J1" Content="" HorizontalAlignment="Left" Margin="371,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
-        <Button x:Name="CT3J1" Content="" HorizontalAlignment="Left" Margin="471,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
-        <Button x:Name="CT4J1" Content="" HorizontalAlignment="Left" Margin="571,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
-        <Button x:Name="CT5J1" Content="" HorizontalAlignment="Left" Margin="771,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
-        <Button x:Name="CT6J1" Content="" HorizontalAlignment="Left" Margin="671,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
-        <Button x:Name="CT7J1" Content="" HorizontalAlignment="Left" Margin="871,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
-        <Button x:Name="CT1J2" Content="" HorizontalAlignment="Left" Margin="271,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
-        <Button x:Name="CT2J2" Content="" HorizontalAlignment="Left" Margin="371,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
-        <Button x:Name="CT3J2" Content="" HorizontalAlignment="Left" Margin="471,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
-        <Button x:Name="CT4J2" Content="" HorizontalAlignment="Left" Margin="571,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
-        <Button x:Name="CT5J2" Content="" HorizontalAlignment="Left" Margin="671,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
-        <Button x:Name="CT6J2" Content="" HorizontalAlignment="Left" Margin="771,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
-        <Button x:Name="CT7J2" Content="" HorizontalAlignment="Left" Margin="871,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden"/>
+        <Button x:Name="CT1J1" Content="" HorizontalAlignment="Left" Margin="271,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden" Click="CT1J1_Click"/>
+        <Button x:Name="CT2J1" Content="" HorizontalAlignment="Left" Margin="371,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden" Click="CT2J1_Click"/>
+        <Button x:Name="CT3J1" Content="" HorizontalAlignment="Left" Margin="471,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden" Click="CT3J1_Click"/>
+        <Button x:Name="CT4J1" Content="" HorizontalAlignment="Left" Margin="571,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden" Click="CT4J1_Click"/>
+        <Button x:Name="CT5J1" Content="" HorizontalAlignment="Left" Margin="672,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden" Click="CT5J1_Click"/>
+        <Button x:Name="CT6J1" Content="" HorizontalAlignment="Left" Margin="772,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden" Click="CT6J1_Click"/>
+        <Button x:Name="CT7J1" Content="" HorizontalAlignment="Left" Margin="871,362,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden" Click="CT7J1_Click"/>
+        <Button x:Name="CT1J2" Content="" HorizontalAlignment="Left" Margin="271,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden" Click="CT1J2_Click"/>
+        <Button x:Name="CT2J2" Content="" HorizontalAlignment="Left" Margin="371,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden" Click="CT2J2_Click"/>
+        <Button x:Name="CT3J2" Content="" HorizontalAlignment="Left" Margin="471,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden" Click="CT3J2_Click"/>
+        <Button x:Name="CT4J2" Content="" HorizontalAlignment="Left" Margin="571,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden" Click="CT4J2_Click"/>
+        <Button x:Name="CT5J2" Content="" HorizontalAlignment="Left" Margin="671,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden" Click="CT5J2_Click"/>
+        <Button x:Name="CT6J2" Content="" HorizontalAlignment="Left" Margin="771,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden" Click="CT6J2_Click"/>
+        <Button x:Name="CT7J2" Content="" HorizontalAlignment="Left" Margin="871,228,0,0" VerticalAlignment="Top" Width="100" Height="120" Background="{x:Null}" Visibility="Hidden" Click="CT7J2_Click"/>
 
         <Button x:Name="CM1J1" HorizontalAlignment="Left" Margin="468,492,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM1J1_Click"/>
         <Button x:Name="CM2J1" HorizontalAlignment="Left" Margin="377,492,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM2J1_Click"/>
@@ -144,10 +144,40 @@
         <Button x:Name="CM8J2" HorizontalAlignment="Left" Margin="302,52,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM8J2_Click"/>
         <Button x:Name="CM9J2" HorizontalAlignment="Left" Margin="207,52,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden"  Click="CM9J2_Click"/>
         <Button x:Name="CM10J2" HorizontalAlignment="Left" Margin="119,52,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM10J2_Click"/>
+        <Button x:Name="Comenzar" Content="Button" HorizontalAlignment="Left" Margin="981,417,0,0" VerticalAlignment="Top" Width="75" Click="Comenzar_Click" Visibility="Hidden"/>
+        <Image x:Name="Escudo1" Margin="649,563,584,164" Source="escudo.png" Stretch="Fill" Width="39" Height="42" Visibility="Hidden"/>
+        <Image x:Name="Escudo2" Margin="649,135,584,592" Source="escudo.png" Stretch="Fill" Width="39" Height="42" Visibility="Hidden"/>
+        <Label x:Name="LabelArmorJ1" Content="" HorizontalAlignment="Left" Margin="653,565,0,0" VerticalAlignment="Top" Width="32" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="16" RenderTransformOrigin="0.125,0.387" Foreground="White" Visibility="Hidden"/>
+        <Label x:Name="LabelArmorJ2" Content="" HorizontalAlignment="Left" Margin="653,137,0,0" VerticalAlignment="Top" Width="32" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="16" RenderTransformOrigin="0.125,0.387" Foreground="White" Visibility="Hidden"/>
 
-
-
-
+        <Image x:Name="GE1J1" HorizontalAlignment="Left" Height="23" Margin="346,459,0,0" VerticalAlignment="Top" Width="20" Source="Recursos/Heroes/DropVida.png" Visibility="Hidden"/>
+        <Label x:Name="LE1J1" Content="0" HorizontalAlignment="Left" Margin="345,459,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"  Visibility="Hidden"/>
+        <Image x:Name="GE2J1" HorizontalAlignment="Left" Height="23" Margin="446,458,0,0" VerticalAlignment="Top" Width="20" Source="Recursos/Heroes/DropVida.png"  Visibility="Hidden"/>
+        <Label x:Name="LE2J1" Content="0" HorizontalAlignment="Left" Margin="445,458,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"  Visibility="Hidden"/>
+        <Image x:Name="GE3J1" HorizontalAlignment="Left" Height="23" Margin="546,457,0,0" VerticalAlignment="Top" Width="20" Source="Recursos/Heroes/DropVida.png"  Visibility="Hidden"/>
+        <Label x:Name="LE3J1" Content="0" HorizontalAlignment="Left" Margin="545,457,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" RenderTransformOrigin="1.373,0.295"  Visibility="Hidden"/>
+        <Image x:Name="GE4J1" HorizontalAlignment="Left" Height="23" Margin="646,458,0,0" VerticalAlignment="Top" Width="20" Source="Recursos/Heroes/DropVida.png"  Visibility="Hidden"/>
+        <Label x:Name="LE4J1" Content="0" HorizontalAlignment="Left" Margin="645,458,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" RenderTransformOrigin="1.373,0.295" Visibility="Hidden"/>
+        <Image x:Name="GE5J1" HorizontalAlignment="Left" Height="23" Margin="747,458,0,0" VerticalAlignment="Top" Width="20" Source="Recursos/Heroes/DropVida.png"  Visibility="Hidden"/>
+        <Label x:Name="LE5J1" Content="0" HorizontalAlignment="Left" Margin="746,458,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" RenderTransformOrigin="1.373,0.295"  Visibility="Hidden"/>
+        <Image x:Name="GE6J1" HorizontalAlignment="Left" Height="23" Margin="847,458,0,0" VerticalAlignment="Top" Width="20" Source="Recursos/Heroes/DropVida.png"  Visibility="Hidden"/>
+        <Label x:Name="LE6J1" Content="0" HorizontalAlignment="Left" Margin="846,458,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" RenderTransformOrigin="1.373,0.295"  Visibility="Hidden"/>
+        <Image x:Name="GE7J1" HorizontalAlignment="Left" Height="23" Margin="946,458,0,0" VerticalAlignment="Top" Width="20" Source="Recursos/Heroes/DropVida.png"  Visibility="Hidden"/>
+        <Label x:Name="LE7J1" Content="0" HorizontalAlignment="Left" Margin="945,458,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" RenderTransformOrigin="1.373,0.295"  Visibility="Hidden"/>
+        <Image x:Name="GE1J2" HorizontalAlignment="Left" Height="23" Margin="346,324,0,0" VerticalAlignment="Top" Width="20" Source="Recursos/Heroes/DropVida.png"  Visibility="Hidden"/>
+        <Label x:Name="LE1J2" Content="0" HorizontalAlignment="Left" Margin="345,324,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"  Visibility="Hidden"/>
+        <Image x:Name="GE2J2" HorizontalAlignment="Left" Height="23" Margin="446,324,0,0" VerticalAlignment="Top" Width="20" Source="Recursos/Heroes/DropVida.png"  Visibility="Hidden"/>
+        <Label x:Name="LE2J2" Content="0" HorizontalAlignment="Left" Margin="445,324,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"  Visibility="Hidden"/>
+        <Image x:Name="GE3J2" HorizontalAlignment="Left" Height="23" Margin="547,323,0,0" VerticalAlignment="Top" Width="20" Source="Recursos/Heroes/DropVida.png"  Visibility="Hidden"/>
+        <Label x:Name="LE3J2" Content="0" HorizontalAlignment="Left" Margin="546,323,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"  Visibility="Hidden"/>
+        <Image x:Name="GE4J2" HorizontalAlignment="Left" Height="23" Margin="646,325,0,0" VerticalAlignment="Top" Width="20" Source="Recursos/Heroes/DropVida.png"  Visibility="Hidden"/>
+        <Label x:Name="LE4J2" Content="0" HorizontalAlignment="Left" Margin="645,325,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"  Visibility="Hidden"/>
+        <Image x:Name="GE5J2" HorizontalAlignment="Left" Height="23" Margin="746,324,0,0" VerticalAlignment="Top" Width="20" Source="Recursos/Heroes/DropVida.png"  Visibility="Hidden"/>
+        <Label x:Name="LE5J2" Content="0" HorizontalAlignment="Left" Margin="745,324,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"  Visibility="Hidden"/>
+        <Image x:Name="GE6J2" HorizontalAlignment="Left" Height="23" Margin="846,324,0,0" VerticalAlignment="Top" Width="20" Source="Recursos/Heroes/DropVida.png"  Visibility="Hidden"/>
+        <Label x:Name="LE6J2" Content="0" HorizontalAlignment="Left" Margin="845,324,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"  Visibility="Hidden"/>
+        <Image x:Name="GE7J2" HorizontalAlignment="Left" Height="23" Margin="947,324,0,0" VerticalAlignment="Top" Width="20" Source="Recursos/Heroes/DropVida.png"  Visibility="Hidden"/>
+        <Label x:Name="LE7J2" Content="0" HorizontalAlignment="Left" Margin="946,324,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"  Visibility="Hidden"/>
 
     </Grid>
 </Window>

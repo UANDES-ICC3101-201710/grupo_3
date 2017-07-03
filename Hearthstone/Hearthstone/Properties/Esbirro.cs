@@ -24,6 +24,7 @@ namespace Hearthstone
     {
         private int Ataque;
         private int Defensa;
+        private int MaxDefensa;
         private string SubTipo;
         private bool Despierto;
         private bool Ataco;
@@ -38,10 +39,13 @@ namespace Hearthstone
         public int defensa
         {
             get { return Defensa; }
-            set { Defensa = value;
-             
+            set { Defensa = value;}
+        }
 
-            }
+        public int maxdefensa
+        {
+            get { return MaxDefensa; }
+            set { MaxDefensa = value; }
         }
 
         public string subtipo

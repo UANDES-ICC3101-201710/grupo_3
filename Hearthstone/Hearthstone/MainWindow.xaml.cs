@@ -34,7 +34,19 @@ namespace Hearthstone
 
         Juego juego = new Juego();
         Random rnd = new Random();
-
+        string CTJ1 = "";
+        string CTJ2 = "";
+        int IJ1;
+        int IJ2;
+        int DAJ1;
+        int DAJ2;
+        int ataquearmaJ1 = 0;
+        int ataquearmaJ2 = 0;
+        int HabPriestJ1 = 0;
+        int HabPriestJ2 = 0;
+        int HabMageJ1 = 0;
+        int HabMageJ2 = 0;
+        int eleccion = 0;
 
         public MainWindow()
         {
@@ -57,6 +69,7 @@ namespace Hearthstone
             Wisp.costo = 0;
             Wisp.ataque = 1;
             Wisp.defensa = 1;
+            Wisp.maxdefensa = 1;
             Wisp.tipo = "Esbirro";
             Wisp.subtipo = null;
             Wisp.despierto = false;
@@ -69,6 +82,7 @@ namespace Hearthstone
             MurlocRaider.costo = 1;
             MurlocRaider.ataque = 2;
             MurlocRaider.defensa = 1;
+            MurlocRaider.maxdefensa = 1;
             MurlocRaider.tipo = "Esbirro";
             MurlocRaider.subtipo = "Murloc";
             MurlocRaider.despierto = false;
@@ -81,6 +95,7 @@ namespace Hearthstone
             BloodfenRaptor.costo = 2;
             BloodfenRaptor.ataque = 3;
             BloodfenRaptor.defensa = 2;
+            BloodfenRaptor.maxdefensa = 2;
             BloodfenRaptor.tipo = "Esbirro";
             BloodfenRaptor.subtipo = "Bestia";
             BloodfenRaptor.despierto = false;
@@ -92,6 +107,7 @@ namespace Hearthstone
             RiverCrocolisk.costo = 2;
             RiverCrocolisk.ataque = 2;
             RiverCrocolisk.defensa = 3;
+            RiverCrocolisk.maxdefensa = 3;
             RiverCrocolisk.tipo = "Esbirro";
             RiverCrocolisk.subtipo = "Bestia";
             RiverCrocolisk.despierto = false;
@@ -103,6 +119,7 @@ namespace Hearthstone
             MagmaRager.costo = 3;
             MagmaRager.ataque = 5;
             MagmaRager.defensa = 1;
+            MagmaRager.maxdefensa = 1;
             MagmaRager.tipo = "Esbirro";
             MagmaRager.subtipo = "Elemental";
             MagmaRager.despierto = false;
@@ -114,6 +131,7 @@ namespace Hearthstone
             ChillwindYeti.costo = 4;
             ChillwindYeti.ataque = 4;
             ChillwindYeti.defensa = 5;
+            ChillwindYeti.maxdefensa = 5;
             ChillwindYeti.tipo = "Esbirro";
             ChillwindYeti.subtipo = null;
             ChillwindYeti.despierto = false;
@@ -125,6 +143,7 @@ namespace Hearthstone
             OasisSnapjaw.costo = 4;
             OasisSnapjaw.ataque = 2;
             OasisSnapjaw.defensa = 7;
+            OasisSnapjaw.maxdefensa = 7;
             OasisSnapjaw.tipo = "Esbirro";
             OasisSnapjaw.subtipo = "Bestia";
             OasisSnapjaw.despierto = false;
@@ -136,6 +155,7 @@ namespace Hearthstone
             BoulderfistOgre.costo = 6;
             BoulderfistOgre.ataque = 6;
             BoulderfistOgre.defensa = 7;
+            BoulderfistOgre.maxdefensa = 7;
             BoulderfistOgre.tipo = "Esbirro";
             BoulderfistOgre.subtipo = null;
             BoulderfistOgre.despierto = false;
@@ -147,6 +167,7 @@ namespace Hearthstone
             WarGolem.costo = 7;
             WarGolem.ataque = 7;
             WarGolem.defensa = 7;
+            WarGolem.maxdefensa = 7;
             WarGolem.tipo = "Esbirro";
             WarGolem.subtipo = null;
             WarGolem.despierto = false;
@@ -158,6 +179,7 @@ namespace Hearthstone
             CoreHound.costo = 7;
             CoreHound.ataque = 9;
             CoreHound.defensa = 5;
+            CoreHound.maxdefensa = 5;
             CoreHound.tipo = "Esbirro";
             CoreHound.subtipo = "Bestia";
             CoreHound.despierto = false;
@@ -169,6 +191,7 @@ namespace Hearthstone
             Wisp2.costo = 0;
             Wisp2.ataque = 1;
             Wisp2.defensa = 1;
+            Wisp2.maxdefensa = 1;
             Wisp2.tipo = "Esbirro";
             Wisp2.subtipo = null;
             Wisp2.despierto = false;
@@ -181,6 +204,7 @@ namespace Hearthstone
             MurlocRaider2.costo = 1;
             MurlocRaider2.ataque = 2;
             MurlocRaider2.defensa = 1;
+            MurlocRaider2.maxdefensa = 1;
             MurlocRaider2.tipo = "Esbirro";
             MurlocRaider2.subtipo = "Murloc";
             MurlocRaider2.despierto = false;
@@ -193,6 +217,7 @@ namespace Hearthstone
             BloodfenRaptor2.costo = 2;
             BloodfenRaptor2.ataque = 3;
             BloodfenRaptor2.defensa = 2;
+            BloodfenRaptor2.maxdefensa = 2;
             BloodfenRaptor2.tipo = "Esbirro";
             BloodfenRaptor2.subtipo = "Bestia";
             BloodfenRaptor2.despierto = false;
@@ -204,6 +229,7 @@ namespace Hearthstone
             RiverCrocolisk2.costo = 2;
             RiverCrocolisk2.ataque = 2;
             RiverCrocolisk2.defensa = 3;
+            RiverCrocolisk2.maxdefensa = 3;
             RiverCrocolisk2.tipo = "Esbirro";
             RiverCrocolisk2.subtipo = "Bestia";
             RiverCrocolisk2.despierto = false;
@@ -215,6 +241,7 @@ namespace Hearthstone
             MagmaRager2.costo = 3;
             MagmaRager2.ataque = 5;
             MagmaRager2.defensa = 1;
+            MagmaRager2.maxdefensa = 1;
             MagmaRager2.tipo = "Esbirro";
             MagmaRager2.subtipo = "Elemental";
             MagmaRager2.despierto = false;
@@ -227,6 +254,7 @@ namespace Hearthstone
             ChillwindYeti2.ataque = 4;
             ChillwindYeti2.defensa = 5;
             ChillwindYeti2.tipo = "Esbirro";
+            ChillwindYeti2.maxdefensa = 5;
             ChillwindYeti2.subtipo = null;
             ChillwindYeti2.despierto = false;
             ChillwindYeti2.ataco = false;
@@ -237,6 +265,7 @@ namespace Hearthstone
             OasisSnapjaw2.costo = 4;
             OasisSnapjaw2.ataque = 2;
             OasisSnapjaw2.defensa = 7;
+            OasisSnapjaw2.maxdefensa = 7;
             OasisSnapjaw2.tipo = "Esbirro";
             OasisSnapjaw2.subtipo = "Bestia";
             OasisSnapjaw2.despierto = false;
@@ -248,6 +277,7 @@ namespace Hearthstone
             BoulderfistOgre2.costo = 6;
             BoulderfistOgre2.ataque = 6;
             BoulderfistOgre2.defensa = 7;
+            BoulderfistOgre2.maxdefensa = 7;
             BoulderfistOgre2.tipo = "Esbirro";
             BoulderfistOgre2.subtipo = null;
             BoulderfistOgre2.despierto = false;
@@ -259,6 +289,7 @@ namespace Hearthstone
             WarGolem2.costo = 7;
             WarGolem2.ataque = 7;
             WarGolem2.defensa = 7;
+            WarGolem2.maxdefensa = 7;
             WarGolem2.tipo = "Esbirro";
             WarGolem2.subtipo = null;
             WarGolem2.despierto = false;
@@ -270,6 +301,7 @@ namespace Hearthstone
             CoreHound2.costo = 7;
             CoreHound2.ataque = 9;
             CoreHound2.defensa = 5;
+            CoreHound2.maxdefensa = 5;
             CoreHound2.tipo = "Esbirro";
             CoreHound2.subtipo = "Bestia";
             CoreHound2.despierto = false;
@@ -281,6 +313,7 @@ namespace Hearthstone
             Wisp3.costo = 0;
             Wisp3.ataque = 1;
             Wisp3.defensa = 1;
+            Wisp3.maxdefensa = 1;
             Wisp3.tipo = "Esbirro";
             Wisp3.subtipo = null;
             Wisp3.despierto = false;
@@ -293,6 +326,7 @@ namespace Hearthstone
             MurlocRaider3.costo = 1;
             MurlocRaider3.ataque = 2;
             MurlocRaider3.defensa = 1;
+            MurlocRaider3.maxdefensa = 1;
             MurlocRaider3.tipo = "Esbirro";
             MurlocRaider3.subtipo = "Murloc";
             MurlocRaider3.despierto = false;
@@ -305,6 +339,7 @@ namespace Hearthstone
             BloodfenRaptor3.costo = 2;
             BloodfenRaptor3.ataque = 3;
             BloodfenRaptor3.defensa = 2;
+            BloodfenRaptor3.maxdefensa = 2;
             BloodfenRaptor3.tipo = "Esbirro";
             BloodfenRaptor3.subtipo = "Bestia";
             BloodfenRaptor3.despierto = false;
@@ -316,6 +351,7 @@ namespace Hearthstone
             RiverCrocolisk3.costo = 2;
             RiverCrocolisk3.ataque = 2;
             RiverCrocolisk3.defensa = 3;
+            RiverCrocolisk3.maxdefensa = 3;
             RiverCrocolisk3.tipo = "Esbirro";
             RiverCrocolisk3.subtipo = "Bestia";
             RiverCrocolisk3.despierto = false;
@@ -327,6 +363,7 @@ namespace Hearthstone
             MagmaRager3.costo = 3;
             MagmaRager3.ataque = 5;
             MagmaRager3.defensa = 1;
+            MagmaRager3.maxdefensa = 1;
             MagmaRager3.tipo = "Esbirro";
             MagmaRager3.subtipo = "Elemental";
             MagmaRager3.despierto = false;
@@ -338,6 +375,7 @@ namespace Hearthstone
             ChillwindYeti3.costo = 4;
             ChillwindYeti3.ataque = 4;
             ChillwindYeti3.defensa = 5;
+            ChillwindYeti3.maxdefensa = 5;
             ChillwindYeti3.tipo = "Esbirro";
             ChillwindYeti3.subtipo = null;
             ChillwindYeti3.despierto = false;
@@ -349,6 +387,7 @@ namespace Hearthstone
             OasisSnapjaw3.costo = 4;
             OasisSnapjaw3.ataque = 2;
             OasisSnapjaw3.defensa = 7;
+            OasisSnapjaw3.maxdefensa = 7;
             OasisSnapjaw3.tipo = "Esbirro";
             OasisSnapjaw3.subtipo = "Bestia";
             OasisSnapjaw3.despierto = false;
@@ -360,6 +399,7 @@ namespace Hearthstone
             BoulderfistOgre3.costo = 6;
             BoulderfistOgre3.ataque = 6;
             BoulderfistOgre3.defensa = 7;
+            BoulderfistOgre3.maxdefensa = 7;
             BoulderfistOgre3.tipo = "Esbirro";
             BoulderfistOgre3.subtipo = null;
             BoulderfistOgre3.despierto = false;
@@ -371,6 +411,7 @@ namespace Hearthstone
             WarGolem3.costo = 7;
             WarGolem3.ataque = 7;
             WarGolem3.defensa = 7;
+            WarGolem3.maxdefensa = 7;
             WarGolem3.tipo = "Esbirro";
             WarGolem3.subtipo = null;
             WarGolem3.despierto = false;
@@ -382,6 +423,7 @@ namespace Hearthstone
             CoreHound3.costo = 7;
             CoreHound3.ataque = 9;
             CoreHound3.defensa = 5;
+            CoreHound3.maxdefensa = 5;
             CoreHound3.tipo = "Esbirro";
             CoreHound3.subtipo = "Bestia";
             CoreHound3.despierto = false;
@@ -393,6 +435,7 @@ namespace Hearthstone
             Wisp4.costo = 0;
             Wisp4.ataque = 1;
             Wisp4.defensa = 1;
+            Wisp4.maxdefensa = 1;
             Wisp4.tipo = "Esbirro";
             Wisp4.subtipo = null;
             Wisp4.despierto = false;
@@ -405,6 +448,7 @@ namespace Hearthstone
             MurlocRaider4.costo = 1;
             MurlocRaider4.ataque = 2;
             MurlocRaider4.defensa = 1;
+            MurlocRaider4.maxdefensa = 1;
             MurlocRaider4.tipo = "Esbirro";
             MurlocRaider4.subtipo = "Murloc";
             MurlocRaider4.despierto = false;
@@ -417,6 +461,7 @@ namespace Hearthstone
             BloodfenRaptor4.costo = 2;
             BloodfenRaptor4.ataque = 3;
             BloodfenRaptor4.defensa = 2;
+            BloodfenRaptor4.maxdefensa = 2;
             BloodfenRaptor4.tipo = "Esbirro";
             BloodfenRaptor4.subtipo = "Bestia";
             BloodfenRaptor4.despierto = false;
@@ -428,6 +473,7 @@ namespace Hearthstone
             RiverCrocolisk4.costo = 2;
             RiverCrocolisk4.ataque = 2;
             RiverCrocolisk4.defensa = 3;
+            RiverCrocolisk4.maxdefensa = 3;
             RiverCrocolisk4.tipo = "Esbirro";
             RiverCrocolisk4.subtipo = "Bestia";
             RiverCrocolisk4.despierto = false;
@@ -439,6 +485,7 @@ namespace Hearthstone
             MagmaRager4.costo = 3;
             MagmaRager4.ataque = 5;
             MagmaRager4.defensa = 1;
+            MagmaRager4.maxdefensa = 1;
             MagmaRager4.tipo = "Esbirro";
             MagmaRager4.subtipo = "Elemental";
             MagmaRager4.despierto = false;
@@ -450,6 +497,7 @@ namespace Hearthstone
             ChillwindYeti4.costo = 4;
             ChillwindYeti4.ataque = 4;
             ChillwindYeti4.defensa = 5;
+            ChillwindYeti4.maxdefensa = 5;
             ChillwindYeti4.tipo = "Esbirro";
             ChillwindYeti4.subtipo = null;
             ChillwindYeti4.despierto = false;
@@ -461,6 +509,7 @@ namespace Hearthstone
             OasisSnapjaw4.costo = 4;
             OasisSnapjaw4.ataque = 2;
             OasisSnapjaw4.defensa = 7;
+            OasisSnapjaw4.maxdefensa = 7;
             OasisSnapjaw4.tipo = "Esbirro";
             OasisSnapjaw4.subtipo = "Bestia";
             OasisSnapjaw4.despierto = false;
@@ -472,6 +521,7 @@ namespace Hearthstone
             BoulderfistOgre4.costo = 6;
             BoulderfistOgre4.ataque = 6;
             BoulderfistOgre4.defensa = 7;
+            BoulderfistOgre4.maxdefensa = 7;
             BoulderfistOgre4.tipo = "Esbirro";
             BoulderfistOgre4.subtipo = null;
             BoulderfistOgre4.despierto = false;
@@ -483,6 +533,7 @@ namespace Hearthstone
             WarGolem4.costo = 7;
             WarGolem4.ataque = 7;
             WarGolem4.defensa = 7;
+            WarGolem4.maxdefensa = 7;
             WarGolem4.tipo = "Esbirro";
             WarGolem4.subtipo = null;
             WarGolem4.despierto = false;
@@ -494,6 +545,7 @@ namespace Hearthstone
             CoreHound4.costo = 7;
             CoreHound4.ataque = 9;
             CoreHound4.defensa = 5;
+            CoreHound4.maxdefensa = 5;
             CoreHound4.tipo = "Esbirro";
             CoreHound4.subtipo = "Bestia";
             CoreHound4.despierto = false;
@@ -505,6 +557,7 @@ namespace Hearthstone
             Wisp5.costo = 0;
             Wisp5.ataque = 1;
             Wisp5.defensa = 1;
+            Wisp5.maxdefensa = 1;
             Wisp5.tipo = "Esbirro";
             Wisp5.subtipo = null;
             Wisp5.despierto = false;
@@ -517,6 +570,7 @@ namespace Hearthstone
             MurlocRaider5.costo = 1;
             MurlocRaider5.ataque = 2;
             MurlocRaider5.defensa = 1;
+            MurlocRaider5.maxdefensa = 1;
             MurlocRaider5.tipo = "Esbirro";
             MurlocRaider5.subtipo = "Murloc";
             MurlocRaider5.despierto = false;
@@ -529,6 +583,7 @@ namespace Hearthstone
             BloodfenRaptor5.costo = 2;
             BloodfenRaptor5.ataque = 3;
             BloodfenRaptor5.defensa = 2;
+            BloodfenRaptor5.maxdefensa = 2;
             BloodfenRaptor5.tipo = "Esbirro";
             BloodfenRaptor5.subtipo = "Bestia";
             BloodfenRaptor5.despierto = false;
@@ -540,6 +595,7 @@ namespace Hearthstone
             RiverCrocolisk5.costo = 2;
             RiverCrocolisk5.ataque = 2;
             RiverCrocolisk5.defensa = 3;
+            RiverCrocolisk5.maxdefensa = 3;
             RiverCrocolisk5.tipo = "Esbirro";
             RiverCrocolisk5.subtipo = "Bestia";
             RiverCrocolisk5.despierto = false;
@@ -551,6 +607,7 @@ namespace Hearthstone
             MagmaRager5.costo = 3;
             MagmaRager5.ataque = 5;
             MagmaRager5.defensa = 1;
+            MagmaRager5.maxdefensa = 1;
             MagmaRager5.tipo = "Esbirro";
             MagmaRager5.subtipo = "Elemental";
             MagmaRager5.despierto = false;
@@ -562,6 +619,7 @@ namespace Hearthstone
             ChillwindYeti5.costo = 4;
             ChillwindYeti5.ataque = 4;
             ChillwindYeti5.defensa = 5;
+            ChillwindYeti5.maxdefensa = 5;
             ChillwindYeti5.tipo = "Esbirro";
             ChillwindYeti5.subtipo = null;
             ChillwindYeti5.despierto = false;
@@ -573,6 +631,7 @@ namespace Hearthstone
             OasisSnapjaw5.costo = 4;
             OasisSnapjaw5.ataque = 2;
             OasisSnapjaw5.defensa = 7;
+            OasisSnapjaw5.maxdefensa = 7;
             OasisSnapjaw5.tipo = "Esbirro";
             OasisSnapjaw5.subtipo = "Bestia";
             OasisSnapjaw5.despierto = false;
@@ -584,6 +643,7 @@ namespace Hearthstone
             BoulderfistOgre5.costo = 6;
             BoulderfistOgre5.ataque = 6;
             BoulderfistOgre5.defensa = 7;
+            BoulderfistOgre5.maxdefensa = 7;
             BoulderfistOgre5.tipo = "Esbirro";
             BoulderfistOgre5.subtipo = null;
             BoulderfistOgre5.despierto = false;
@@ -595,6 +655,7 @@ namespace Hearthstone
             WarGolem5.costo = 7;
             WarGolem5.ataque = 7;
             WarGolem5.defensa = 7;
+            WarGolem5.maxdefensa = 7;
             WarGolem5.tipo = "Esbirro";
             WarGolem5.subtipo = null;
             WarGolem5.despierto = false;
@@ -606,6 +667,7 @@ namespace Hearthstone
             CoreHound5.costo = 7;
             CoreHound5.ataque = 9;
             CoreHound5.defensa = 5;
+            CoreHound5.maxdefensa = 5;
             CoreHound5.tipo = "Esbirro";
             CoreHound5.subtipo = "Bestia";
             CoreHound5.despierto = false;
@@ -617,6 +679,7 @@ namespace Hearthstone
             Wisp6.costo = 0;
             Wisp6.ataque = 1;
             Wisp6.defensa = 1;
+            Wisp6.maxdefensa = 1;
             Wisp6.tipo = "Esbirro";
             Wisp6.subtipo = null;
             Wisp6.despierto = false;
@@ -629,6 +692,7 @@ namespace Hearthstone
             MurlocRaider6.costo = 1;
             MurlocRaider6.ataque = 2;
             MurlocRaider6.defensa = 1;
+            MurlocRaider6.maxdefensa = 1;
             MurlocRaider6.tipo = "Esbirro";
             MurlocRaider6.subtipo = "Murloc";
             MurlocRaider6.despierto = false;
@@ -641,6 +705,7 @@ namespace Hearthstone
             BloodfenRaptor6.costo = 2;
             BloodfenRaptor6.ataque = 3;
             BloodfenRaptor6.defensa = 2;
+            BloodfenRaptor6.maxdefensa = 2;
             BloodfenRaptor6.tipo = "Esbirro";
             BloodfenRaptor6.subtipo = "Bestia";
             BloodfenRaptor6.despierto = false;
@@ -652,6 +717,7 @@ namespace Hearthstone
             RiverCrocolisk6.costo = 2;
             RiverCrocolisk6.ataque = 2;
             RiverCrocolisk6.defensa = 3;
+            RiverCrocolisk6.maxdefensa = 3;
             RiverCrocolisk6.tipo = "Esbirro";
             RiverCrocolisk6.subtipo = "Bestia";
             RiverCrocolisk6.despierto = false;
@@ -663,6 +729,7 @@ namespace Hearthstone
             MagmaRager6.costo = 3;
             MagmaRager6.ataque = 5;
             MagmaRager6.defensa = 1;
+            MagmaRager6.maxdefensa = 1;
             MagmaRager6.tipo = "Esbirro";
             MagmaRager6.subtipo = "Elemental";
             MagmaRager6.despierto = false;
@@ -674,6 +741,7 @@ namespace Hearthstone
             ChillwindYeti6.costo = 4;
             ChillwindYeti6.ataque = 4;
             ChillwindYeti6.defensa = 5;
+            ChillwindYeti6.maxdefensa = 5;
             ChillwindYeti6.tipo = "Esbirro";
             ChillwindYeti6.subtipo = null;
             ChillwindYeti6.despierto = false;
@@ -685,6 +753,7 @@ namespace Hearthstone
             OasisSnapjaw6.costo = 4;
             OasisSnapjaw6.ataque = 2;
             OasisSnapjaw6.defensa = 7;
+            OasisSnapjaw6.maxdefensa = 7;
             OasisSnapjaw6.tipo = "Esbirro";
             OasisSnapjaw6.subtipo = "Bestia";
             OasisSnapjaw6.despierto = false;
@@ -696,6 +765,7 @@ namespace Hearthstone
             BoulderfistOgre6.costo = 6;
             BoulderfistOgre6.ataque = 6;
             BoulderfistOgre6.defensa = 7;
+            BoulderfistOgre6.maxdefensa = 7;
             BoulderfistOgre6.tipo = "Esbirro";
             BoulderfistOgre6.subtipo = null;
             BoulderfistOgre6.despierto = false;
@@ -707,6 +777,7 @@ namespace Hearthstone
             WarGolem6.costo = 7;
             WarGolem6.ataque = 7;
             WarGolem6.defensa = 7;
+            WarGolem6.maxdefensa = 7;
             WarGolem6.tipo = "Esbirro";
             WarGolem6.subtipo = null;
             WarGolem6.despierto = false;
@@ -718,6 +789,7 @@ namespace Hearthstone
             CoreHound6.costo = 7;
             CoreHound6.ataque = 9;
             CoreHound6.defensa = 5;
+            CoreHound.maxdefensa = 5;
             CoreHound6.tipo = "Esbirro";
             CoreHound6.subtipo = "Bestia";
             CoreHound6.despierto = false;
@@ -972,7 +1044,7 @@ namespace Hearthstone
             gritosj1.Visibility = Visibility.Visible;
             gritosj2.Visibility = Visibility.Visible;
 
-            Seguir.Visibility = Visibility.Visible;
+            Comenzar.Visibility = Visibility.Visible;
 
             Jug1.Content = label21.Content;
             Jug2.Content = label22.Content;
@@ -1009,7 +1081,7 @@ namespace Hearthstone
                 BotonHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ1), "Recursos/Heroes/Druid.png")));
                 BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadDruid.png")));
                 juego.jugador1.nombreheroe = "Druid";
-                
+                juego.jugador1.habilidadheroe = "Shapeshift";
             }
 
             else if ((string)nheroe1.Content == "Hunter")
@@ -1017,104 +1089,119 @@ namespace Hearthstone
                 BotonHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ1), "Recursos/Heroes/Hunter.png")));
                 BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadHunter.png")));
                 juego.jugador1.nombreheroe = "Hunter";
+                juego.jugador1.habilidadheroe = "Steady Shot";
             }
             else if ((string)nheroe1.Content == "Mage")
             {
                 BotonHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ1), "Recursos/Heroes/Mage.png")));
                 BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadMage.png")));
                 juego.jugador1.nombreheroe = "Mage";
-
+                juego.jugador1.habilidadheroe = "Fireblast";
             }
             else if ((string)nheroe1.Content == "Paladin")
             {
                 BotonHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ1), "Recursos/Heroes/Paladin.png")));
                 BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadPaladin.png")));
                 juego.jugador1.nombreheroe = "Paladin";
+                juego.jugador1.habilidadheroe = "Reinforce";
             }
             else if ((string)nheroe1.Content == "Priest")
             {
                 BotonHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ1), "Recursos/Heroes/Priest.png")));
                 BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadPriest.png")));
                 juego.jugador1.nombreheroe = "Priest";
+                juego.jugador1.habilidadheroe = "Lesser Heal";
             }
             else if ((string)nheroe1.Content == "Rogue")
             {
                 BotonHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ1), "Recursos/Heroes/Rogue.png")));
                 BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadRogue.png")));
                 juego.jugador1.nombreheroe = "Rogue";
+                juego.jugador1.habilidadheroe = "Dagger Mastery";
             }
             else if ((string)nheroe1.Content == "Shaman")
             {
                 BotonHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ1), "Recursos/Heroes/Shaman.png")));
                 BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadShaman.png")));
                 juego.jugador1.nombreheroe = "Shaman";
+                juego.jugador1.habilidadheroe = "Totemic Call";
             }
             else if ((string)nheroe1.Content == "Warlock")
             {
                 BotonHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ1), "Recursos/Heroes/Warlock.png")));
                 BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadWarlock.png")));
                 juego.jugador1.nombreheroe = "Warlock";
+                juego.jugador1.habilidadheroe = "Life Tap";
             }
             else if ((string)nheroe1.Content == "Warrior")
             {
                 BotonHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ1), "Recursos/Heroes/Warrior.png")));
                 BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadWarrior.png")));
                 juego.jugador1.nombreheroe = "Warrior";
+                juego.jugador1.habilidadheroe = "Armor Up!";
             }
             if ((string)nheroe2.Content == "Druid")
             {
                 BotonHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ2), "Recursos/Heroes/Druid.png")));
                 BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadDruid.png")));
                 juego.jugador2.nombreheroe = "Druid";
+                juego.jugador2.habilidadheroe = "Shapeshift";
             }
             else if ((string)nheroe2.Content == "Hunter")
             {
                 BotonHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ2), "Recursos/Heroes/Hunter.png")));
                 BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadHunter.png")));
                 juego.jugador2.nombreheroe = "Hunter";
+                juego.jugador2.habilidadheroe = "Steady Shot";
             }
             else if ((string)nheroe2.Content == "Mage")
             {
                 BotonHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ2), "Recursos/Heroes/Mage.png")));
                 BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadMage.png")));
                 juego.jugador2.nombreheroe = "Mage";
+                juego.jugador2.habilidadheroe = "Fireblast";
             }
             else if ((string)nheroe2.Content == "Paladin")
             {
                 BotonHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ2), "Recursos/Heroes/Paladin.png")));
                 BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadPaladin.png")));
                 juego.jugador2.nombreheroe = "Paladin";
-
+                juego.jugador2.habilidadheroe = "Reinforce";
             }
             else if ((string)nheroe2.Content == "Priest")
             {
                 BotonHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ2), "Recursos/Heroes/Priest.png")));
                 BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadPriest.png")));
                 juego.jugador2.nombreheroe = "Priest";
+                juego.jugador2.habilidadheroe = "Lesser Heal";
             }
             else if ((string)nheroe2.Content == "Rogue")
             {
                 BotonHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ2), "Recursos/Heroes/Rogue.png")));
                 BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadRogue.png")));
                 juego.jugador2.nombreheroe = "Rogue";
+                juego.jugador2.habilidadheroe = "Dagger Mastery";
             }
             else if ((string)nheroe2.Content == "Shaman")
             {
                 BotonHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ2), "Recursos/Heroes/Shaman.png")));
                 BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadShaman.png")));
                 juego.jugador2.nombreheroe = "Shaman";
+                juego.jugador2.habilidadheroe = "Totemic Call";
             }
             else if ((string)nheroe2.Content == "Warlock")
             {
                 BotonHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ2), "Recursos/Heroes/Warlock.png")));
                 BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadWarlock.png")));
                 juego.jugador2.nombreheroe = "Warlock";
+                juego.jugador2.habilidadheroe = "Life Tap";
             }
             else if ((string)nheroe2.Content == "Warrior")
             {
                 BotonHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ2), "Recursos/Heroes/Warrior.png")));
                 BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadWarrior.png")));
                 juego.jugador2.nombreheroe = "Warrior";
+                juego.jugador2.habilidadheroe = "Armor Up!";
             }
 
             Jug1.Content = label21.Content;
@@ -1199,7 +1286,7 @@ namespace Hearthstone
             }
             else if (HeroeJ2 == "Hunter")
             {
-                nheroe2.Content = "Druid";
+                nheroe2.Content = "Hunter";
                 HabilidadJ2.Content = "Le hace 2 de daño \nal heroe enemigo";
             }
             else if (HeroeJ2 == "Mage")
@@ -1290,40 +1377,32 @@ namespace Hearthstone
 
         private void Seguir_Click(object sender, RoutedEventArgs e)
         {
+            if (juego.dice == 1)
+            {
+                juego.dice = 2;
+            }
+            else
+            {
+                juego.dice = 1;
+            }
             if (juego.jugador1.turno == juego.dice)
             {
                 Reniciar(juego.jugador1);
-                actualizarimagenes();
                 LabelGemasJ1.Content = juego.jugador1.gema;
                 LabelVidaJ1.Content = juego.jugador1.vida;
-
-                if (juego.dice == 1)
-                {
-                    juego.dice = 2;
-                }
-                else
-                {
-                    juego.dice = 1;
-                }
+                BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/Habilidad" + juego.jugador1.nombreheroe + ".png")));
+                actualizarimagenes();
             }
             else
             {
                 Reniciar(juego.jugador2);
-                actualizarimagenes();
                 LabelGemasJ2.Content = juego.jugador2.gema;
                 LabelVidaJ2.Content = juego.jugador2.vida;
+                BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/Habilidad" + juego.jugador2.nombreheroe + ".png")));
+                actualizarimagenes();
 
-                if (juego.dice == 1)
-                {
-                    juego.dice = 2;
-                }
-                else
-                {
-                    juego.dice = 1;
-                }
             }
         }
-
 
         public void MostrarCartasCambiot1(Jugador jugador)
         {
@@ -1774,7 +1853,6 @@ namespace Hearthstone
             }
         }
 
-
         public void OtorgarMoneda()
         {
             //Datos Moneda
@@ -2115,7 +2193,7 @@ namespace Hearthstone
                     }
 
                 }
-                else if (tablero[i].nombre == "Silver hand recruit")
+                else if (tablero[i].nombre == "Silver Hand Recruit")
                 {
                     if (i == 0)
                     {
@@ -2635,7 +2713,7 @@ namespace Hearthstone
                     }
 
                 }
-                else if (tablero[i].nombre == "Silver hand recruit")
+                else if (tablero[i].nombre == "Silver Hand Recruit")
                 {
                     if (i == 0)
                     {
@@ -2934,105 +3012,112 @@ namespace Hearthstone
             CambioC7.Visibility = Visibility.Hidden;
             CambioC8.Visibility = Visibility.Hidden;
 
-            if (CM1J1.Background != null)
+            if(juego.jugador1.turno == juego.dice)
             {
-                CM1J1.Visibility = Visibility.Visible;
+                if (CM1J1.Background != null)
+                {
+                    CM1J1.Visibility = Visibility.Visible;
+                }
+
+                if (CM2J1.Background != null)
+                {
+                    CM2J1.Visibility = Visibility.Visible;
+                }
+
+                if (CM3J1.Background != null)
+                {
+                    CM3J1.Visibility = Visibility.Visible;
+                }
+
+                if (CM4J1.Background != null)
+                {
+                    CM4J1.Visibility = Visibility.Visible;
+                }
+
+                if (CM5J1.Background != null)
+                {
+                    CM5J1.Visibility = Visibility.Visible;
+                }
+
+                if (CM6J1.Background != null)
+                {
+                    CM6J1.Visibility = Visibility.Visible;
+                }
+
+                if (CM7J1.Background != null)
+                {
+                    CM7J1.Visibility = Visibility.Visible;
+                }
+
+                if (CM8J1.Background != null)
+                {
+                    CM8J1.Visibility = Visibility.Visible;
+                }
+
+                if (CM9J1.Background != null)
+                {
+                    CM9J1.Visibility = Visibility.Visible;
+                }
+
+                if (CM10J1.Background != null)
+                {
+                    CM10J1.Visibility = Visibility.Visible;
+                }
             }
 
-            if (CM2J1.Background != null)
+            else
             {
-                CM2J1.Visibility = Visibility.Visible;
-            }
+                if (CM1J2.Background != null)
+                {
+                    CM1J2.Visibility = Visibility.Visible;
+                }
 
-            if (CM3J1.Background != null)
-            {
-                CM3J1.Visibility = Visibility.Visible;
-            }
+                if (CM2J2.Background != null)
+                {
+                    CM2J2.Visibility = Visibility.Visible;
+                }
 
-            if (CM4J1.Background != null)
-            {
-                CM4J1.Visibility = Visibility.Visible;
-            }
+                if (CM3J2.Background != null)
+                {
+                    CM3J2.Visibility = Visibility.Visible;
+                }
 
-            if (CM5J1.Background != null)
-            {
-                CM5J1.Visibility = Visibility.Visible;
-            }
+                if (CM4J2.Background != null)
+                {
+                    CM4J2.Visibility = Visibility.Visible;
+                }
 
-            if (CM6J1.Background != null)
-            {
-                CM6J1.Visibility = Visibility.Visible;
-            }
+                if (CM5J2.Background != null)
+                {
+                    CM5J2.Visibility = Visibility.Visible;
+                }
 
-            if (CM7J1.Background != null)
-            {
-                CM7J1.Visibility = Visibility.Visible;
-            }
+                if (CM6J2.Background != null)
+                {
+                    CM6J2.Visibility = Visibility.Visible;
+                }
 
-            if (CM8J1.Background != null)
-            {
-                CM8J1.Visibility = Visibility.Visible;
-            }
+                if (CM7J2.Background != null)
+                {
+                    CM7J2.Visibility = Visibility.Visible;
+                }
 
-            if (CM9J1.Background != null)
-            {
-                CM9J1.Visibility = Visibility.Visible;
-            }
+                if (CM8J2.Background != null)
+                {
+                    CM8J2.Visibility = Visibility.Visible;
+                }
 
-            if (CM10J1.Background != null)
-            {
-                CM10J1.Visibility = Visibility.Visible;
-            }
+                if (CM9J2.Background != null)
+                {
+                    CM9J2.Visibility = Visibility.Visible;
+                }
 
-            if (CM1J2.Background != null)
-            {
-                CM1J2.Visibility = Visibility.Visible;
+                if (CM10J2.Background != null)
+                {
+                    CM10J2.Visibility = Visibility.Visible;
+                }
             }
-
-            if (CM2J2.Background != null)
-            {
-                CM2J2.Visibility = Visibility.Visible;
-            }
-
-            if (CM3J2.Background != null)
-            {
-                CM3J2.Visibility = Visibility.Visible;
-            }
-
-            if (CM4J2.Background != null)
-            {
-                CM4J2.Visibility = Visibility.Visible;
-            }
-
-            if (CM5J2.Background != null)
-            {
-                CM5J2.Visibility = Visibility.Visible;
-            }
-
-            if (CM6J2.Background != null)
-            {
-                CM6J2.Visibility = Visibility.Visible;
-            }
-
-            if (CM7J2.Background != null)
-            {
-                CM7J2.Visibility = Visibility.Visible;
-            }
-
-            if (CM8J2.Background != null)
-            {
-                CM8J2.Visibility = Visibility.Visible;
-            }
-
-            if (CM9J2.Background != null)
-            {
-                CM9J2.Visibility = Visibility.Visible;
-            }
-
-            if (CM10J2.Background != null)
-            {
-                CM10J2.Visibility = Visibility.Visible;
-            }
+            
 
             if (CT1J2.Background != null)
             {
@@ -3111,857 +3196,65 @@ namespace Hearthstone
         private void actualizarimagenes()
         {
             cartasennull();
-            Manoj1(juego.jugador1.Mano);
-            Manoj2(juego.jugador2.Mano);
+            if(juego.jugador1.turno==juego.dice)
+            {
+                Manoj1(juego.jugador1.Mano);
+                CM1J2.Visibility = Visibility.Hidden;
+                CM2J2.Visibility = Visibility.Hidden;
+                CM3J2.Visibility = Visibility.Hidden;
+                CM4J2.Visibility = Visibility.Hidden;
+                CM5J2.Visibility = Visibility.Hidden;
+                CM6J2.Visibility = Visibility.Hidden;
+                CM7J2.Visibility = Visibility.Hidden;
+                CM8J2.Visibility = Visibility.Hidden;
+                CM9J2.Visibility = Visibility.Hidden;
+                CM10J2.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                Manoj2(juego.jugador2.Mano);
+                CM1J1.Visibility = Visibility.Hidden;
+                CM2J1.Visibility = Visibility.Hidden;
+                CM3J1.Visibility = Visibility.Hidden;
+                CM4J1.Visibility = Visibility.Hidden;
+                CM5J1.Visibility = Visibility.Hidden;
+                CM6J1.Visibility = Visibility.Hidden;
+                CM7J1.Visibility = Visibility.Hidden;
+                CM8J1.Visibility = Visibility.Hidden;
+                CM9J1.Visibility = Visibility.Hidden;
+                CM10J1.Visibility = Visibility.Hidden;
+            }
+
+            if (DAJ1 <= 0)
+            {
+                BotonArmaJ1.Visibility = Visibility.Hidden;
+            }
+
+            if (DAJ2 <= 0)
+            {
+                BotonArmaJ2.Visibility = Visibility.Hidden;
+            }
+
+            if (juego.jugador1.defensa <= 0)
+            {
+                Escudo1.Visibility = Visibility.Hidden;
+                LabelArmorJ1.Visibility = Visibility.Hidden;
+            }
+
+            if (juego.jugador2.defensa <= 0)
+            {
+                Escudo2.Visibility = Visibility.Hidden;
+                LabelArmorJ2.Visibility = Visibility.Hidden;
+            }
+
             ActualizarTableroJ1(juego.jugador1.Tablerojugador);
             ActualizarTableroJ2(juego.jugador2.Tablerojugador);
             visibilidadcartas();
 
-        }
+            vidaesbirros();
+            ctvisibles();
+            cmvisibles();
 
-        private void Manoj2(List<Carta> mano)
-        {
-            for (int i = 0; i < mano.Count; i++)
-            {
-                if (mano[i].nombre == "Wisp")
-                {
-                    String Direccion = "Recursos/Wisp.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "Murloc Raider")
-                {
-                    String Direccion = "Recursos/Murlocraider.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "Bloodfen Raptor")
-                {
-                    String Direccion = "Recursos/Bloodfenraptor.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "River Crocolisk")
-                {
-                    String Direccion = "Recursos/Rivercrocolisk.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "Magma Rager")
-                {
-                    String Direccion = "Recursos/Magmarager.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "Chillwind Yeti")
-                {
-                    String Direccion = "Recursos/Chillwindyeti.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "Oasis Snapjaw")
-                {
-                    String Direccion = "Recursos/Oasissnapjaw.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "Boulderfist Ogre")
-                {
-                    String Direccion = "Recursos/Boulderfistogre.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "War Golem")
-                {
-                    String Direccion = "Recursos/Wargolem.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "Core Hound")
-                {
-                    String Direccion = "Recursos/Corehound.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "Silver hand recruit")
-                {
-                    String Direccion = "Recursos/Silverhand.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "Healing Totem")
-                {
-                    String Direccion = "Recursos/Healingtotem.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "Searing Totem")
-                {
-                    String Direccion = "Recursos/Searingtotem.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "Stoneclaw Totem")
-                {
-                    String Direccion = "Recursos/Stoneclawtotem.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "Wraith Of Air Totem")
-                {
-                    String Direccion = "Recursos/Airtotem.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "Wicked Knife")
-                {
-                    String Direccion = "Recursos/Wickedknife.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "Poisoned Dagger")
-                {
-                    String Direccion = "Recursos/Poisoneddagger.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano[i].nombre == "The Coin")
-                {
-                    String Direccion = "Recursos/Thecoin.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-                else if (mano.Count() == 0)
-                {
-                    String Direccion = "Recursos/Vacio.png";
-                    if (i == 0)
-                    {
-                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
-                    }
-                    else if (i == 1)
-                    {
-                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
-                    }
-                    else if (i == 2)
-                    {
-                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
-                    }
-                    else if (i == 3)
-                    {
-                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
-                    }
-                    else if (i == 4)
-                    {
-                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
-                    }
-                    else if (i == 5)
-                    {
-                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
-                    }
-                    else if (i == 6)
-                    {
-                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
-                    }
-                    else if (i == 7)
-                    {
-                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
-                    }
-                    else if (i == 8)
-                    {
-                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
-                    }
-                    else
-                    {
-                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
-                    }
-                }
-
-
-            }
         }
 
         private void Manoj1(List<Carta> mano)
@@ -4809,50 +4102,1204 @@ namespace Hearthstone
             }
         }
 
-        private void BotonHabilidadHeroeJ1_Click(object sender, RoutedEventArgs e)
+        private void Manoj2(List<Carta> mano)
         {
-            if (juego.jugador1.nombreheroe == "Rogue")
+            for (int i = 0; i < mano.Count; i++)
             {
-               BotonArmaJ1.Visibility = Visibility.Visible;
-               BotonArmaJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonArmaJ1), "Recursos/Wickedknife.png")));
-               BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                if (mano[i].nombre == "Wisp")
+                {
+                    String Direccion = "Recursos/Wisp.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "Murloc Raider")
+                {
+                    String Direccion = "Recursos/Murlocraider.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "Bloodfen Raptor")
+                {
+                    String Direccion = "Recursos/Bloodfenraptor.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "River Crocolisk")
+                {
+                    String Direccion = "Recursos/Rivercrocolisk.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "Magma Rager")
+                {
+                    String Direccion = "Recursos/Magmarager.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "Chillwind Yeti")
+                {
+                    String Direccion = "Recursos/Chillwindyeti.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "Oasis Snapjaw")
+                {
+                    String Direccion = "Recursos/Oasissnapjaw.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "Boulderfist Ogre")
+                {
+                    String Direccion = "Recursos/Boulderfistogre.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "War Golem")
+                {
+                    String Direccion = "Recursos/Wargolem.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "Core Hound")
+                {
+                    String Direccion = "Recursos/Corehound.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "Silver hand recruit")
+                {
+                    String Direccion = "Recursos/Silverhand.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "Healing Totem")
+                {
+                    String Direccion = "Recursos/Healingtotem.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "Searing Totem")
+                {
+                    String Direccion = "Recursos/Searingtotem.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "Stoneclaw Totem")
+                {
+                    String Direccion = "Recursos/Stoneclawtotem.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "Wraith Of Air Totem")
+                {
+                    String Direccion = "Recursos/Airtotem.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "Wicked Knife")
+                {
+                    String Direccion = "Recursos/Wickedknife.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "Poisoned Dagger")
+                {
+                    String Direccion = "Recursos/Poisoneddagger.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano[i].nombre == "The Coin")
+                {
+                    String Direccion = "Recursos/Thecoin.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+                else if (mano.Count() == 0)
+                {
+                    String Direccion = "Recursos/Vacio.png";
+                    if (i == 0)
+                    {
+                        CM1J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM1J2), Direccion)));
+                    }
+                    else if (i == 1)
+                    {
+                        CM2J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM2J2), Direccion)));
+                    }
+                    else if (i == 2)
+                    {
+                        CM3J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM3J2), Direccion)));
+                    }
+                    else if (i == 3)
+                    {
+                        CM4J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM4J2), Direccion)));
+                    }
+                    else if (i == 4)
+                    {
+                        CM5J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM5J2), Direccion)));
+                    }
+                    else if (i == 5)
+                    {
+                        CM6J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM6J2), Direccion)));
+                    }
+                    else if (i == 6)
+                    {
+                        CM7J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM7J2), Direccion)));
+                    }
+                    else if (i == 7)
+                    {
+                        CM8J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM8J2), Direccion)));
+                    }
+                    else if (i == 8)
+                    {
+                        CM9J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM9J2), Direccion)));
+                    }
+                    else
+                    {
+                        CM10J2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(CM10J2), Direccion)));
+                    }
+                }
+
+
             }
         }
 
+        private void BotonHabilidadHeroeJ1_Click(object sender, RoutedEventArgs e)
+        {
+            if (juego.jugador1.nombreheroe == "Druid")
+            {
+                //falta el ataque por el turno
+                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                {
+                    HabMageJ1 = 1;
+                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+            }
+
+            if (juego.jugador1.nombreheroe == "Hunter")
+            {
+                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                {
+                    juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
+                    LabelGemasJ1.Content = juego.jugador1.gema;
+                    LabelVidaJ2.Content = juego.jugador2.vida;
+                    LabelArmorJ2.Content = juego.jugador2.defensa;
+                    actualizarimagenes();
+                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+            }
+
+            if (juego.jugador1.nombreheroe == "Mage")
+            {
+                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                {
+                    HabMageJ1 = 1;
+                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+                    
+            }
+
+            if (juego.jugador1.nombreheroe == "Paladin")
+            {
+                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                {
+                    if (juego.jugador1.Tablerojugador.Count == 7)
+                    {
+                        MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    }
+                    else
+                    {
+                        juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
+                        LabelGemasJ1.Content = juego.jugador1.gema;
+                        actualizarimagenes();
+                        BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+            }
+
+            if (juego.jugador1.nombreheroe == "Priest")
+            {
+                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                {
+                    HabPriestJ1 = 1;
+                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+            }
+
+            if (juego.jugador1.nombreheroe == "Rogue")
+            {
+                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                {
+                    juego.jugador1.habilidadusada = true;
+                    juego.jugador1.gema = juego.jugador1.gema - 2;
+                    LabelGemasJ1.Content = juego.jugador1.gema;
+                    DAJ1 = 2;
+                    BotonArmaJ1.Visibility = Visibility.Visible;
+                    actualizarimagenes();
+                    BotonArmaJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonArmaJ1), "Recursos/Wickedknife.png")));
+                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+
+            }
+
+            if (juego.jugador1.nombreheroe == "Shaman")
+            {
+                //falta el metodo del Healing Totem
+                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                {
+                    if (juego.jugador1.Tablerojugador.Count == 7)
+                    {
+                        MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    }
+                    else
+                    {
+                        juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
+                        LabelGemasJ1.Content = juego.jugador1.gema;
+                        actualizarimagenes();
+                        BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+            }
+
+            if (juego.jugador1.nombreheroe == "Warlock")
+            {
+                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                {
+                    juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
+                    LabelGemasJ1.Content = juego.jugador1.gema;
+                    LabelVidaJ1.Content = juego.jugador1.vida;
+                    actualizarimagenes();
+                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+                    
+            }
+
+            if (juego.jugador1.nombreheroe == "Warrior")
+            {
+                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                {
+                    juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
+                    LabelGemasJ1.Content = juego.jugador1.gema;
+                    Escudo1.Visibility = Visibility.Visible;
+                    LabelArmorJ1.Content = juego.jugador1.defensa;
+                    LabelArmorJ1.Visibility = Visibility.Visible;
+                    actualizarimagenes();
+                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+            }
+        }
+   
+        private void BotonHabilidadHeroeJ2_Click(object sender, RoutedEventArgs e)
+        {
+            if (juego.jugador2.nombreheroe == "Druid")
+            {
+                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                {
+                    HabMageJ1 = 1;
+                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+            }
+
+            if (juego.jugador2.nombreheroe == "Hunter")
+            {
+                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                {
+                    juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
+                    LabelGemasJ2.Content = juego.jugador2.gema;
+                    LabelVidaJ1.Content = juego.jugador1.vida;
+                    LabelArmorJ1.Content = juego.jugador1.defensa;
+                    actualizarimagenes();
+                    BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+            }
+
+            if (juego.jugador2.nombreheroe == "Mage")
+            {
+                //1 de ataque a un esbirro o al heroe
+                BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+            }
+           
+            if (juego.jugador2.nombreheroe == "Paladin")
+            {
+                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+
+                {
+                    if (juego.jugador2.Tablerojugador.Count == 7)
+                    {
+                        MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    }
+                    else
+                    {
+                        juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
+                        LabelGemasJ2.Content = juego.jugador2.gema;
+                        actualizarimagenes();
+                        BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+                   
+            }
+
+            if (juego.jugador2.nombreheroe == "Priest")
+            {
+                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                {
+                    HabPriestJ2 = 1;
+                    BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+            }
+
+            if (juego.jugador2.nombreheroe == "Rogue")
+            {
+                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                {
+                    juego.jugador2.habilidadusada = true;
+                    juego.jugador2.gema = juego.jugador2.gema - 2;
+                    LabelGemasJ2.Content = juego.jugador2.gema;
+                    DAJ2 = 2;
+                    BotonArmaJ2.Visibility = Visibility.Visible;
+                    actualizarimagenes();
+                    BotonArmaJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonArmaJ2), "Recursos/Wickedknife.png")));
+                    BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+            }
+
+            if (juego.jugador2.nombreheroe == "Shaman")
+            {
+                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+
+                {
+                    if (juego.jugador2.Tablerojugador.Count == 7)
+                    {
+                        MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    }
+                    else
+                    {
+                        juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
+                        LabelGemasJ2.Content = juego.jugador2.gema;
+                        actualizarimagenes();
+                        BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+            }
+
+            if (juego.jugador2.nombreheroe == "Warlock")
+            {
+                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                {
+                    juego.jugador1.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
+                    LabelGemasJ2.Content = juego.jugador2.gema;
+                    LabelVidaJ2.Content = juego.jugador2.vida;
+                    actualizarimagenes();
+                    BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+            }
+
+            if (juego.jugador2.nombreheroe == "Warrior")
+            {
+                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                {
+                    juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
+                    LabelGemasJ2.Content = juego.jugador2.gema;
+                    Escudo2.Visibility = Visibility.Visible;
+                    LabelArmorJ2.Content = juego.jugador2.defensa;
+                    LabelArmorJ2.Visibility = Visibility.Visible;
+                    actualizarimagenes();
+                    BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
+            }
+        }
 
         private void CM1J1_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador1.Agregarcartalado(juego.jugador1, 0);
+            LabelGemasJ1.Content = juego.jugador1.gema;
             actualizarimagenes();
         }
         private void CM2J1_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador1.Agregarcartalado(juego.jugador1, 1);
+            LabelGemasJ1.Content = juego.jugador1.gema;
             actualizarimagenes();
         }
         private void CM3J1_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador1.Agregarcartalado(juego.jugador1, 2);
+            LabelGemasJ1.Content = juego.jugador1.gema;
             actualizarimagenes();
         }
         private void CM4J1_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador1.Agregarcartalado(juego.jugador1, 3);
+            LabelGemasJ1.Content = juego.jugador1.gema;
             actualizarimagenes();
         }
         private void CM5J1_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador1.Agregarcartalado(juego.jugador1, 4);
+            LabelGemasJ1.Content = juego.jugador1.gema;
             actualizarimagenes();
         }
         private void CM6J1_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador1.Agregarcartalado(juego.jugador1, 5);
+            LabelGemasJ1.Content = juego.jugador1.gema;
             actualizarimagenes();
         }
         private void CM7J1_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador1.Agregarcartalado(juego.jugador1, 6);
+            LabelGemasJ1.Content = juego.jugador1.gema;
             actualizarimagenes();
         }
         private void CM8J1_Click(object sender, RoutedEventArgs e)
@@ -4863,61 +5310,73 @@ namespace Hearthstone
         private void CM9J1_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador1.Agregarcartalado(juego.jugador1, 8);
+            LabelGemasJ1.Content = juego.jugador1.gema;
             actualizarimagenes();
         }
         private void CM10J1_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador1.Agregarcartalado(juego.jugador1, 9);
+            LabelGemasJ1.Content = juego.jugador1.gema;
             actualizarimagenes();
         }
         private void CM1J2_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador2.Agregarcartalado(juego.jugador2, 0);
+            LabelGemasJ2.Content = juego.jugador2.gema;
             actualizarimagenes();
         }
         private void CM2J2_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador2.Agregarcartalado(juego.jugador2, 1);
+            LabelGemasJ2.Content = juego.jugador2.gema;
             actualizarimagenes();
         }
         private void CM3J2_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador2.Agregarcartalado(juego.jugador2, 2);
+            LabelGemasJ2.Content = juego.jugador2.gema;
             actualizarimagenes();
         }
         private void CM4J2_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador2.Agregarcartalado(juego.jugador2, 3);
+            LabelGemasJ2.Content = juego.jugador2.gema;
             actualizarimagenes();
         }
         private void CM5J2_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador2.Agregarcartalado(juego.jugador2, 4);
+            LabelGemasJ2.Content = juego.jugador2.gema;
             actualizarimagenes();
         }
         private void CM6J2_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador2.Agregarcartalado(juego.jugador2, 5);
+            LabelGemasJ2.Content = juego.jugador2.gema;
             actualizarimagenes();
         }
         private void CM7J2_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador2.Agregarcartalado(juego.jugador2, 6);
+            LabelGemasJ2.Content = juego.jugador2.gema;
             actualizarimagenes();
         }
         private void CM8J2_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador2.Agregarcartalado(juego.jugador2, 7);
+            LabelGemasJ2.Content = juego.jugador2.gema;
             actualizarimagenes();
         }
         private void CM9J2_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador2.Agregarcartalado(juego.jugador2, 8);
+            LabelGemasJ2.Content = juego.jugador2.gema;
             actualizarimagenes();
         }
         private void CM10J2_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador2.Agregarcartalado(juego.jugador2, 9);
+            LabelGemasJ2.Content = juego.jugador2.gema;
             actualizarimagenes();
         }
 
@@ -4929,6 +5388,1253 @@ namespace Hearthstone
             jugador.habilidadusada = false;
             jugador.Despertar(jugador);
             
+        }
+
+        private void CT1J1_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            CTJ1 = button.Name;
+            if (CTJ1 != "" && CTJ2 != "")
+            {
+                enfrentamiento(CTJ1, CTJ2);
+            }
+            else if (ataquearmaJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
+                DAJ2 -= 1;
+                ataquearmaJ2 = 0;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
+                HabPriestJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                actualizarimagenes();
+            }
+            else if (HabMageJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
+                HabMageJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                actualizarimagenes();
+            }
+
+        }
+
+        private void CT2J1_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            CTJ1 = button.Name;
+            if (CTJ1 != "" && CTJ2 != "")
+            {
+                enfrentamiento(CTJ1, CTJ2);
+            }
+            else if (ataquearmaJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 1, 0);
+                DAJ2 -= 1;
+                ataquearmaJ2 = 0;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 1, 0, 0);
+                HabPriestJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                actualizarimagenes();
+            }
+            else if (HabMageJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 1, 0);
+                HabMageJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                actualizarimagenes();
+            }
+        }
+
+        private void CT3J1_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            CTJ1 = button.Name;
+            if (CTJ1 != "" && CTJ2 != "")
+            {
+                enfrentamiento(CTJ1, CTJ2);
+            }
+            else if (ataquearmaJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 2, 0);
+                DAJ2 -= 1;
+                ataquearmaJ2 = 0;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 2, 0, 0);
+                HabPriestJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                actualizarimagenes();
+            }
+            else if (HabMageJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 2, 0);
+                HabMageJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                actualizarimagenes();
+            }
+        }
+
+        private void CT4J1_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            CTJ1 = button.Name;
+            if (CTJ1 != "" && CTJ2 != "")
+            {
+                enfrentamiento(CTJ1, CTJ2);
+            }
+            else if (ataquearmaJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 3, 0);
+                DAJ2 -= 1;
+                ataquearmaJ2 = 0;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 3, 0, 0);
+                HabPriestJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                actualizarimagenes();
+            }
+            else if (HabMageJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 3, 0);
+                HabMageJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                actualizarimagenes();
+            }
+        }
+
+        private void CT5J1_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            CTJ1 = button.Name;
+            if (CTJ1 != "" && CTJ2 != "")
+            {
+                enfrentamiento(CTJ1, CTJ2);
+            }
+            else if (ataquearmaJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 4, 0);
+                DAJ2 -= 1;
+                ataquearmaJ2 = 0;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 4, 0, 0);
+                HabPriestJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                actualizarimagenes();
+            }
+            else if (HabMageJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 4, 0);
+                HabMageJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                actualizarimagenes();
+            }
+        }
+
+        private void CT6J1_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            CTJ1 = button.Name;
+            if (CTJ1 != "" && CTJ2 != "")
+            {
+                enfrentamiento(CTJ1, CTJ2);
+            }
+            else if (ataquearmaJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 5, 0);
+                DAJ2 -= 1;
+                ataquearmaJ2 = 0;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 5, 0, 0);
+                HabPriestJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                actualizarimagenes();
+            }
+            else if (HabMageJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 5, 0);
+                HabMageJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                actualizarimagenes();
+            }
+        }
+
+        private void CT7J1_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            CTJ1 = button.Name;
+            if (CTJ1 != "" && CTJ2 != "")
+            {
+                enfrentamiento(CTJ1, CTJ2);
+            }
+            else if (ataquearmaJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 6, 0);
+                DAJ2 -= 1;
+                ataquearmaJ2 = 0;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 6, 0, 0);
+                HabPriestJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                actualizarimagenes();
+            }
+            else if (HabMageJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 6, 0);
+                HabMageJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                actualizarimagenes();
+            }
+        }
+
+        private void CT1J2_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            CTJ2 = button.Name;
+            if (CTJ1 != "" && CTJ2 != "")
+            {
+                enfrentamiento(CTJ1, CTJ2);
+            }
+            else if (ataquearmaJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
+                DAJ1 -= 1;
+                ataquearmaJ1 = 0;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
+                HabPriestJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                actualizarimagenes();
+            }
+            else if (HabMageJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
+                HabMageJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                actualizarimagenes();
+            }
+        }
+
+        private void CT2J2_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            CTJ2 = button.Name;
+            if (CTJ1 != "" && CTJ2 != "")
+            {
+                enfrentamiento(CTJ1, CTJ2);
+            }
+            else if (ataquearmaJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 1, 0);
+                DAJ1 -= 1;
+                ataquearmaJ1 = 0;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 1, 0, 0);
+                HabPriestJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                actualizarimagenes();
+            }
+            else if (HabMageJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
+                HabMageJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                actualizarimagenes();
+            }
+        }
+
+        private void CT3J2_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            CTJ2 = button.Name;
+            if (CTJ1 != "" && CTJ2 != "")
+            {
+                enfrentamiento(CTJ1, CTJ2);
+            }
+            else if (ataquearmaJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 2, 0);
+                DAJ1 -= 1;
+                ataquearmaJ1 = 0;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 2, 0, 0);
+                HabPriestJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                actualizarimagenes();
+            }
+            else if (HabMageJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 2, 0);
+                HabMageJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                actualizarimagenes();
+            }
+        }
+
+        private void CT4J2_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            CTJ2 = button.Name;
+            if (CTJ1 != "" && CTJ2 != "")
+            {
+                enfrentamiento(CTJ1, CTJ2);
+            }
+            else if (ataquearmaJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 3, 0);
+                DAJ1 -= 1;
+                ataquearmaJ1 = 0;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 3, 0, 0);
+                HabPriestJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                actualizarimagenes();
+            }
+            else if (HabMageJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 3, 0);
+                HabMageJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                actualizarimagenes();
+            }
+        }
+
+        private void CT5J2_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            CTJ2 = button.Name;
+            if (CTJ1 != "" && CTJ2 != "")
+            {
+                enfrentamiento(CTJ1, CTJ2);
+            }
+            else if (ataquearmaJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 4, 0);
+                DAJ1 -= 1;
+                ataquearmaJ1 = 0;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 4, 0, 0);
+                HabPriestJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                actualizarimagenes();
+            }
+            else if (HabMageJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 4, 0);
+                HabMageJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                actualizarimagenes();
+            }
+        }
+
+        private void CT6J2_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            CTJ2 = button.Name;
+            if (CTJ1 != "" && CTJ2 != "")
+            {
+                enfrentamiento(CTJ1, CTJ2);
+            }
+            else if (ataquearmaJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 5, 0);
+                DAJ1 -= 1;
+                ataquearmaJ1 = 0;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 5, 0, 0);
+                HabPriestJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                actualizarimagenes();
+            }
+            else if (HabMageJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 5, 0);
+                HabMageJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                actualizarimagenes();
+            }
+        }
+
+        private void CT7J2_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            CTJ2 = button.Name;
+            if (CTJ1 != "" && CTJ2 != "")
+            {
+                enfrentamiento(CTJ1, CTJ2);
+            }
+            else if (ataquearmaJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 6, 0);
+                DAJ1 -= 1;
+                ataquearmaJ1 = 0;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 6, 0, 0);
+                HabPriestJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                actualizarimagenes();
+            }
+            else if (HabMageJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 6, 0);
+                HabMageJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                actualizarimagenes();
+            }
+        }
+
+        private void enfrentamiento(string j1, string j2)
+        {
+
+            if (j1 == "CT1J1")
+            {
+                IJ1 = 0;
+            }
+
+            else if (j1 == "CT2J1")
+            {
+                IJ1 = 1;
+            }
+
+            else if (j1 == "CT3J1")
+            {
+                IJ1 = 2;
+            }
+
+            else if (j1 == "CT4J1")
+            {
+                IJ1 = 3;
+            }
+
+            else if (j1 == "CT5J1")
+            {
+                IJ1 = 4;
+            }
+
+            else if (j1 == "CT6J1")
+            {
+                IJ1 = 5;
+            }
+
+            else if (j1 == "CT7J1")
+            {
+                IJ1 = 6;
+            }
+
+            if (j2 == "CT1J2")
+            {
+                IJ2 = 0;
+            }
+
+            else if (j2 == "CT2J2")
+            {
+                IJ2 = 1;
+            }
+
+            else if (j2 == "CT3J2")
+            {
+                IJ2 = 2;
+            }
+
+            else if (j2 == "CT4J2")
+            {
+                IJ2 = 3;
+            }
+
+            else if (j2 == "CT5J2")
+            {
+                IJ2 = 4;
+            }
+
+            else if (j2 == "CT6J2")
+            {
+                IJ2 = 5;
+            }
+
+            else if (j2 == "CT7J2")
+            {
+                IJ2 = 6;
+            }
+
+            if (juego.jugador1.turno == juego.dice)
+            {
+                eleccion = 0;
+                juego.jugador1.Enfrentar(juego.jugador1, juego.jugador2, IJ1, IJ2, eleccion);
+            }
+
+            else
+            {
+                eleccion = 0;
+                juego.jugador2.Enfrentar(juego.jugador2, juego.jugador1, IJ2, IJ1, eleccion);
+            }
+
+            actualizarimagenes();
+            CTJ1 = "";
+            CTJ2 = "";
+        }
+
+        private void Comenzar_Click(object sender, RoutedEventArgs e)
+        {
+            Seguir.Visibility = Visibility.Visible;
+            Comenzar.Visibility = Visibility.Hidden;
+            OtorgarMoneda();
+            if (juego.jugador1.turno == juego.dice)
+            {
+                Reniciar(juego.jugador1);
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                LabelVidaJ1.Content = juego.jugador1.vida;
+            }
+            else
+            {
+                Reniciar(juego.jugador2);
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                LabelVidaJ2.Content = juego.jugador2.vida;
+            }
+
+            actualizarimagenes();
+        }
+
+        private void BotonArmaJ1_Click(object sender, RoutedEventArgs e)
+        {
+            ataquearmaJ1 = 1;
+        }
+
+        private void BotonArmaJ2_Click(object sender, RoutedEventArgs e)
+        {
+            ataquearmaJ2 = 1;
+        }
+
+        private void vidaesbirros()
+        {
+            GE1J1.Visibility = Visibility.Hidden;
+            LE1J1.Visibility = Visibility.Hidden;
+            GE2J1.Visibility = Visibility.Hidden;
+            LE2J1.Visibility = Visibility.Hidden;
+            GE3J1.Visibility = Visibility.Hidden;
+            LE3J1.Visibility = Visibility.Hidden;
+            GE4J1.Visibility = Visibility.Hidden;
+            LE4J1.Visibility = Visibility.Hidden;
+            GE5J1.Visibility = Visibility.Hidden;
+            LE5J1.Visibility = Visibility.Hidden;
+            GE6J1.Visibility = Visibility.Hidden;
+            LE6J1.Visibility = Visibility.Hidden;
+            GE7J1.Visibility = Visibility.Hidden;
+            LE7J1.Visibility = Visibility.Hidden;
+
+            GE1J2.Visibility = Visibility.Hidden;
+            LE1J2.Visibility = Visibility.Hidden;
+            GE2J2.Visibility = Visibility.Hidden;
+            LE2J2.Visibility = Visibility.Hidden;
+            GE3J2.Visibility = Visibility.Hidden;
+            LE3J2.Visibility = Visibility.Hidden;
+            GE4J2.Visibility = Visibility.Hidden;
+            LE4J2.Visibility = Visibility.Hidden;
+            GE5J2.Visibility = Visibility.Hidden;
+            LE5J2.Visibility = Visibility.Hidden;
+            GE6J2.Visibility = Visibility.Hidden;
+            LE6J2.Visibility = Visibility.Hidden;
+            GE7J2.Visibility = Visibility.Hidden;
+            LE7J2.Visibility = Visibility.Hidden;
+
+            if (CT1J1.Background != null)
+            {
+
+                GE1J1.Visibility = Visibility.Visible;
+                LE1J1.Visibility = Visibility.Visible;
+                LE1J1.Content = juego.jugador1.Tablerojugador[0].defensa;
+            }
+            if (CT2J1.Background != null)
+            {
+                GE2J1.Visibility = Visibility.Visible;
+                LE2J1.Visibility = Visibility.Visible;
+                LE2J1.Content = juego.jugador1.Tablerojugador[1].defensa;
+            }
+            if (CT3J1.Background != null)
+            {
+                GE3J1.Visibility = Visibility.Visible;
+                LE3J1.Visibility = Visibility.Visible;
+                LE3J1.Content = juego.jugador1.Tablerojugador[2].defensa;
+            }
+            if (CT4J1.Background != null)
+            {
+                GE4J1.Visibility = Visibility.Visible;
+                LE4J1.Visibility = Visibility.Visible;
+                LE4J1.Content = juego.jugador1.Tablerojugador[3].defensa;
+            }
+            if (CT5J1.Background != null)
+            {
+                GE5J1.Visibility = Visibility.Visible;
+                LE5J1.Visibility = Visibility.Visible;
+                LE5J1.Content = juego.jugador1.Tablerojugador[4].defensa;
+            }
+            if (CT6J1.Background != null)
+            {
+                GE6J1.Visibility = Visibility.Visible;
+                LE6J1.Visibility = Visibility.Visible;
+                LE6J1.Content = juego.jugador1.Tablerojugador[5].defensa;
+            }
+            if (CT7J1.Background != null)
+            {
+                GE7J1.Visibility = Visibility.Visible;
+                LE7J1.Visibility = Visibility.Visible;
+                LE7J1.Content = juego.jugador1.Tablerojugador[6].defensa;
+            }
+            if (CT1J2.Background != null)
+            {
+                GE1J2.Visibility = Visibility.Visible;
+                LE1J2.Visibility = Visibility.Visible;
+                LE1J2.Content = juego.jugador2.Tablerojugador[0].defensa;
+            }
+            if (CT2J2.Background != null)
+            {
+                GE2J2.Visibility = Visibility.Visible;
+                LE2J2.Visibility = Visibility.Visible;
+                LE2J2.Content = juego.jugador2.Tablerojugador[1].defensa;
+            }
+            if (CT3J2.Background != null)
+            {
+                GE3J2.Visibility = Visibility.Visible;
+                LE3J2.Visibility = Visibility.Visible;
+                LE3J2.Content = juego.jugador2.Tablerojugador[2].defensa;
+            }
+            if (CT4J2.Background != null)
+            {
+                GE4J2.Visibility = Visibility.Visible;
+                LE4J2.Visibility = Visibility.Visible;
+                LE4J2.Content = juego.jugador2.Tablerojugador[3].defensa;
+            }
+            if (CT5J2.Background != null)
+            {
+                GE5J2.Visibility = Visibility.Visible;
+                LE5J2.Visibility = Visibility.Visible;
+                LE5J2.Content = juego.jugador2.Tablerojugador[4].defensa;
+            }
+            if (CT6J2.Background != null)
+            {
+                GE6J2.Visibility = Visibility.Visible;
+                LE6J2.Visibility = Visibility.Visible;
+                LE6J2.Content = juego.jugador2.Tablerojugador[5].defensa;
+            }
+            if (CT7J2.Background != null)
+            {
+                GE7J2.Visibility = Visibility.Visible;
+                LE7J2.Visibility = Visibility.Visible;
+                LE7J2.Content = juego.jugador2.Tablerojugador[6].defensa;
+            }
+
+        }
+
+        private void cmvisibles()
+        {
+            if (juego.jugador1.turno == juego.dice)
+            {
+                if (juego.jugador1.Mano.Count == 0)
+                {
+                    CM1J1.Visibility = Visibility.Hidden;
+                    CM2J1.Visibility = Visibility.Hidden;
+                    CM3J1.Visibility = Visibility.Hidden;
+                    CM4J1.Visibility = Visibility.Hidden;
+                    CM5J1.Visibility = Visibility.Hidden;
+                    CM6J1.Visibility = Visibility.Hidden;
+                    CM7J1.Visibility = Visibility.Hidden;
+                    CM8J1.Visibility = Visibility.Hidden;
+                    CM9J1.Visibility = Visibility.Hidden;
+                    CM10J1.Visibility = Visibility.Hidden;
+                }
+                else if (juego.jugador1.Mano.Count == 1)
+                {
+                    CM1J1.Visibility = Visibility.Visible;
+                    CM2J1.Visibility = Visibility.Hidden;
+                    CM3J1.Visibility = Visibility.Hidden;
+                    CM4J1.Visibility = Visibility.Hidden;
+                    CM5J1.Visibility = Visibility.Hidden;
+                    CM6J1.Visibility = Visibility.Hidden;
+                    CM7J1.Visibility = Visibility.Hidden;
+                    CM8J1.Visibility = Visibility.Hidden;
+                    CM9J1.Visibility = Visibility.Hidden;
+                    CM10J1.Visibility = Visibility.Hidden;
+                }
+
+                else if (juego.jugador1.Mano.Count == 2)
+                {
+                    CM1J1.Visibility = Visibility.Visible;
+                    CM2J1.Visibility = Visibility.Visible;
+                    CM3J1.Visibility = Visibility.Hidden;
+                    CM4J1.Visibility = Visibility.Hidden;
+                    CM5J1.Visibility = Visibility.Hidden;
+                    CM6J1.Visibility = Visibility.Hidden;
+                    CM7J1.Visibility = Visibility.Hidden;
+                    CM8J1.Visibility = Visibility.Hidden;
+                    CM9J1.Visibility = Visibility.Hidden;
+                    CM10J1.Visibility = Visibility.Hidden;
+                }
+
+                else if (juego.jugador1.Mano.Count == 3)
+                {
+                    CM1J1.Visibility = Visibility.Visible;
+                    CM2J1.Visibility = Visibility.Visible;
+                    CM3J1.Visibility = Visibility.Visible;
+                    CM4J1.Visibility = Visibility.Hidden;
+                    CM5J1.Visibility = Visibility.Hidden;
+                    CM6J1.Visibility = Visibility.Hidden;
+                    CM7J1.Visibility = Visibility.Hidden;
+                    CM8J1.Visibility = Visibility.Hidden;
+                    CM9J1.Visibility = Visibility.Hidden;
+                    CM10J1.Visibility = Visibility.Hidden;
+                }
+                else if (juego.jugador1.Mano.Count == 4)
+                {
+                    CM1J1.Visibility = Visibility.Visible;
+                    CM2J1.Visibility = Visibility.Visible;
+                    CM3J1.Visibility = Visibility.Visible;
+                    CM4J1.Visibility = Visibility.Visible;
+                    CM5J1.Visibility = Visibility.Hidden;
+                    CM6J1.Visibility = Visibility.Hidden;
+                    CM7J1.Visibility = Visibility.Hidden;
+                    CM8J1.Visibility = Visibility.Hidden;
+                    CM9J1.Visibility = Visibility.Hidden;
+                    CM10J1.Visibility = Visibility.Hidden;
+                }
+
+                else if (juego.jugador1.Mano.Count == 5)
+                {
+                    CM1J1.Visibility = Visibility.Visible;
+                    CM2J1.Visibility = Visibility.Visible;
+                    CM3J1.Visibility = Visibility.Visible;
+                    CM4J1.Visibility = Visibility.Visible;
+                    CM5J1.Visibility = Visibility.Visible;
+                    CM6J1.Visibility = Visibility.Hidden;
+                    CM7J1.Visibility = Visibility.Hidden;
+                    CM8J1.Visibility = Visibility.Hidden;
+                    CM9J1.Visibility = Visibility.Hidden;
+                    CM10J1.Visibility = Visibility.Hidden;
+                }
+                else if (juego.jugador1.Mano.Count == 6)
+                {
+                    CM1J1.Visibility = Visibility.Visible;
+                    CM2J1.Visibility = Visibility.Visible;
+                    CM3J1.Visibility = Visibility.Visible;
+                    CM4J1.Visibility = Visibility.Visible;
+                    CM5J1.Visibility = Visibility.Visible;
+                    CM6J1.Visibility = Visibility.Visible;
+                    CM7J1.Visibility = Visibility.Hidden;
+                    CM8J1.Visibility = Visibility.Hidden;
+                    CM9J1.Visibility = Visibility.Hidden;
+                    CM10J1.Visibility = Visibility.Hidden;
+                }
+
+                else if (juego.jugador1.Mano.Count == 7)
+                {
+                    CM1J1.Visibility = Visibility.Visible;
+                    CM2J1.Visibility = Visibility.Visible;
+                    CM3J1.Visibility = Visibility.Visible;
+                    CM4J1.Visibility = Visibility.Visible;
+                    CM5J1.Visibility = Visibility.Visible;
+                    CM6J1.Visibility = Visibility.Visible;
+                    CM7J1.Visibility = Visibility.Visible;
+                    CM8J1.Visibility = Visibility.Hidden;
+                    CM9J1.Visibility = Visibility.Hidden;
+                    CM10J1.Visibility = Visibility.Hidden;
+                }
+
+                else if (juego.jugador1.Mano.Count == 8)
+                {
+                    CM1J1.Visibility = Visibility.Visible;
+                    CM2J1.Visibility = Visibility.Visible;
+                    CM3J1.Visibility = Visibility.Visible;
+                    CM4J1.Visibility = Visibility.Visible;
+                    CM5J1.Visibility = Visibility.Visible;
+                    CM6J1.Visibility = Visibility.Visible;
+                    CM7J1.Visibility = Visibility.Visible;
+                    CM8J1.Visibility = Visibility.Visible;
+                    CM9J1.Visibility = Visibility.Hidden;
+                    CM10J1.Visibility = Visibility.Hidden;
+                }
+                else if (juego.jugador1.Mano.Count == 9)
+                {
+                    CM1J1.Visibility = Visibility.Visible;
+                    CM2J1.Visibility = Visibility.Visible;
+                    CM3J1.Visibility = Visibility.Visible;
+                    CM4J1.Visibility = Visibility.Visible;
+                    CM5J1.Visibility = Visibility.Visible;
+                    CM6J1.Visibility = Visibility.Visible;
+                    CM7J1.Visibility = Visibility.Visible;
+                    CM8J1.Visibility = Visibility.Visible;
+                    CM9J1.Visibility = Visibility.Visible;
+                    CM10J1.Visibility = Visibility.Hidden;
+                }
+                else if (juego.jugador1.Mano.Count == 10)
+                {
+                    CM1J1.Visibility = Visibility.Visible;
+                    CM2J1.Visibility = Visibility.Visible;
+                    CM3J1.Visibility = Visibility.Visible;
+                    CM4J1.Visibility = Visibility.Visible;
+                    CM5J1.Visibility = Visibility.Visible;
+                    CM6J1.Visibility = Visibility.Visible;
+                    CM7J1.Visibility = Visibility.Visible;
+                    CM8J1.Visibility = Visibility.Visible;
+                    CM9J1.Visibility = Visibility.Visible;
+                    CM10J1.Visibility = Visibility.Visible;
+                }
+            }
+
+            else
+            {
+                if (juego.jugador2.Mano.Count == 0)
+                {
+                    CM1J2.Visibility = Visibility.Hidden;
+                    CM2J2.Visibility = Visibility.Hidden;
+                    CM3J2.Visibility = Visibility.Hidden;
+                    CM4J2.Visibility = Visibility.Hidden;
+                    CM5J2.Visibility = Visibility.Hidden;
+                    CM6J2.Visibility = Visibility.Hidden;
+                    CM7J2.Visibility = Visibility.Hidden;
+                    CM8J2.Visibility = Visibility.Hidden;
+                    CM9J2.Visibility = Visibility.Hidden;
+                    CM10J2.Visibility = Visibility.Hidden;
+                }
+                else if (juego.jugador2.Mano.Count == 1)
+                {
+                    CM1J2.Visibility = Visibility.Visible;
+                    CM2J2.Visibility = Visibility.Hidden;
+                    CM3J2.Visibility = Visibility.Hidden;
+                    CM4J2.Visibility = Visibility.Hidden;
+                    CM5J2.Visibility = Visibility.Hidden;
+                    CM6J2.Visibility = Visibility.Hidden;
+                    CM7J2.Visibility = Visibility.Hidden;
+                    CM8J2.Visibility = Visibility.Hidden;
+                    CM9J2.Visibility = Visibility.Hidden;
+                    CM10J2.Visibility = Visibility.Hidden;
+                }
+
+                else if (juego.jugador2.Mano.Count == 2)
+                {
+                    CM1J2.Visibility = Visibility.Visible;
+                    CM2J2.Visibility = Visibility.Visible;
+                    CM3J2.Visibility = Visibility.Hidden;
+                    CM4J2.Visibility = Visibility.Hidden;
+                    CM5J2.Visibility = Visibility.Hidden;
+                    CM6J2.Visibility = Visibility.Hidden;
+                    CM7J2.Visibility = Visibility.Hidden;
+                    CM8J2.Visibility = Visibility.Hidden;
+                    CM9J2.Visibility = Visibility.Hidden;
+                    CM10J2.Visibility = Visibility.Hidden;
+                }
+
+                else if (juego.jugador2.Mano.Count == 3)
+                {
+                    CM1J2.Visibility = Visibility.Visible;
+                    CM2J2.Visibility = Visibility.Visible;
+                    CM3J2.Visibility = Visibility.Visible;
+                    CM4J2.Visibility = Visibility.Hidden;
+                    CM5J2.Visibility = Visibility.Hidden;
+                    CM6J2.Visibility = Visibility.Hidden;
+                    CM7J2.Visibility = Visibility.Hidden;
+                    CM8J2.Visibility = Visibility.Hidden;
+                    CM9J2.Visibility = Visibility.Hidden;
+                    CM10J2.Visibility = Visibility.Hidden;
+                }
+                else if (juego.jugador2.Mano.Count == 4)
+                {
+                    CM1J2.Visibility = Visibility.Visible;
+                    CM2J2.Visibility = Visibility.Visible;
+                    CM3J2.Visibility = Visibility.Visible;
+                    CM4J2.Visibility = Visibility.Visible;
+                    CM5J2.Visibility = Visibility.Hidden;
+                    CM6J2.Visibility = Visibility.Hidden;
+                    CM7J2.Visibility = Visibility.Hidden;
+                    CM8J2.Visibility = Visibility.Hidden;
+                    CM9J2.Visibility = Visibility.Hidden;
+                    CM10J2.Visibility = Visibility.Hidden;
+                }
+
+                else if (juego.jugador2.Mano.Count == 5)
+                {
+                    CM1J2.Visibility = Visibility.Visible;
+                    CM2J2.Visibility = Visibility.Visible;
+                    CM3J2.Visibility = Visibility.Visible;
+                    CM4J2.Visibility = Visibility.Visible;
+                    CM5J2.Visibility = Visibility.Visible;
+                    CM6J2.Visibility = Visibility.Hidden;
+                    CM7J2.Visibility = Visibility.Hidden;
+                    CM8J2.Visibility = Visibility.Hidden;
+                    CM9J2.Visibility = Visibility.Hidden;
+                    CM10J2.Visibility = Visibility.Hidden;
+                }
+                else if (juego.jugador2.Mano.Count == 6)
+                {
+                    CM1J2.Visibility = Visibility.Visible;
+                    CM2J2.Visibility = Visibility.Visible;
+                    CM3J2.Visibility = Visibility.Visible;
+                    CM4J2.Visibility = Visibility.Visible;
+                    CM5J2.Visibility = Visibility.Visible;
+                    CM6J2.Visibility = Visibility.Visible;
+                    CM7J2.Visibility = Visibility.Hidden;
+                    CM8J2.Visibility = Visibility.Hidden;
+                    CM9J2.Visibility = Visibility.Hidden;
+                    CM10J2.Visibility = Visibility.Hidden;
+                }
+
+                else if (juego.jugador2.Mano.Count == 7)
+                {
+                    CM1J2.Visibility = Visibility.Visible;
+                    CM2J2.Visibility = Visibility.Visible;
+                    CM3J2.Visibility = Visibility.Visible;
+                    CM4J2.Visibility = Visibility.Visible;
+                    CM5J2.Visibility = Visibility.Visible;
+                    CM6J2.Visibility = Visibility.Visible;
+                    CM7J2.Visibility = Visibility.Visible;
+                    CM8J2.Visibility = Visibility.Hidden;
+                    CM9J2.Visibility = Visibility.Hidden;
+                    CM10J2.Visibility = Visibility.Hidden;
+                }
+
+                else if (juego.jugador2.Mano.Count == 8)
+                {
+                    CM1J2.Visibility = Visibility.Visible;
+                    CM2J2.Visibility = Visibility.Visible;
+                    CM3J2.Visibility = Visibility.Visible;
+                    CM4J2.Visibility = Visibility.Visible;
+                    CM5J2.Visibility = Visibility.Visible;
+                    CM6J2.Visibility = Visibility.Visible;
+                    CM7J2.Visibility = Visibility.Visible;
+                    CM8J2.Visibility = Visibility.Visible;
+                    CM9J2.Visibility = Visibility.Hidden;
+                    CM10J2.Visibility = Visibility.Hidden;
+                }
+                else if (juego.jugador2.Mano.Count == 9)
+                {
+                    CM1J2.Visibility = Visibility.Visible;
+                    CM2J2.Visibility = Visibility.Visible;
+                    CM3J2.Visibility = Visibility.Visible;
+                    CM4J2.Visibility = Visibility.Visible;
+                    CM5J2.Visibility = Visibility.Visible;
+                    CM6J2.Visibility = Visibility.Visible;
+                    CM7J2.Visibility = Visibility.Visible;
+                    CM8J2.Visibility = Visibility.Visible;
+                    CM9J2.Visibility = Visibility.Visible;
+                    CM10J2.Visibility = Visibility.Hidden;
+                }
+                else if (juego.jugador2.Mano.Count == 10)
+                {
+                    CM1J2.Visibility = Visibility.Visible;
+                    CM2J2.Visibility = Visibility.Visible;
+                    CM3J2.Visibility = Visibility.Visible;
+                    CM4J2.Visibility = Visibility.Visible;
+                    CM5J2.Visibility = Visibility.Visible;
+                    CM6J2.Visibility = Visibility.Visible;
+                    CM7J2.Visibility = Visibility.Visible;
+                    CM8J2.Visibility = Visibility.Visible;
+                    CM9J2.Visibility = Visibility.Visible;
+                    CM10J2.Visibility = Visibility.Visible;
+                }
+            }
+
+
+        }
+
+        private void ctvisibles()
+        {
+            if (juego.jugador1.Tablerojugador.Count == 0)
+            {
+                CT1J1.Visibility = Visibility.Hidden;
+                CT2J1.Visibility = Visibility.Hidden;
+                CT3J1.Visibility = Visibility.Hidden;
+                CT4J1.Visibility = Visibility.Hidden;
+                CT5J1.Visibility = Visibility.Hidden;
+                CT6J1.Visibility = Visibility.Hidden;
+                CT7J1.Visibility = Visibility.Hidden;
+            }
+            else if (juego.jugador1.Tablerojugador.Count == 1)
+            {
+                CT1J1.Visibility = Visibility.Visible;
+                CT2J1.Visibility = Visibility.Hidden;
+                CT3J1.Visibility = Visibility.Hidden;
+                CT4J1.Visibility = Visibility.Hidden;
+                CT5J1.Visibility = Visibility.Hidden;
+                CT6J1.Visibility = Visibility.Hidden;
+                CT7J1.Visibility = Visibility.Hidden;
+            }
+            else if (juego.jugador1.Tablerojugador.Count == 2)
+            {
+                CT1J1.Visibility = Visibility.Visible;
+                CT2J1.Visibility = Visibility.Visible;
+                CT3J1.Visibility = Visibility.Hidden;
+                CT4J1.Visibility = Visibility.Hidden;
+                CT5J1.Visibility = Visibility.Hidden;
+                CT6J1.Visibility = Visibility.Hidden;
+                CT7J1.Visibility = Visibility.Hidden;
+            }
+            else if (juego.jugador1.Tablerojugador.Count == 3)
+            {
+                CT1J1.Visibility = Visibility.Visible;
+                CT2J1.Visibility = Visibility.Visible;
+                CT3J1.Visibility = Visibility.Visible;
+                CT4J1.Visibility = Visibility.Hidden;
+                CT5J1.Visibility = Visibility.Hidden;
+                CT6J1.Visibility = Visibility.Hidden;
+                CT7J1.Visibility = Visibility.Hidden;
+            }
+            else if (juego.jugador1.Tablerojugador.Count == 4)
+            {
+                CT1J1.Visibility = Visibility.Visible;
+                CT2J1.Visibility = Visibility.Visible;
+                CT3J1.Visibility = Visibility.Visible;
+                CT4J1.Visibility = Visibility.Visible;
+                CT5J1.Visibility = Visibility.Hidden;
+                CT6J1.Visibility = Visibility.Hidden;
+                CT7J1.Visibility = Visibility.Hidden;
+            }
+            else if (juego.jugador1.Tablerojugador.Count == 5)
+            {
+                CT1J1.Visibility = Visibility.Visible;
+                CT2J1.Visibility = Visibility.Visible;
+                CT3J1.Visibility = Visibility.Visible;
+                CT4J1.Visibility = Visibility.Visible;
+                CT5J1.Visibility = Visibility.Visible;
+                CT6J1.Visibility = Visibility.Hidden;
+                CT7J1.Visibility = Visibility.Hidden;
+            }
+            else if (juego.jugador1.Tablerojugador.Count == 6)
+            {
+                CT1J1.Visibility = Visibility.Visible;
+                CT2J1.Visibility = Visibility.Visible;
+                CT3J1.Visibility = Visibility.Visible;
+                CT4J1.Visibility = Visibility.Visible;
+                CT5J1.Visibility = Visibility.Visible;
+                CT6J1.Visibility = Visibility.Visible;
+                CT7J1.Visibility = Visibility.Hidden;
+            }
+            else if (juego.jugador1.Tablerojugador.Count == 7)
+            {
+                CT1J1.Visibility = Visibility.Visible;
+                CT2J1.Visibility = Visibility.Visible;
+                CT3J1.Visibility = Visibility.Visible;
+                CT4J1.Visibility = Visibility.Visible;
+                CT5J1.Visibility = Visibility.Visible;
+                CT6J1.Visibility = Visibility.Visible;
+                CT7J1.Visibility = Visibility.Visible;
+            }
+
+            if (juego.jugador2.Tablerojugador.Count == 0)
+            {
+                CT1J2.Visibility = Visibility.Hidden;
+                CT2J2.Visibility = Visibility.Hidden;
+                CT3J2.Visibility = Visibility.Hidden;
+                CT4J2.Visibility = Visibility.Hidden;
+                CT5J2.Visibility = Visibility.Hidden;
+                CT6J2.Visibility = Visibility.Hidden;
+                CT7J2.Visibility = Visibility.Hidden;
+            }
+            else if (juego.jugador2.Tablerojugador.Count == 1)
+            {
+                CT1J2.Visibility = Visibility.Visible;
+                CT2J2.Visibility = Visibility.Hidden;
+                CT3J2.Visibility = Visibility.Hidden;
+                CT4J2.Visibility = Visibility.Hidden;
+                CT5J2.Visibility = Visibility.Hidden;
+                CT6J2.Visibility = Visibility.Hidden;
+                CT7J2.Visibility = Visibility.Hidden;
+            }
+            else if (juego.jugador2.Tablerojugador.Count == 2)
+            {
+                CT1J2.Visibility = Visibility.Visible;
+                CT2J2.Visibility = Visibility.Visible;
+                CT3J2.Visibility = Visibility.Hidden;
+                CT4J2.Visibility = Visibility.Hidden;
+                CT5J2.Visibility = Visibility.Hidden;
+                CT6J2.Visibility = Visibility.Hidden;
+                CT7J2.Visibility = Visibility.Hidden;
+            }
+            else if (juego.jugador2.Tablerojugador.Count == 3)
+            {
+                CT1J2.Visibility = Visibility.Visible;
+                CT2J2.Visibility = Visibility.Visible;
+                CT3J2.Visibility = Visibility.Visible;
+                CT4J2.Visibility = Visibility.Hidden;
+                CT5J2.Visibility = Visibility.Hidden;
+                CT6J2.Visibility = Visibility.Hidden;
+                CT7J2.Visibility = Visibility.Hidden;
+            }
+            else if (juego.jugador2.Tablerojugador.Count == 4)
+            {
+                CT1J2.Visibility = Visibility.Visible;
+                CT2J2.Visibility = Visibility.Visible;
+                CT3J2.Visibility = Visibility.Visible;
+                CT4J2.Visibility = Visibility.Visible;
+                CT5J2.Visibility = Visibility.Hidden;
+                CT6J2.Visibility = Visibility.Hidden;
+                CT7J2.Visibility = Visibility.Hidden;
+            }
+            else if (juego.jugador2.Tablerojugador.Count == 5)
+            {
+                CT1J2.Visibility = Visibility.Visible;
+                CT2J2.Visibility = Visibility.Visible;
+                CT3J2.Visibility = Visibility.Visible;
+                CT4J2.Visibility = Visibility.Visible;
+                CT5J2.Visibility = Visibility.Visible;
+                CT6J2.Visibility = Visibility.Hidden;
+                CT7J2.Visibility = Visibility.Hidden;
+            }
+            else if (juego.jugador2.Tablerojugador.Count == 6)
+            {
+                CT1J2.Visibility = Visibility.Visible;
+                CT2J2.Visibility = Visibility.Visible;
+                CT3J2.Visibility = Visibility.Visible;
+                CT4J2.Visibility = Visibility.Visible;
+                CT5J2.Visibility = Visibility.Visible;
+                CT6J2.Visibility = Visibility.Visible;
+                CT7J2.Visibility = Visibility.Hidden;
+            }
+            else if (juego.jugador2.Tablerojugador.Count == 7)
+            {
+                CT1J2.Visibility = Visibility.Visible;
+                CT2J2.Visibility = Visibility.Visible;
+                CT3J2.Visibility = Visibility.Visible;
+                CT4J2.Visibility = Visibility.Visible;
+                CT5J2.Visibility = Visibility.Visible;
+                CT6J2.Visibility = Visibility.Visible;
+                CT7J2.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void BotonHeroeJ1_Click(object sender, RoutedEventArgs e)
+        {
+            eleccion = 1;
+            IJ2 = -1;
+
+            if (CTJ2 == "CT1J2")
+            {
+                IJ2 = 0;
+            }
+
+            else if (CTJ2 == "CT2J2")
+            {
+                IJ2 = 1;
+            }
+
+            else if (CTJ2 == "CT3J2")
+            {
+                IJ2 = 2;
+            }
+
+            else if (CTJ2 == "CT4J2")
+            {
+                IJ2 = 3;
+            }
+
+            else if (CTJ2 == "CT5J2")
+            {
+                IJ2 = 4;
+            }
+
+            else if (CTJ2 == "CT6J2")
+            {
+                IJ2 = 5;
+            }
+
+            else if (CTJ2 == "CT7J2")
+            {
+                IJ2 = 6;
+            }
+
+            if (IJ2 != -1)
+            {
+                juego.jugador2.Enfrentar(juego.jugador2, juego.jugador1, IJ2, IJ1, eleccion);
+                LabelVidaJ1.Content = juego.jugador1.vida;
+                LabelArmorJ1.Content = juego.jugador1.defensa;
+            }
+
+        }
+
+        private void BotonHeroeJ2_Click(object sender, RoutedEventArgs e)
+        {
+            eleccion = 1;
+            IJ1 = -1;
+
+            if (CTJ1 == "CT1J1")
+            {
+                IJ1 = 0;
+            }
+
+            else if (CTJ1 == "CT2J1")
+            {
+                IJ1 = 1;
+            }
+
+            else if (CTJ1 == "CT3J1")
+            {
+                IJ2 = 1;
+            }
+
+            else if (CTJ1 == "CT4J1")
+            {
+                IJ1 = 3;
+            }
+
+            else if (CTJ1 == "CT5J1")
+            {
+                IJ1 = 4;
+            }
+
+            else if (CTJ1 == "CT6J1")
+            {
+                IJ1 = 5;
+            }
+
+            else if (CTJ1 == "CT7J1")
+            {
+                IJ1 = 6;
+            }
+
+            if (IJ1 != -1)
+            {
+                juego.jugador1.Enfrentar(juego.jugador1, juego.jugador2, IJ1, IJ2, eleccion);
+                LabelVidaJ2.Content = juego.jugador2.vida;
+                LabelArmorJ2.Content = juego.jugador2.defensa;
+            }
         }
     }
 
