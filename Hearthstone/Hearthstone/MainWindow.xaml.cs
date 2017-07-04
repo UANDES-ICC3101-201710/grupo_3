@@ -910,23 +910,10 @@ namespace Hearthstone
 
         }
 
-        public static void SaveGame(Juego Game)
+        public static Juego LoadGame(string fileName)
         {
-            Console.WriteLine("Nombre del archivo: ");
-            string fileName = Console.ReadLine();
-            FileStream fs = new FileStream(fileName, FileMode.CreateNew);
 
-            IFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(fs, Game);
-            fs.Close();
-        }
-
-        public static Juego LoadGame()
-        {
-            Console.WriteLine("Nombre del archivo: ");
-            string fileName = Console.ReadLine();
             FileStream fs = new FileStream(fileName, FileMode.Open);
-
             IFormatter formatter = new BinaryFormatter();
             Juego Game = formatter.Deserialize(fs) as Juego;
             fs.Close();
@@ -963,6 +950,9 @@ namespace Hearthstone
             Cargar_Partida.Visibility = Visibility.Hidden;
             Partida_Nueva.Visibility = Visibility.Hidden;
 
+            CPLABEL.Visibility = Visibility.Visible;
+            CPTB.Visibility = Visibility.Visible;
+            CPBOTON.Visibility = Visibility.Visible;
 
         }
 
@@ -986,6 +976,8 @@ namespace Hearthstone
             HabilidadJ2.Visibility = Visibility.Visible;
             label.Visibility = Visibility.Visible;
             label1.Visibility = Visibility.Visible;
+            comboBox.Text = "Druid";
+            comboBox1.Text = "Druid";
 
 
 
@@ -1179,7 +1171,7 @@ namespace Hearthstone
             Jug2.Content = label22.Content;
             Jug1.Visibility = Visibility.Visible;
             Jug2.Visibility = Visibility.Visible;
-            MessageBox.Show("Seleccione las cartas que quiere cambiar");
+            MessageBox.Show(juego.jugador1.nombrejugador +" seleccione las cartas que quiere cambiar");
 
 
 
@@ -3216,6 +3208,16 @@ namespace Hearthstone
             {
                 BotonArmaJ2.Visibility = Visibility.Hidden;
             }
+            if (DAJ1 > 0)
+            {
+                BotonArmaJ1.Visibility = Visibility.Visible;
+            }
+
+            if (DAJ2 > 0)
+            {
+                BotonArmaJ2.Visibility = Visibility.Visible;
+            }
+
 
             if (juego.jugador1.defensa <= 0)
             {
@@ -3228,10 +3230,35 @@ namespace Hearthstone
                 Escudo2.Visibility = Visibility.Hidden;
                 LabelArmorJ2.Visibility = Visibility.Hidden;
             }
+            if (juego.jugador1.defensa > 0)
+            {
+                Escudo1.Visibility = Visibility.Visible;
+                LabelArmorJ1.Visibility = Visibility.Visible;
+                LabelArmorJ1.Content = juego.jugador1.defensa;
+            }
+
+            if (juego.jugador2.defensa > 0)
+            {
+                Escudo2.Visibility = Visibility.Visible;
+                LabelArmorJ2.Visibility = Visibility.Visible;
+                LabelArmorJ2.Content = juego.jugador2.defensa;
+            }
 
             ActualizarTableroJ1(juego.jugador1.Tablerojugador);
             ActualizarTableroJ2(juego.jugador2.Tablerojugador);
             visibilidadcartas();
+            LabelVidaJ1.Visibility = Visibility.Visible;
+            LabelVidaJ1.Content = juego.jugador1.vida;
+            LabelGemasJ1.Content = juego.jugador1.gema;
+            LabelMaxGemasJ1.Content = "/ " + juego.jugador1.limitegema;
+            LabelMaxGemasJ1.Visibility = Visibility.Visible;
+            LabelVidaJ2.Visibility = Visibility.Visible;
+            LabelVidaJ2.Content = juego.jugador2.vida;
+            LabelGemasJ2.Content = juego.jugador2.gema;
+            LabelMaxGemasJ2.Content = "/ " + juego.jugador2.limitegema;
+            LabelMaxGemasJ2.Visibility = Visibility.Visible;
+            RendirseJ1.Visibility = Visibility.Visible;
+            RendirseJ2.Visibility = Visibility.Visible;
 
             vidaesbirros();
             ctvisibles();
@@ -4933,101 +4960,146 @@ namespace Hearthstone
         {
             if (juego.jugador1.nombreheroe == "Druid")
             {
-                //falta el ataque por el turno
-                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                
+                if (juego.jugador1.habilidadusada == false)
                 {
-                    HabDruidMageJ1 = 1;
-                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    if (juego.jugador1.gema >= 2)
+                    {
+                        HabDruidMageJ1 = 1;
+                        BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                    else
+                    {
+                        MessageBox.Show("No tienes suficientes gemas");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
             }
 
             if (juego.jugador1.nombreheroe == "Hunter")
             {
-                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                if (juego.jugador1.habilidadusada == false)
                 {
-                    juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
-                    LabelGemasJ1.Content = juego.jugador1.gema;
-                    LabelVidaJ2.Content = juego.jugador2.vida;
-                    LabelArmorJ2.Content = juego.jugador2.defensa;
-                    actualizarimagenes();
-                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    if (juego.jugador1.gema >= 2)
+                    {
+                        juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
+                        LabelGemasJ1.Content = juego.jugador1.gema;
+                        LabelVidaJ2.Content = juego.jugador2.vida;
+                        LabelArmorJ2.Content = juego.jugador2.defensa;
+                        actualizarimagenes();
+                        BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                    else
+                    {
+                        MessageBox.Show("No tienes suficientes gemas");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
             }
 
             if (juego.jugador1.nombreheroe == "Mage")
             {
-                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                if (juego.jugador1.habilidadusada == false)
                 {
-                    HabDruidMageJ1 = 1;
-                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
-                }
-                else
-                {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
-                }
-                    
-            }
-
-            if (juego.jugador1.nombreheroe == "Paladin")
-            {
-                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
-                {
-                    if (juego.jugador1.Tablerojugador.Count == 7)
+                    if (juego.jugador1.gema >= 2)
                     {
-                        MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                        HabDruidMageJ1 = 1;
+                        BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
                     }
                     else
                     {
-                        juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
-                        LabelGemasJ1.Content = juego.jugador1.gema;
-                        actualizarimagenes();
-                        BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                        MessageBox.Show("No tienes suficientes gemas");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
+                }
+            }
+
+
+            if (juego.jugador1.nombreheroe == "Paladin")
+            {
+                if (juego.jugador1.habilidadusada == false)
+                {
+                    if (juego.jugador1.Tablerojugador.Count == 7)
+                    {
+                        MessageBox.Show("El tablero está completo");
+                    }
+                    else
+                    {
+                        if (juego.jugador1.gema >= 2)
+                        {
+                            juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
+                            LabelGemasJ1.Content = juego.jugador1.gema;
+                            actualizarimagenes();
+                            BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                        }
+                        else
+                        {
+                            MessageBox.Show("No tienes suficientes gemas");
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
             }
 
             if (juego.jugador1.nombreheroe == "Priest")
             {
-                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                if (juego.jugador1.habilidadusada == false)
                 {
-                    HabPriestJ1 = 1;
-                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    if (juego.jugador1.gema >= 2)
+                    {
+                        HabPriestJ1 = 1;
+                        BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                    else
+                    {
+                        MessageBox.Show("No tienes suficientes gemas");
+                    }
                 }
+
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
             }
+        
 
             if (juego.jugador1.nombreheroe == "Rogue")
             {
-                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                if (juego.jugador1.habilidadusada == false)
                 {
-                    juego.jugador1.habilidadusada = true;
-                    juego.jugador1.gema = juego.jugador1.gema - 2;
-                    LabelGemasJ1.Content = juego.jugador1.gema;
-                    DAJ1 = 2;
-                    armausadaJ1 = 0;
-                    BotonArmaJ1.Visibility = Visibility.Visible;
-                    actualizarimagenes();
-                    BotonArmaJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonArmaJ1), "Recursos/Wickedknife.png")));
-                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    if (juego.jugador1.gema >= 2)
+                    {
+                        juego.jugador1.habilidadusada = true;
+                        juego.jugador1.gema = juego.jugador1.gema - 2;
+                        LabelGemasJ1.Content = juego.jugador1.gema;
+                        DAJ1 = 2;
+                        armausadaJ1 = 0;
+                        BotonArmaJ1.Visibility = Visibility.Visible;
+                        actualizarimagenes();
+                        BotonArmaJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonArmaJ1), "Recursos/Wickedknife.png")));
+                        BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                    else
+                    {
+                        MessageBox.Show("No tienes suficientes gemas");
+                    }
                 }
+
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
 
             }
@@ -5035,59 +5107,84 @@ namespace Hearthstone
             if (juego.jugador1.nombreheroe == "Shaman")
             {
                 //falta el metodo del Healing Totem
-                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                if (juego.jugador1.habilidadusada == false)
                 {
                     if (juego.jugador1.Tablerojugador.Count == 7)
                     {
-                        MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                        MessageBox.Show("El tablero está completo");
                     }
                     else
                     {
-                        juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
-                        LabelGemasJ1.Content = juego.jugador1.gema;
-                        actualizarimagenes();
-                        BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                        if (juego.jugador1.gema >= 2)
+                        {
+                            juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
+                            LabelGemasJ1.Content = juego.jugador1.gema;
+                            actualizarimagenes();
+                            BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                        }
+                        else
+                        {
+                            MessageBox.Show("No tienes suficientes gemas");
+                        }
+
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
             }
 
             if (juego.jugador1.nombreheroe == "Warlock")
             {
-                if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
+                if (juego.jugador1.habilidadusada == false)
                 {
-                    juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
-                    LabelGemasJ1.Content = juego.jugador1.gema;
-                    LabelVidaJ1.Content = juego.jugador1.vida;
-                    actualizarimagenes();
-                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    if (juego.jugador1.gema >= 2)
+                    {
+                        juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
+                        LabelGemasJ1.Content = juego.jugador1.gema;
+                        LabelVidaJ1.Content = juego.jugador1.vida;
+                        actualizarimagenes();
+                        BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                    else
+                    {
+                        MessageBox.Show("No tienes suficientes gemas");
+                    }
                 }
+
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
-                    
+
             }
 
             if (juego.jugador1.nombreheroe == "Warrior")
             {
                 if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
                 {
-                    juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
-                    LabelGemasJ1.Content = juego.jugador1.gema;
-                    Escudo1.Visibility = Visibility.Visible;
-                    LabelArmorJ1.Content = juego.jugador1.defensa;
-                    LabelArmorJ1.Visibility = Visibility.Visible;
-                    actualizarimagenes();
-                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    if (juego.jugador1.gema >= 2)
+                    {
+                        juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
+                        LabelGemasJ1.Content = juego.jugador1.gema;
+                        Escudo1.Visibility = Visibility.Visible;
+                        LabelArmorJ1.Content = juego.jugador1.defensa;
+                        LabelArmorJ1.Visibility = Visibility.Visible;
+                        actualizarimagenes();
+                        BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                    else
+                    {
+                        MessageBox.Show("No tienes suficientes gemas");
+                    }
                 }
+
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
+
             }
         }
    
@@ -5095,158 +5192,224 @@ namespace Hearthstone
         {
             if (juego.jugador2.nombreheroe == "Druid")
             {
-                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                if (juego.jugador2.habilidadusada == false)
                 {
-                    HabDruidMageJ2 = 1;
-                    BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    if (juego.jugador2.gema >= 2)
+                    {
+                        HabDruidMageJ2 = 1;
+                        BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                    else
+                    {
+                        MessageBox.Show("No tienes suficientes gemas");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
+
             }
 
             if (juego.jugador2.nombreheroe == "Hunter")
             {
-                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                if (juego.jugador2.habilidadusada == false)
                 {
-                    juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
-                    LabelGemasJ2.Content = juego.jugador2.gema;
-                    LabelVidaJ1.Content = juego.jugador1.vida;
-                    LabelArmorJ1.Content = juego.jugador1.defensa;
-                    actualizarimagenes();
-                    BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    if (juego.jugador2.gema >= 2)
+                    {
+                        juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
+                        LabelGemasJ2.Content = juego.jugador2.gema;
+                        LabelVidaJ1.Content = juego.jugador1.vida;
+                        LabelArmorJ1.Content = juego.jugador1.defensa;
+                        actualizarimagenes();
+                        BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                    else
+                    {
+                        MessageBox.Show("No tienes suficientes gemas");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
+
             }
 
             if (juego.jugador2.nombreheroe == "Mage")
             {
-                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                if (juego.jugador2.habilidadusada == false)
                 {
-                    HabDruidMageJ2 = 1;
-                    BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    if (juego.jugador2.gema >= 2)
+                    {
+                        HabDruidMageJ2 = 1;
+                        BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                    else
+                    {
+                        MessageBox.Show("No tienes suficientes gemas");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
+
             }
            
             if (juego.jugador2.nombreheroe == "Paladin")
             {
-                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                if (juego.jugador2.habilidadusada == false)
 
                 {
                     if (juego.jugador2.Tablerojugador.Count == 7)
                     {
-                        MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                        MessageBox.Show("El tablero está completo");
                     }
                     else
                     {
-                        juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
-                        LabelGemasJ2.Content = juego.jugador2.gema;
-                        actualizarimagenes();
-                        BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                        if (juego.jugador2.gema >= 2)
+                        {
+                            juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
+                            LabelGemasJ2.Content = juego.jugador2.gema;
+                            actualizarimagenes();
+                            BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                        }
+                        else
+                        {
+                            MessageBox.Show("No tienes suficientes gemas");
+                        }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
-                   
+
             }
 
             if (juego.jugador2.nombreheroe == "Priest")
             {
-                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                if (juego.jugador2.habilidadusada == false)
                 {
-                    HabPriestJ2 = 1;
-                    BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    if (juego.jugador2.gema >= 2)
+                    {
+                        HabPriestJ2 = 1;
+                        BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                    else
+                    {
+                        MessageBox.Show("No tienes suficientes gemas");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
             }
 
             if (juego.jugador2.nombreheroe == "Rogue")
             {
-                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                if (juego.jugador2.habilidadusada == false)
                 {
-                    juego.jugador2.habilidadusada = true;
-                    juego.jugador2.gema = juego.jugador2.gema - 2;
-                    LabelGemasJ2.Content = juego.jugador2.gema;
-                    DAJ2 = 2;
-                    armausadaJ2 = 0;
-                    BotonArmaJ2.Visibility = Visibility.Visible;
-                    actualizarimagenes();
-                    BotonArmaJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonArmaJ2), "Recursos/Wickedknife.png")));
-                    BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    if (juego.jugador2.gema >= 2)
+                    {
+                        juego.jugador2.habilidadusada = true;
+                        juego.jugador2.gema = juego.jugador2.gema - 2;
+                        LabelGemasJ2.Content = juego.jugador2.gema;
+                        DAJ2 = 2;
+                        armausadaJ2 = 0;
+                        BotonArmaJ2.Visibility = Visibility.Visible;
+                        actualizarimagenes();
+                        BotonArmaJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonArmaJ2), "Recursos/Wickedknife.png")));
+                        BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                    else
+                    {
+                        MessageBox.Show("No tienes suficientes gemas");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
             }
-
+                          
             if (juego.jugador2.nombreheroe == "Shaman")
             {
-                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                if (juego.jugador2.habilidadusada == false)
 
                 {
                     if (juego.jugador2.Tablerojugador.Count == 7)
                     {
-                        MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                        MessageBox.Show("El tablero está completo");
                     }
                     else
                     {
-                        juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
-                        LabelGemasJ2.Content = juego.jugador2.gema;
-                        actualizarimagenes();
-                        BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                        if (juego.jugador2.gema >= 2)
+                        {
+                            juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
+                            LabelGemasJ2.Content = juego.jugador2.gema;
+                            actualizarimagenes();
+                            BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                        }
+                        else
+                        {
+                            MessageBox.Show("No tienes suficientes gemas");
+                        }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
             }
 
             if (juego.jugador2.nombreheroe == "Warlock")
             {
-                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                if (juego.jugador2.habilidadusada == false)
                 {
-                    juego.jugador1.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
-                    LabelGemasJ2.Content = juego.jugador2.gema;
-                    LabelVidaJ2.Content = juego.jugador2.vida;
-                    actualizarimagenes();
-                    BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    if (juego.jugador2.gema >= 2)
+                    {
+                        juego.jugador1.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
+                        LabelGemasJ2.Content = juego.jugador2.gema;
+                        LabelVidaJ2.Content = juego.jugador2.vida;
+                        actualizarimagenes();
+                        BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                    else
+                    {
+                        MessageBox.Show("No tienes suficientes gemas");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
-            }
+            }  
 
             if (juego.jugador2.nombreheroe == "Warrior")
             {
-                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                if (juego.jugador2.habilidadusada == false)
                 {
-                    juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
-                    LabelGemasJ2.Content = juego.jugador2.gema;
-                    Escudo2.Visibility = Visibility.Visible;
-                    LabelArmorJ2.Content = juego.jugador2.defensa;
-                    LabelArmorJ2.Visibility = Visibility.Visible;
-                    actualizarimagenes();
-                    BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    if (juego.jugador2.gema >= 2)
+                    {
+                        juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
+                        LabelGemasJ2.Content = juego.jugador2.gema;
+                        Escudo2.Visibility = Visibility.Visible;
+                        LabelArmorJ2.Content = juego.jugador2.defensa;
+                        LabelArmorJ2.Visibility = Visibility.Visible;
+                        actualizarimagenes();
+                        BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    }
+                    else
+                    {
+                        MessageBox.Show("No tienes suficientes gemas");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                    MessageBox.Show("Ya utilizaste tu habilidad de heroe");
                 }
             }
         }
@@ -5409,6 +5572,10 @@ namespace Hearthstone
                 {
                     MessageBox.Show("Ya utilisaste tu arma por este turno");
                 }
+                LabelArmorJ2.Content = juego.jugador2.defensa;
+                LabelArmorJ2.Visibility = Visibility.Visible;
+                Escudo2.Visibility = Visibility.Visible;
+                LabelVidaJ2.Content = juego.jugador2.vida;
                 armausadaJ2 = 1;
                 actualizarimagenes();
             }
@@ -5427,8 +5594,9 @@ namespace Hearthstone
                 if (juego.jugador2.nombreheroe == "Druid")
                 {
                     LabelArmorJ2.Content = juego.jugador2.defensa;
-                    LabelArmorJ2.Visibility = Visibility.Visible;
+                    LabelArmorJ2.Visibility = Visibility.Visible;                    
                     Escudo2.Visibility = Visibility.Visible;
+                    LabelVidaJ2.Content = juego.jugador2.vida;
                 }
                 actualizarimagenes();
             }
@@ -5456,6 +5624,10 @@ namespace Hearthstone
                     MessageBox.Show("Ya utilisaste tu arma por este turno");
                 }
                 armausadaJ2 = 1;
+                LabelArmorJ2.Content = juego.jugador2.defensa;
+                LabelArmorJ2.Visibility = Visibility.Visible;
+                Escudo2.Visibility = Visibility.Visible;
+                LabelVidaJ2.Content = juego.jugador2.vida;
                 actualizarimagenes();
             }
             else if (HabPriestJ1 == 1)
@@ -5475,6 +5647,7 @@ namespace Hearthstone
                     LabelArmorJ2.Content = juego.jugador2.defensa;
                     LabelArmorJ2.Visibility = Visibility.Visible;
                     Escudo2.Visibility = Visibility.Visible;
+                    LabelVidaJ2.Content = juego.jugador2.vida;
                 }
                 actualizarimagenes();
             }
@@ -5500,6 +5673,10 @@ namespace Hearthstone
                 {
                     MessageBox.Show("Ya utilisaste tu arma por este turno");
                 }
+                LabelArmorJ2.Content = juego.jugador2.defensa;
+                LabelArmorJ2.Visibility = Visibility.Visible;
+                Escudo2.Visibility = Visibility.Visible;
+                LabelVidaJ2.Content = juego.jugador2.vida;
                 armausadaJ2 = 1;
                 actualizarimagenes();
             }
@@ -5520,6 +5697,7 @@ namespace Hearthstone
                     LabelArmorJ2.Content = juego.jugador2.defensa;
                     LabelArmorJ2.Visibility = Visibility.Visible;
                     Escudo2.Visibility = Visibility.Visible;
+                    LabelVidaJ2.Content = juego.jugador2.vida;
                 }
                 actualizarimagenes();
             }
@@ -5546,6 +5724,10 @@ namespace Hearthstone
                     MessageBox.Show("Ya utilisaste tu arma por este turno");
                 }
                 armausadaJ2 = 1;
+                LabelArmorJ2.Content = juego.jugador2.defensa;
+                LabelArmorJ2.Visibility = Visibility.Visible;
+                Escudo2.Visibility = Visibility.Visible;
+                LabelVidaJ2.Content = juego.jugador2.vida;
                 actualizarimagenes();
             }
             else if (HabPriestJ1 == 1)
@@ -5565,6 +5747,7 @@ namespace Hearthstone
                     LabelArmorJ2.Content = juego.jugador2.defensa;
                     LabelArmorJ2.Visibility = Visibility.Visible;
                     Escudo2.Visibility = Visibility.Visible;
+                    LabelVidaJ2.Content = juego.jugador2.vida;
                 }
                 actualizarimagenes();
             }
@@ -5591,6 +5774,10 @@ namespace Hearthstone
                     MessageBox.Show("Ya utilisaste tu arma por este turno");
                 }
                 armausadaJ2 = 1;
+                LabelArmorJ2.Content = juego.jugador2.defensa;
+                LabelArmorJ2.Visibility = Visibility.Visible;
+                Escudo2.Visibility = Visibility.Visible;
+                LabelVidaJ2.Content = juego.jugador2.vida;
                 actualizarimagenes();
             }
             else if (HabPriestJ1 == 1)
@@ -5610,6 +5797,7 @@ namespace Hearthstone
                     LabelArmorJ2.Content = juego.jugador2.defensa;
                     LabelArmorJ2.Visibility = Visibility.Visible;
                     Escudo2.Visibility = Visibility.Visible;
+                    LabelVidaJ2.Content = juego.jugador2.vida;
                 }
                 actualizarimagenes();
             }
@@ -5636,6 +5824,10 @@ namespace Hearthstone
                     MessageBox.Show("Ya utilisaste tu arma por este turno");
                 }
                 armausadaJ2 = 1;
+                LabelArmorJ2.Content = juego.jugador2.defensa;
+                LabelArmorJ2.Visibility = Visibility.Visible;
+                Escudo2.Visibility = Visibility.Visible;
+                LabelVidaJ2.Content = juego.jugador2.vida;
                 actualizarimagenes();
             }
             else if (HabPriestJ1 == 1)
@@ -5655,6 +5847,7 @@ namespace Hearthstone
                     LabelArmorJ2.Content = juego.jugador2.defensa;
                     LabelArmorJ2.Visibility = Visibility.Visible;
                     Escudo2.Visibility = Visibility.Visible;
+                    LabelVidaJ2.Content = juego.jugador2.vida;
                 }
                 actualizarimagenes();
             }
@@ -5681,6 +5874,10 @@ namespace Hearthstone
                     MessageBox.Show("Ya utilisaste tu arma por este turno");
                 }
                 armausadaJ2 = 1;
+                LabelArmorJ2.Content = juego.jugador2.defensa;
+                LabelArmorJ2.Visibility = Visibility.Visible;
+                Escudo2.Visibility = Visibility.Visible;
+                LabelVidaJ2.Content = juego.jugador2.vida;
                 actualizarimagenes();
 
             }
@@ -5701,6 +5898,7 @@ namespace Hearthstone
                     LabelArmorJ2.Content = juego.jugador2.defensa;
                     LabelArmorJ2.Visibility = Visibility.Visible;
                     Escudo2.Visibility = Visibility.Visible;
+                    LabelVidaJ2.Content = juego.jugador2.vida;
                 }
                 actualizarimagenes();
             }
@@ -5727,6 +5925,10 @@ namespace Hearthstone
                     MessageBox.Show("Ya utilisaste tu arma por este turno");
                 }
                 armausadaJ1 = 1;
+                LabelArmorJ1.Content = juego.jugador1.defensa;
+                LabelArmorJ1.Visibility = Visibility.Visible;
+                Escudo1.Visibility = Visibility.Visible;
+                LabelVidaJ1.Content = juego.jugador1.vida;
                 actualizarimagenes();
             }
             else if (HabPriestJ2 == 1)
@@ -5746,6 +5948,7 @@ namespace Hearthstone
                     LabelArmorJ1.Content = juego.jugador1.defensa;
                     LabelArmorJ1.Visibility = Visibility.Visible;
                     Escudo1.Visibility = Visibility.Visible;
+                    LabelVidaJ1.Content = juego.jugador1.vida;
                 }
                 actualizarimagenes();
             }
@@ -5772,6 +5975,10 @@ namespace Hearthstone
                     MessageBox.Show("Ya utilisaste tu arma por este turno");
                 }
                 armausadaJ1 = 1;
+                LabelArmorJ1.Content = juego.jugador1.defensa;
+                LabelArmorJ1.Visibility = Visibility.Visible;
+                Escudo1.Visibility = Visibility.Visible;
+                LabelVidaJ1.Content = juego.jugador1.vida;
                 actualizarimagenes();
             }
             else if (HabPriestJ2 == 1)
@@ -5791,6 +5998,7 @@ namespace Hearthstone
                     LabelArmorJ1.Content = juego.jugador1.defensa;
                     LabelArmorJ1.Visibility = Visibility.Visible;
                     Escudo1.Visibility = Visibility.Visible;
+                    LabelVidaJ1.Content = juego.jugador1.vida;
                 }
                 actualizarimagenes();
             }
@@ -5817,6 +6025,10 @@ namespace Hearthstone
                     MessageBox.Show("Ya utilisaste tu arma por este turno");
                 }
                 armausadaJ1 = 1;
+                LabelArmorJ1.Content = juego.jugador1.defensa;
+                LabelArmorJ1.Visibility = Visibility.Visible;
+                Escudo1.Visibility = Visibility.Visible;
+                LabelVidaJ1.Content = juego.jugador1.vida;
                 actualizarimagenes();
             }
             else if (HabPriestJ2 == 1)
@@ -5836,6 +6048,7 @@ namespace Hearthstone
                     LabelArmorJ1.Content = juego.jugador1.defensa;
                     LabelArmorJ1.Visibility = Visibility.Visible;
                     Escudo1.Visibility = Visibility.Visible;
+                    LabelVidaJ1.Content = juego.jugador1.vida;
                 }
                 actualizarimagenes();
             }
@@ -5862,6 +6075,10 @@ namespace Hearthstone
                     MessageBox.Show("Ya utilisaste tu arma por este turno");
                 }
                 armausadaJ1 = 1;
+                LabelArmorJ1.Content = juego.jugador1.defensa;
+                LabelArmorJ1.Visibility = Visibility.Visible;
+                Escudo1.Visibility = Visibility.Visible;
+                LabelVidaJ1.Content = juego.jugador1.vida;
                 actualizarimagenes();
             }
             else if (HabPriestJ2 == 1)
@@ -5881,6 +6098,7 @@ namespace Hearthstone
                     LabelArmorJ1.Content = juego.jugador1.defensa;
                     LabelArmorJ1.Visibility = Visibility.Visible;
                     Escudo1.Visibility = Visibility.Visible;
+                    LabelVidaJ1.Content = juego.jugador1.vida;
                 }
                 actualizarimagenes();
             }
@@ -5907,6 +6125,10 @@ namespace Hearthstone
                     MessageBox.Show("Ya utilisaste tu arma por este turno");
                 }
                 armausadaJ1 = 1;
+                LabelArmorJ1.Content = juego.jugador1.defensa;
+                LabelArmorJ1.Visibility = Visibility.Visible;
+                Escudo1.Visibility = Visibility.Visible;
+                LabelVidaJ1.Content = juego.jugador1.vida;
                 actualizarimagenes();
             }
             else if (HabPriestJ2 == 1)
@@ -5926,6 +6148,7 @@ namespace Hearthstone
                     LabelArmorJ1.Content = juego.jugador1.defensa;
                     LabelArmorJ1.Visibility = Visibility.Visible;
                     Escudo1.Visibility = Visibility.Visible;
+                    LabelVidaJ1.Content = juego.jugador1.vida;
                 }
                 actualizarimagenes();
             }
@@ -5952,6 +6175,10 @@ namespace Hearthstone
                     MessageBox.Show("Ya utilisaste tu arma por este turno");
                 }
                 armausadaJ1 = 1;
+                LabelArmorJ1.Content = juego.jugador1.defensa;
+                LabelArmorJ1.Visibility = Visibility.Visible;
+                Escudo1.Visibility = Visibility.Visible;
+                LabelVidaJ1.Content = juego.jugador1.vida;
                 actualizarimagenes();
             }
             else if (HabPriestJ2 == 1)
@@ -5971,6 +6198,7 @@ namespace Hearthstone
                     LabelArmorJ1.Content = juego.jugador1.defensa;
                     LabelArmorJ1.Visibility = Visibility.Visible;
                     Escudo1.Visibility = Visibility.Visible;
+                    LabelVidaJ1.Content = juego.jugador1.vida;
                 }
                 actualizarimagenes();
             }
@@ -5997,6 +6225,10 @@ namespace Hearthstone
                     MessageBox.Show("Ya utilisaste tu arma por este turno");
                 }
                 armausadaJ1 = 1;
+                LabelArmorJ1.Content = juego.jugador1.defensa;
+                LabelArmorJ1.Visibility = Visibility.Visible;
+                Escudo1.Visibility = Visibility.Visible;
+                LabelVidaJ1.Content = juego.jugador1.vida;
                 actualizarimagenes();
             }
             else if (HabPriestJ2 == 1)
@@ -6016,6 +6248,7 @@ namespace Hearthstone
                     LabelArmorJ1.Content = juego.jugador1.defensa;
                     LabelArmorJ1.Visibility = Visibility.Visible;
                     Escudo1.Visibility = Visibility.Visible;
+                    LabelVidaJ1.Content = juego.jugador1.vida;
                 }
                 actualizarimagenes();
             }
@@ -6129,7 +6362,7 @@ namespace Hearthstone
                 LabelGemasJ2.Content = juego.jugador2.gema;
                 LabelVidaJ2.Content = juego.jugador2.vida;
             }
-
+            Guardar.Visibility = Visibility.Visible;
             actualizarimagenes();
         }
 
@@ -6942,7 +7175,7 @@ namespace Hearthstone
 
             Comenzar.Visibility = Visibility.Visible;
             Comenzar2.Visibility = Visibility.Hidden;
-            MessageBox.Show("Seleccione las cartas que quiere cambiar");
+            MessageBox.Show(juego.jugador2.nombrejugador +" seleccione las cartas que quiere cambiar");
         }
 
         private void RendirseJ2_Click(object sender, RoutedEventArgs e)
@@ -6954,6 +7187,236 @@ namespace Hearthstone
         private void RendirseJ1_Click(object sender, RoutedEventArgs e)
         {
             juego.jugador1.Rendirse(juego.jugador1, juego.jugador2);
+        }
+
+        public static void SaveGame(Juego Game, string nombre)
+        {
+
+
+            string fileName = nombre;
+            FileStream fs = new FileStream(fileName, FileMode.CreateNew);
+
+            IFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(fs, Game);
+            fs.Close();
+
+
+        }
+
+
+
+        private void Guardar_Click(object sender, RoutedEventArgs e)
+        {
+            //Ocultar botones
+            CT1J1.Visibility = Visibility.Hidden;
+            CT2J1.Visibility = Visibility.Hidden;
+            CT3J1.Visibility = Visibility.Hidden;
+            CT4J1.Visibility = Visibility.Hidden;
+            CT5J1.Visibility = Visibility.Hidden;
+            CT6J1.Visibility = Visibility.Hidden;
+            CT7J1.Visibility = Visibility.Hidden;
+
+            CT1J2.Visibility = Visibility.Hidden;
+            CT2J2.Visibility = Visibility.Hidden;
+            CT3J2.Visibility = Visibility.Hidden;
+            CT4J2.Visibility = Visibility.Hidden;
+            CT5J2.Visibility = Visibility.Hidden;
+            CT6J2.Visibility = Visibility.Hidden;
+            CT7J2.Visibility = Visibility.Hidden;
+
+            CM1J1.Visibility = Visibility.Hidden;
+            CM2J1.Visibility = Visibility.Hidden;
+            CM3J1.Visibility = Visibility.Hidden;
+            CM4J1.Visibility = Visibility.Hidden;
+            CM5J1.Visibility = Visibility.Hidden;
+            CM6J1.Visibility = Visibility.Hidden;
+            CM7J1.Visibility = Visibility.Hidden;
+            CM8J1.Visibility = Visibility.Hidden;
+            CM9J1.Visibility = Visibility.Hidden;
+            CM10J1.Visibility = Visibility.Hidden;
+
+            CM1J2.Visibility = Visibility.Hidden;
+            CM2J2.Visibility = Visibility.Hidden;
+            CM3J2.Visibility = Visibility.Hidden;
+            CM4J2.Visibility = Visibility.Hidden;
+            CM5J2.Visibility = Visibility.Hidden;
+            CM6J2.Visibility = Visibility.Hidden;
+            CM7J2.Visibility = Visibility.Hidden;
+            CM8J2.Visibility = Visibility.Hidden;
+            CM9J2.Visibility = Visibility.Hidden;
+            CM10J2.Visibility = Visibility.Hidden;
+
+            Escudo1.Visibility = Visibility.Hidden;
+            Escudo2.Visibility = Visibility.Hidden;
+
+            LabelArmorJ1.Visibility = Visibility.Hidden;
+            LabelArmorJ2.Visibility = Visibility.Hidden;
+
+            BotonHeroeJ1.Visibility = Visibility.Hidden;
+            BotonHeroeJ2.Visibility = Visibility.Hidden;
+
+            BotonHabilidadHeroeJ1.Visibility = Visibility.Hidden;
+            BotonHabilidadHeroeJ2.Visibility = Visibility.Hidden;
+
+            Jug1.Visibility = Visibility.Hidden;
+            Jug2.Visibility = Visibility.Hidden;
+
+            BotonArmaJ1.Visibility = Visibility.Hidden;
+            BotonArmaJ2.Visibility = Visibility.Hidden;
+
+            LabelVidaJ1.Visibility = Visibility.Hidden;
+            LabelVidaJ2.Visibility = Visibility.Hidden;
+
+            LabelGemasJ1.Visibility = Visibility.Hidden;
+            LabelGemasJ2.Visibility = Visibility.Hidden;
+            g1.Visibility = Visibility.Hidden;
+            g2.Visibility = Visibility.Hidden;
+            gritosj1.Visibility = Visibility.Hidden;
+            gritosj2.Visibility = Visibility.Hidden;
+
+            Seguir.Visibility = Visibility.Hidden;
+            Guardar.Visibility = Visibility.Hidden;
+
+            Imagen2.Visibility = Visibility.Visible;
+
+            NPartidaL.Visibility = Visibility.Visible;
+            NPartidaTB.Visibility = Visibility.Visible;
+
+            GyC.Visibility = Visibility.Visible;
+            GyS.Visibility = Visibility.Visible;
+
+            RendirseJ1.Visibility = Visibility.Hidden;
+            RendirseJ2.Visibility = Visibility.Hidden;
+            GE1J1.Visibility = Visibility.Hidden;
+            LE1J1.Visibility = Visibility.Hidden;
+            GE2J1.Visibility = Visibility.Hidden;
+            LE2J1.Visibility = Visibility.Hidden;
+            GE3J1.Visibility = Visibility.Hidden;
+            LE3J1.Visibility = Visibility.Hidden;
+            GE4J1.Visibility = Visibility.Hidden;
+            LE4J1.Visibility = Visibility.Hidden;
+            GE5J1.Visibility = Visibility.Hidden;
+            LE5J1.Visibility = Visibility.Hidden;
+            GE6J1.Visibility = Visibility.Hidden;
+            LE6J1.Visibility = Visibility.Hidden;
+            GE7J1.Visibility = Visibility.Hidden;
+            LE7J1.Visibility = Visibility.Hidden;
+
+            GE1J2.Visibility = Visibility.Hidden;
+            LE1J2.Visibility = Visibility.Hidden;
+            GE2J2.Visibility = Visibility.Hidden;
+            LE2J2.Visibility = Visibility.Hidden;
+            GE3J2.Visibility = Visibility.Hidden;
+            LE3J2.Visibility = Visibility.Hidden;
+            GE4J2.Visibility = Visibility.Hidden;
+            LE4J2.Visibility = Visibility.Hidden;
+            GE5J2.Visibility = Visibility.Hidden;
+            LE5J2.Visibility = Visibility.Hidden;
+            GE6J2.Visibility = Visibility.Hidden;
+            LE6J2.Visibility = Visibility.Hidden;
+            GE7J2.Visibility = Visibility.Hidden;
+            LE7J2.Visibility = Visibility.Hidden;
+
+            LabelMaxGemasJ1.Visibility = Visibility.Hidden;
+            LabelMaxGemasJ2.Visibility = Visibility.Hidden;
+
+        }
+
+        private void GyC_Click(object sender, RoutedEventArgs e)
+        {
+            string nombrepartida = NPartidaTB.Text;
+            SaveGame(juego, nombrepartida);
+            MessageBox.Show("Tu partida ha sido guardada");
+
+            BotonHeroeJ1.Visibility = Visibility.Visible;
+            BotonHeroeJ2.Visibility = Visibility.Visible;
+
+            BotonHabilidadHeroeJ1.Visibility = Visibility.Visible;
+            BotonHabilidadHeroeJ2.Visibility = Visibility.Visible;
+
+            Jug1.Visibility = Visibility.Visible;
+            Jug2.Visibility = Visibility.Visible;
+
+            LabelVidaJ1.Visibility = Visibility.Visible;
+            LabelVidaJ2.Visibility = Visibility.Visible;
+
+            LabelGemasJ1.Visibility = Visibility.Visible;
+            LabelGemasJ2.Visibility = Visibility.Visible;
+            g1.Visibility = Visibility.Visible;
+            g2.Visibility = Visibility.Visible;
+            gritosj1.Visibility = Visibility.Visible;
+            gritosj2.Visibility = Visibility.Visible;
+
+            Seguir.Visibility = Visibility.Visible;
+            Guardar.Visibility = Visibility.Visible;
+
+            Imagen2.Visibility = Visibility.Hidden;
+
+            NPartidaL.Visibility = Visibility.Hidden;
+            NPartidaTB.Visibility = Visibility.Hidden;
+
+            GyC.Visibility = Visibility.Hidden;
+            GyS.Visibility = Visibility.Hidden;
+
+            actualizarimagenes();
+        }
+
+        private void CPBOTON_Click(object sender, RoutedEventArgs e)
+        {
+            CPLABEL.Visibility = Visibility.Hidden;
+            CPTB.Visibility = Visibility.Hidden;
+            CPBOTON.Visibility = Visibility.Hidden;
+
+            juego = LoadGame(CPTB.Text);
+            MessageBox.Show("La partida " + CPTB.Text + " ha sido cargada con exito");
+
+            BotonHeroeJ1.Visibility = Visibility.Visible;
+            BotonHeroeJ2.Visibility = Visibility.Visible;
+
+            Jug1.Visibility = Visibility.Visible;
+            Jug2.Visibility = Visibility.Visible;
+
+            LabelVidaJ1.Visibility = Visibility.Visible;
+            LabelVidaJ2.Visibility = Visibility.Visible;
+
+            LabelGemasJ1.Visibility = Visibility.Visible;
+            LabelGemasJ2.Visibility = Visibility.Visible;
+            g1.Visibility = Visibility.Visible;
+            g2.Visibility = Visibility.Visible;
+            gritosj1.Visibility = Visibility.Visible;
+            gritosj2.Visibility = Visibility.Visible;
+
+            Seguir.Visibility = Visibility.Visible;
+            Guardar.Visibility = Visibility.Visible;
+
+            Imagen2.Visibility = Visibility.Hidden;
+            Tablero.Visibility = Visibility.Visible;
+
+            BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/Habilidad" + juego.jugador1.nombreheroe + ".png")));
+            BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/Habilidad" + juego.jugador2.nombreheroe + ".png")));
+            BotonHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ1), "Recursos/Heroes/" + juego.jugador1.nombreheroe + ".png")));
+            BotonHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHeroeJ2), "Recursos/Heroes/" + juego.jugador2.nombreheroe + ".png")));
+
+            if (juego.jugador1.turno == juego.dice)
+            {
+                BotonHabilidadHeroeJ1.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BotonHabilidadHeroeJ2.Visibility = Visibility.Visible;
+            }
+
+
+            actualizarimagenes();
+
+        }
+        private void GyS_Click(object sender, RoutedEventArgs e)
+        {
+            string nombrepartida = NPartidaTB.Text;
+            SaveGame(juego, nombrepartida);
+            MessageBox.Show("Tu partida ha sido guardada, hasta luego");
+
+            Application.Current.Shutdown();
         }
     }
 }

@@ -20,6 +20,7 @@ using System.ComponentModel;
 
 namespace Hearthstone
 {
+   [Serializable]
    public class Hechizo : Carta 
     {
         private string Habilidad;

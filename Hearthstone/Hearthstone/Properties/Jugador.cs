@@ -348,7 +348,8 @@ namespace Hearthstone
                     if (jugador2.vida <= 0)
                     {
                         jugador2.ganper = true;
-                        //avisar fin de partida gano jugador 1
+                        MessageBox.Show(jugador1.nombrejugador + " gano la partida");
+                        Application.Current.Shutdown();
                     }
                 }
 
@@ -362,7 +363,8 @@ namespace Hearthstone
                         if (jugador2.vida <= 0)
                         {
                             jugador2.ganper = true;
-                            //avisasr fin de partida gano jugador 1
+                            MessageBox.Show(jugador1.nombrejugador + " gano la partida");
+                            Application.Current.Shutdown();
                         }
                     }
                 }
@@ -406,7 +408,8 @@ namespace Hearthstone
                 if (jugador1.vida <= 0)
                 {
                     jugador1.ganper = true;
-                    //avisar fin de partida
+                    MessageBox.Show(jugador2.nombrejugador + " gano la partida");
+                    Application.Current.Shutdown();
                 }
             }
             else if (jugador1.habilidadheroe == "Fireblast")
@@ -421,7 +424,8 @@ namespace Hearthstone
                         if (jugador2.vida <= 0)
                         {
                             jugador2.ganper = true;
-                            //avisar fin de partida gano jugador 1
+                            MessageBox.Show(jugador1.nombrejugador + " gano la partida");
+                            Application.Current.Shutdown();
                         }
                     }
 
@@ -435,7 +439,8 @@ namespace Hearthstone
                             if (jugador2.vida <= 0)
                             {
                                 jugador2.ganper = true;
-                                //avisasr fin de partida gano jugador 1
+                                MessageBox.Show(jugador1.nombrejugador + " gano la partida");
+                                Application.Current.Shutdown();
                             }
                         }
                     }
@@ -459,28 +464,46 @@ namespace Hearthstone
                         if (jugador2.vida <= 0)
                         {
                             jugador2.ganper = true;
-                            //avisar fin de partida gano jugador 1
+                            MessageBox.Show(jugador1.nombrejugador + " gano la partida");
+                            Application.Current.Shutdown();
                         }
                     }
 
                     else
                     {
                         jugador2.defensa -= 1;
-                        if (jugador2.defensa <= 0)
-                        {
-                            jugador2.vida += jugador2.defensa;
-                            jugador2.defensa = 0;
-                            if (jugador2.vida <= 0)
-                            {
-                                jugador2.ganper = true;
-                                //avisasr fin de partida gano jugador 1
-                            }
-                        }
+                        
                     }
                 }
                 else
                 {
                     jugador2.Tablerojugador[indiceJ2].defensa -= 1;
+                    if (jugador1.defensa <= 0)
+                    {
+                        jugador1.vida -= jugador2.Tablerojugador[indiceJ2].ataque;
+                        if (jugador1.vida <= 0)
+                        {
+                            jugador1.ganper = true;
+                            MessageBox.Show(jugador2.nombrejugador + " gano la partida");
+                            Application.Current.Shutdown();
+                        }
+                    }
+
+                    else
+                    {
+                        jugador1.defensa -= jugador2.Tablerojugador[indiceJ2].ataque;
+                        if (jugador1.defensa <= 0)
+                        {
+                            jugador1.vida += jugador1.defensa;
+                            jugador1.defensa = 0;
+                            if (jugador1.vida <= 0)
+                            {
+                                jugador1.ganper = true;
+                                MessageBox.Show(jugador2.nombrejugador + " gano la partida");
+                                Application.Current.Shutdown();
+                            }
+                        }
+                    }
                     jugador2.Morir(jugador2, indiceJ2);
                 }
                
@@ -504,15 +527,53 @@ namespace Hearthstone
             {
                 if (eleccion == 1)
                 {
-                    jugador2.vida -= 1;
-                    if (jugador2.vida <= 0)
+                    if (jugador2.defensa <= 0)
                     {
-                        jugador2.ganper = true;
+                        jugador2.vida -= 1;
+                        if (jugador2.vida <= 0)
+                        {
+                            jugador2.ganper = true;
+                            MessageBox.Show(jugador1.nombrejugador + " gano la partida");
+                            Application.Current.Shutdown();
+                        }
                     }
+
+                    else
+                    {
+                        jugador2.defensa -= 1;
+
+                    }
+                    
                 }
                 else
                 {
                     jugador2.Tablerojugador[indiceJ2].defensa -= 1;
+                    if (jugador1.defensa <= 0)
+                    {
+                        jugador1.vida -= jugador2.Tablerojugador[indiceJ2].ataque;
+                        if (jugador1.vida <= 0)
+                        {
+                            jugador1.ganper = true;
+                            MessageBox.Show(jugador2.nombrejugador + " gano la partida");
+                            Application.Current.Shutdown();
+                        }
+                    }
+
+                    else
+                    {
+                        jugador1.defensa -= jugador2.Tablerojugador[indiceJ2].ataque;
+                        if (jugador1.defensa <= 0)
+                        {
+                            jugador1.vida += jugador1.defensa;
+                            jugador1.defensa = 0;
+                            if (jugador1.vida <= 0)
+                            {
+                                jugador1.ganper = true;
+                                MessageBox.Show(jugador2.nombrejugador + " gano la partida");
+                                Application.Current.Shutdown();
+                            }
+                        }
+                    }
                     jugador2.Morir(jugador2, indiceJ2);
                 }
             }
