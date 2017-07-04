@@ -144,7 +144,7 @@
         <Button x:Name="CM8J2" HorizontalAlignment="Left" Margin="302,52,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM8J2_Click"/>
         <Button x:Name="CM9J2" HorizontalAlignment="Left" Margin="207,52,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden"  Click="CM9J2_Click"/>
         <Button x:Name="CM10J2" HorizontalAlignment="Left" Margin="119,52,0,0" VerticalAlignment="Top" Width="70" Height="80" Background="{x:Null}" Visibility="Hidden" Click="CM10J2_Click"/>
-        <Button x:Name="Comenzar" Content="Button" HorizontalAlignment="Left" Margin="981,417,0,0" VerticalAlignment="Top" Width="75" Click="Comenzar_Click" Visibility="Hidden"/>
+        <Button x:Name="Comenzar" Content="Seguir" HorizontalAlignment="Left" Margin="981,417,0,0" VerticalAlignment="Top" Width="75" Click="Comenzar_Click" Visibility="Hidden"/>
         <Image x:Name="Escudo1" Margin="649,563,584,164" Source="escudo.png" Stretch="Fill" Width="39" Height="42" Visibility="Hidden"/>
         <Image x:Name="Escudo2" Margin="649,135,584,592" Source="escudo.png" Stretch="Fill" Width="39" Height="42" Visibility="Hidden"/>
         <Label x:Name="LabelArmorJ1" Content="" HorizontalAlignment="Left" Margin="653,565,0,0" VerticalAlignment="Top" Width="32" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="16" RenderTransformOrigin="0.125,0.387" Foreground="White" Visibility="Hidden"/>
@@ -179,5 +179,9 @@
         <Image x:Name="GE7J2" HorizontalAlignment="Left" Height="23" Margin="947,324,0,0" VerticalAlignment="Top" Width="20" Source="Recursos/Heroes/DropVida.png"  Visibility="Hidden"/>
         <Label x:Name="LE7J2" Content="0" HorizontalAlignment="Left" Margin="946,324,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="White"  Visibility="Hidden"/>
 
+        <Button x:Name="Comenzar2" Content="Seguir" HorizontalAlignment="Left" Margin="981,416,0,0" VerticalAlignment="Top" Width="75" Click="Comenzar2_Click" Visibility="Hidden"/>
+        <Button x:Name="RendirseJ2" Content="Rendirse" HorizontalAlignment="Left" Margin="942,153,0,0" VerticalAlignment="Top" Width="75" Click="RendirseJ2_Click" Visibility="Hidden"/>
+        <Button x:Name="RendirseJ1" Content="Rendirse" HorizontalAlignment="Left" Margin="942,552,0,0" VerticalAlignment="Top" Width="75" Click="RendirseJ1_Click" Visibility="Hidden"/>
+        
     </Grid>
 </Window>

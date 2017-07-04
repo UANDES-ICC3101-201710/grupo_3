@@ -36,9 +36,7 @@ namespace Hearthstone
 
         void HabilidadHeroe(Jugador jugador1, Jugador jugador2, int indiceJ1, int indiceJ2, int eleccion);
 
-        void Enfrentar(Jugador jugador1, Jugador jugador2, int indicej1, int indicej2, int eleccion);
-
-       // void Jugar(Jugador jugador1, Jugador jugador2);
+        void Enfrentar(Jugador jugador1, Jugador jugador2, int indicej1, int indicej2, int eleccion, int dice);
 
         void Despertar(Jugador jugador);
 

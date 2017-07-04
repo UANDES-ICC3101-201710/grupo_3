@@ -144,30 +144,29 @@ namespace Hearthstone
         }
 
         public void Agregarcartamano()
-            //este metodo agrega la carta a la mano y borra la carta en el mazo
+        //este metodo agrega la carta a la mano y borra la carta en el mazo
         {
-            if(Mano.Count == 10)
+            if (Mano.Count == 10)
             {
-                //avisar maximo carta
+                MessageBox.Show("Ha llegado al maximo de cartas en la mano");
             }
             else
             {
                 Mano.Add(Mazo.ElementAt(0));
-                Mazo.RemoveAt(0);                 
+                Mazo.RemoveAt(0);
             }
         }
-        //esta funcion pone la carta en el tablerodeljugador y elimina la carta de la mano
+
         public void Agregarcartalado(Jugador jugador, int indice)
         {
-            if(Tablerojugador.Count == 7)
+            if (Tablerojugador.Count == 7)
             {
-                //avisar maxima carta tablero
-                // fin accion
+                MessageBox.Show("Ha llegado al maximo de cartas en el tablero");
 
             }
             else
             {
-                
+
                 if (Mano.ElementAt(indice).costo <= gema)
                 {
                     if (Mano.ElementAt(indice).tipo == "Esbirro")
@@ -189,7 +188,7 @@ namespace Hearthstone
                     }
                     else
                     {
-                        
+
                         Carta aux = Mano.ElementAt(indice);
                         if (aux.GetType().Equals(typeof(Hechizo)))
                         {
@@ -202,19 +201,19 @@ namespace Hearthstone
                             }
                             else
                             {
-                                //avisar max gema.
+                                MessageBox.Show("Ya tienes el maximo de gema");
                             }
-                        
+
                         }
                     }
                 }
                 else
                 {
-                    //avisar accion invalida
+                    MessageBox.Show("No tienes suficiente gema");
                 }
-                
+
             }
-        
+
         }
 
         public void Aumentargema()
@@ -243,67 +242,77 @@ namespace Hearthstone
             }
         }
 
-        public void Enfrentar(Jugador jugador1, Jugador jugador2, int indicej1, int indicej2, int eleccion)
+        public void Enfrentar(Jugador jugador1, Jugador jugador2, int indicej1, int indicej2, int eleccion, int dice)
         {
-
-            if (jugador1.Tablerojugador[indicej1].despierto == true)
+            if (dice == jugador1.turno)
             {
-                if (jugador1.Tablerojugador[indicej1].ataco == false)
+                if (jugador1.Tablerojugador[indicej1].despierto == true)
                 {
-
-                    if (eleccion == 1)
+                    if (jugador1.Tablerojugador[indicej1].ataco == false)
                     {
-                        if (jugador2.defensa <= 0)
+
+                        if (eleccion == 1)
                         {
-                            jugador2.vida -= jugador1.Tablerojugador[indicej1].ataque;
-                            if (jugador2.vida <= 0)
-                            {
-                                jugador2.ganper = true;
-                                //aviso fin de partida
-                            }
-                        }
-                        else
-                        {
-                            jugador2.defensa -= jugador1.Tablerojugador[indicej1].ataque;
                             if (jugador2.defensa <= 0)
                             {
-                                jugador2.vida += jugador2.defensa;
-                                jugador2.defensa = 0;
+                                jugador2.vida -= jugador1.Tablerojugador[indicej1].ataque;
                                 if (jugador2.vida <= 0)
                                 {
                                     jugador2.ganper = true;
-                                    //aviso fin de partida
+                                    MessageBox.Show(jugador1.nombrejugador + " gano la partida");
+                                    Application.Current.Shutdown();
                                 }
                             }
+                            else
+                            {
+                                jugador2.defensa -= jugador1.Tablerojugador[indicej1].ataque;
+                                if (jugador2.defensa <= 0)
+                                {
+                                    jugador2.vida += jugador2.defensa;
+                                    jugador2.defensa = 0;
+                                    if (jugador2.vida <= 0)
+                                    {
+                                        jugador2.ganper = true;
+                                        MessageBox.Show(jugador1.nombrejugador + " gano la partida");
+                                        Application.Current.Shutdown();
+                                    }
+                                }
+                            }
+                            jugador1.Tablerojugador[indicej1].ataco = true;
                         }
-                        jugador1.Tablerojugador[indicej1].ataco = true;
+
+                        else
+                        {
+                            //si ataca a un esbirro oponente
+
+                            jugador2.Tablerojugador[indicej2].defensa -= jugador1.Tablerojugador[indicej1].ataque;
+                            jugador1.Tablerojugador[indicej1].defensa -= jugador2.Tablerojugador[indicej2].ataque;
+                            jugador1.Tablerojugador[indicej1].ataco = true;
+                            jugador1.Morir(jugador1, indicej1);
+                            jugador2.Morir(jugador2, indicej2);
+                        }
+
+
+
                     }
+
 
                     else
                     {
-                        //si ataca a un esbirro oponente
-
-                        jugador2.Tablerojugador[indicej2].defensa -= jugador1.Tablerojugador[indicej1].ataque;
-                        jugador1.Tablerojugador[indicej1].defensa -= jugador2.Tablerojugador[indicej2].ataque;
-                        jugador1.Tablerojugador[indicej1].ataco = true;
-                        jugador1.Morir(jugador1, indicej1);
-                        jugador2.Morir(jugador2, indicej2);
+                        MessageBox.Show("Ese esbirro ya ataco");
                     }
-
-
-
                 }
-
-
                 else
                 {
-                    //avisar esbirro ya ataco
+                    MessageBox.Show("Ese esbirro esta dormido");
                 }
+
             }
             else
             {
-                //avisar esbirro dormido
+                MessageBox.Show("Puedes atacar solo en tu turno");
             }
+
 
         }
 
@@ -382,6 +391,10 @@ namespace Hearthstone
                 else
                 {
                     jugador1.Tablerojugador[indiceJ1].defensa += 2;
+                    if (jugador1.Tablerojugador[indiceJ1].defensa >= jugador1.Tablerojugador[indiceJ1].maxdefensa)
+                    {
+                        jugador1.Tablerojugador[indiceJ1].defensa = jugador1.Tablerojugador[indiceJ1].maxdefensa;
+                    }
                 }
             }
             else if (jugador1.habilidadheroe == "Life Tap")
@@ -402,7 +415,30 @@ namespace Hearthstone
                 jugador1.gema = jugador1.gema - 2;
                 if (eleccion == 1)
                 {
-                    //ataque al heroe
+                    if (jugador2.defensa <= 0)
+                    {
+                        jugador2.vida -= 1;
+                        if (jugador2.vida <= 0)
+                        {
+                            jugador2.ganper = true;
+                            //avisar fin de partida gano jugador 1
+                        }
+                    }
+
+                    else
+                    {
+                        jugador2.defensa -= 1;
+                        if (jugador2.defensa <= 0)
+                        {
+                            jugador2.vida += jugador2.defensa;
+                            jugador2.defensa = 0;
+                            if (jugador2.vida <= 0)
+                            {
+                                jugador2.ganper = true;
+                                //avisasr fin de partida gano jugador 1
+                            }
+                        }
+                    }
                 }
                 else
                 {
@@ -417,7 +453,30 @@ namespace Hearthstone
                 jugador1.defensa = jugador1.defensa + 1;
                 if (eleccion == 1)
                 {
-                    //ataque al heroe
+                    if (jugador2.defensa <= 0)
+                    {
+                        jugador2.vida -= 1;
+                        if (jugador2.vida <= 0)
+                        {
+                            jugador2.ganper = true;
+                            //avisar fin de partida gano jugador 1
+                        }
+                    }
+
+                    else
+                    {
+                        jugador2.defensa -= 1;
+                        if (jugador2.defensa <= 0)
+                        {
+                            jugador2.vida += jugador2.defensa;
+                            jugador2.defensa = 0;
+                            if (jugador2.vida <= 0)
+                            {
+                                jugador2.ganper = true;
+                                //avisasr fin de partida gano jugador 1
+                            }
+                        }
+                    }
                 }
                 else
                 {
@@ -445,7 +504,11 @@ namespace Hearthstone
             {
                 if (eleccion == 1)
                 {
-
+                    jugador2.vida -= 1;
+                    if (jugador2.vida <= 0)
+                    {
+                        jugador2.ganper = true;
+                    }
                 }
                 else
                 {
@@ -473,94 +536,9 @@ namespace Hearthstone
         public void Rendirse(Jugador jugador1, Jugador jugador2)
         {
             jugador1.ganper = true;
-            //avisar rendirse
+            MessageBox.Show(jugador1.nombrejugador + " se rindio. " + jugador2.nombrejugador + " gano la partida");
+            Application.Current.Shutdown();
         }
-
-       /* public void Jugar(Jugador jugador1, Jugador jugador2)
-        {
-            //avisar nuevo turno jugador1
-            jugador1.Agregarcartamano();
-            jugador1.Aumentargema();
-            jugador1.Regenerargema();
-            jugador1.habilidadusada = false;
-            jugador1.Despertar(jugador1);
-
-            //consola.Imprimirvida(jugador1, jugador2);
-            //consola.ImprimirDefensa(jugador1, jugador2);
-            //consola.ImprimirGema(jugador1, jugador2);
-            //consola.ImprimirMano(jugador1);
-            //consola.ImprimirEsbirros(jugador1);
-            //consola.ImprimirEsbirros(jugador2);
-            //eleccion . avisar eleccion
-            int eleccion = 0;
-            while (eleccion != 5 && jugador1.ganper == false && jugador2.ganper == false)
-            {
-                if (eleccion == 1)
-                {
-                    jugador1.Agregarcartalado(jugador1);
-                    //consola.Imprimirvida(jugador1, jugador2);
-                    //consola.ImprimirDefensa(jugador1, jugador2);
-                    //consola.ImprimirGema(jugador1, jugador2);
-                    //consola.ImprimirMano(jugador1);
-                    //consola.ImprimirEsbirros(jugador1);
-                    //consola.ImprimirEsbirros(jugador2);
-                    //eleccion. avisar eleccion
-                    eleccion = 0;
-                }
-                else if (eleccion == 2)
-                {
-                    jugador1.Enfrentar(jugador1, jugador2);
-                    if (jugador2.vida>0)
-                    {
-                        //consola.Imprimirvida(jugador1, jugador2);
-                        //consola.ImprimirDefensa(jugador1, jugador2);
-                        //consola.ImprimirGema(jugador1, jugador2);
-                        //consola.ImprimirMano(jugador1);
-                        //consola.ImprimirEsbirros(jugador1);
-                        //consola.ImprimirEsbirros(jugador2);
-                        //eleccion. avisar eleccion
-                        eleccion = 0;
-                    }
-                }
-                else if (eleccion == 3)
-                {
-                    if (jugador1.gema >= 2)
-                    {
-                        jugador1.HabilidadHeroe(jugador1, jugador2);
-                        if (jugador2.vida > 0)
-                        {
-                            //consola.Imprimirvida(jugador1, jugador2);
-                            //consola.ImprimirDefensa(jugador1, jugador2);
-                            //consola.ImprimirGema(jugador1, jugador2);
-                            //consola.ImprimirMano(jugador1);
-                            //consola.ImprimirEsbirros(jugador1);
-                            //consola.ImprimirEsbirros(jugador2);
-                            //eleccion. avisar eleccion
-                            eleccion = 0;
-                        }
-                    }
-                    else
-                    {
-                        //consola.Avisaraccioninvalida();
-                        //consola.Imprimirvida(jugador1, jugador2);
-                        //consola.ImprimirDefensa(jugador1, jugador2);
-                        //consola.ImprimirGema(jugador1, jugador2);
-                        //consola.ImprimirMano(jugador1);
-                        //consola.ImprimirEsbirros(jugador1);
-                        //consola.ImprimirEsbirros(jugador2);
-                        //eleccion. avisar eleccion
-                        eleccion = 0;
-                    }
-                    
-                }
-                else if (eleccion == 4)
-                {
-                    jugador1.Rendirse(jugador1, jugador2);
-                    
-                }
-              //finalizar el turno
-            }
-        }*/
 
         public void CambioMano(Jugador jugador, Random rnd, Carta carta, int i)
         {

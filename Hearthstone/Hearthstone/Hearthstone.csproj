@@ -187,10 +187,10 @@
     <Resource Include="Recursos\escudo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Recursos\Wisp.png" />
+    <Resource Include="Recursos\Cartas\Wisp.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Recursos\Cartas\Wisp.png" />
+    <Resource Include="Recursos\Wisp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

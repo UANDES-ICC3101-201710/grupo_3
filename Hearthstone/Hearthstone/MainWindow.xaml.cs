@@ -42,10 +42,12 @@ namespace Hearthstone
         int DAJ2;
         int ataquearmaJ1 = 0;
         int ataquearmaJ2 = 0;
+        int armausadaJ1 = 0;
+        int armausadaJ2 = 0;
         int HabPriestJ1 = 0;
         int HabPriestJ2 = 0;
-        int HabMageJ1 = 0;
-        int HabMageJ2 = 0;
+        int HabDruidMageJ1 = 0;
+        int HabDruidMageJ2 = 0;
         int eleccion = 0;
 
         public MainWindow()
@@ -906,39 +908,6 @@ namespace Hearthstone
             juego.dice = dice;
 
 
-
-            /*
-            
-            while (Jugador1.ganper == false && Jugador2.ganper == false)
-            {
-                if (dice == Jugador1.turno)
-                {
-                    Jugador1.Jugar(Jugador1, Jugador2);
-                    if (dice == 1)
-                    {
-                        dice = 2;
-                    }
-                    else
-                    {
-                        dice = 1;
-                    }
-                }
-                else
-                {
-                    Jugador2.Jugar(Jugador2, Jugador1);
-                    if (dice == 1)
-                    {
-                        dice = 2;
-                    }
-                    else
-                    {
-                        dice = 1;
-                    }
-                }
-
-            }
-
-          */
         }
 
         public static void SaveGame(Juego Game)
@@ -1043,8 +1012,11 @@ namespace Hearthstone
             g2.Visibility = Visibility.Visible;
             gritosj1.Visibility = Visibility.Visible;
             gritosj2.Visibility = Visibility.Visible;
+            RendirseJ1.Visibility = Visibility.Visible;
+            RendirseJ2.Visibility = Visibility.Visible;
 
-            Comenzar.Visibility = Visibility.Visible;
+            Comenzar2.Visibility = Visibility.Visible;
+
 
             Jug1.Content = label21.Content;
             Jug2.Content = label22.Content;
@@ -1055,10 +1027,7 @@ namespace Hearthstone
             CambioC1.Visibility = Visibility.Visible;
             CambioC2.Visibility = Visibility.Visible;
             CambioC3.Visibility = Visibility.Visible;
-            CambioC4.Visibility = Visibility.Visible;
-            CambioC5.Visibility = Visibility.Visible;
-            CambioC6.Visibility = Visibility.Visible;
-            CambioC7.Visibility = Visibility.Visible;
+
             CambioC8.Visibility = Visibility.Visible;
 
             BotonHeroeJ1.Visibility = Visibility.Visible;
@@ -1070,11 +1039,13 @@ namespace Hearthstone
             LabelGemasJ1.Visibility = Visibility.Visible;
             LabelGemasJ2.Visibility = Visibility.Visible;
 
+            MostrarCartasCambiot1(juego.jugador1);
 
-            
-                MostrarCartasCambiot1(juego.jugador1);
-                MostrarCartasCambiot2(juego.jugador2);
-           
+
+            juego.jugador1.nombrejugador = Jug1.Content.ToString();
+            juego.jugador2.nombrejugador = Jug2.Content.ToString();
+
+
 
             if ((string)nheroe1.Content == "Druid")
             {
@@ -1208,6 +1179,7 @@ namespace Hearthstone
             Jug2.Content = label22.Content;
             Jug1.Visibility = Visibility.Visible;
             Jug2.Visibility = Visibility.Visible;
+            MessageBox.Show("Seleccione las cartas que quiere cambiar");
 
 
 
@@ -1387,18 +1359,28 @@ namespace Hearthstone
             }
             if (juego.jugador1.turno == juego.dice)
             {
-                Reniciar(juego.jugador1);
+                Reniciar(juego.jugador1, juego.jugador2);
                 LabelGemasJ1.Content = juego.jugador1.gema;
                 LabelVidaJ1.Content = juego.jugador1.vida;
+                armausadaJ1 = 0;
                 BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/Habilidad" + juego.jugador1.nombreheroe + ".png")));
+                BotonHabilidadHeroeJ2.Visibility = Visibility.Hidden;
+                BotonArmaJ2.Visibility = Visibility.Hidden;
+                BotonHabilidadHeroeJ1.Visibility = Visibility.Visible;
+                BotonArmaJ1.Visibility = Visibility.Visible;
                 actualizarimagenes();
             }
             else
             {
-                Reniciar(juego.jugador2);
+                Reniciar(juego.jugador2, juego.jugador1);
                 LabelGemasJ2.Content = juego.jugador2.gema;
                 LabelVidaJ2.Content = juego.jugador2.vida;
+                armausadaJ2 = 0;
                 BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/Habilidad" + juego.jugador2.nombreheroe + ".png")));
+                BotonHabilidadHeroeJ2.Visibility = Visibility.Visible;
+                BotonArmaJ2.Visibility = Visibility.Visible;
+                BotonHabilidadHeroeJ1.Visibility = Visibility.Hidden;
+                BotonArmaJ1.Visibility = Visibility.Hidden;
                 actualizarimagenes();
 
             }
@@ -4954,7 +4936,7 @@ namespace Hearthstone
                 //falta el ataque por el turno
                 if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
                 {
-                    HabMageJ1 = 1;
+                    HabDruidMageJ1 = 1;
                     BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
                 }
                 else
@@ -4984,7 +4966,7 @@ namespace Hearthstone
             {
                 if (juego.jugador1.habilidadusada == false && juego.jugador1.gema >= 2)
                 {
-                    HabMageJ1 = 1;
+                    HabDruidMageJ1 = 1;
                     BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
                 }
                 else
@@ -5037,6 +5019,7 @@ namespace Hearthstone
                     juego.jugador1.gema = juego.jugador1.gema - 2;
                     LabelGemasJ1.Content = juego.jugador1.gema;
                     DAJ1 = 2;
+                    armausadaJ1 = 0;
                     BotonArmaJ1.Visibility = Visibility.Visible;
                     actualizarimagenes();
                     BotonArmaJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonArmaJ1), "Recursos/Wickedknife.png")));
@@ -5114,8 +5097,8 @@ namespace Hearthstone
             {
                 if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
                 {
-                    HabMageJ1 = 1;
-                    BotonHabilidadHeroeJ1.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ1), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                    HabDruidMageJ2 = 1;
+                    BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
                 }
                 else
                 {
@@ -5142,8 +5125,15 @@ namespace Hearthstone
 
             if (juego.jugador2.nombreheroe == "Mage")
             {
-                //1 de ataque a un esbirro o al heroe
-                BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                if (juego.jugador2.habilidadusada == false && juego.jugador2.gema >= 2)
+                {
+                    HabDruidMageJ2 = 1;
+                    BotonHabilidadHeroeJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonHabilidadHeroeJ2), "Recursos/HabilidadHeroe/HabilidadUsada.png")));
+                }
+                else
+                {
+                    MessageBox.Show("No puedes utilizar la habilidad de heroe");
+                }
             }
            
             if (juego.jugador2.nombreheroe == "Paladin")
@@ -5191,6 +5181,7 @@ namespace Hearthstone
                     juego.jugador2.gema = juego.jugador2.gema - 2;
                     LabelGemasJ2.Content = juego.jugador2.gema;
                     DAJ2 = 2;
+                    armausadaJ2 = 0;
                     BotonArmaJ2.Visibility = Visibility.Visible;
                     actualizarimagenes();
                     BotonArmaJ2.Background = new ImageBrush(new BitmapImage(new Uri(BaseUriHelper.GetBaseUri(BotonArmaJ2), "Recursos/Wickedknife.png")));
@@ -5380,13 +5371,21 @@ namespace Hearthstone
             actualizarimagenes();
         }
 
-        private void Reniciar(Jugador jugador)
+        private void Reniciar(Jugador jugador, Jugador jugador2)
         {
             jugador.Agregarcartamano();
             jugador.Aumentargema();
             jugador.Regenerargema();
             jugador.habilidadusada = false;
             jugador.Despertar(jugador);
+            foreach (Esbirro esbirro in jugador2.Tablerojugador)
+            {
+                if (esbirro.nombre == "Healing Totem")
+                {
+                    esbirro.TotemHeal(jugador2);
+                }
+            } 
+            
             
         }
 
@@ -5400,9 +5399,17 @@ namespace Hearthstone
             }
             else if (ataquearmaJ2 == 1)
             {
-                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
-                DAJ2 -= 1;
-                ataquearmaJ2 = 0;
+                if (armausadaJ2 == 0)
+                {
+                    juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
+                    DAJ2 -= 1;
+                    ataquearmaJ2 = 0;
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ2 = 1;
                 actualizarimagenes();
             }
             else if (HabPriestJ1 == 1)
@@ -5412,11 +5419,17 @@ namespace Hearthstone
                 LabelGemasJ1.Content = juego.jugador1.gema;
                 actualizarimagenes();
             }
-            else if (HabMageJ2 == 1)
+            else if (HabDruidMageJ2 == 1)
             {
                 juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 0);
-                HabMageJ2 = 0;
+                HabDruidMageJ2 = 0;
                 LabelGemasJ2.Content = juego.jugador2.gema;
+                if (juego.jugador2.nombreheroe == "Druid")
+                {
+                    LabelArmorJ2.Content = juego.jugador2.defensa;
+                    LabelArmorJ2.Visibility = Visibility.Visible;
+                    Escudo2.Visibility = Visibility.Visible;
+                }
                 actualizarimagenes();
             }
 
@@ -5432,9 +5445,17 @@ namespace Hearthstone
             }
             else if (ataquearmaJ2 == 1)
             {
-                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 1, 0);
-                DAJ2 -= 1;
-                ataquearmaJ2 = 0;
+                if (armausadaJ2 == 0)
+                {
+                    DAJ2 -= 1;
+                    ataquearmaJ2 = 0;
+                    juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 1, 0, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ2 = 1;
                 actualizarimagenes();
             }
             else if (HabPriestJ1 == 1)
@@ -5444,11 +5465,17 @@ namespace Hearthstone
                 LabelGemasJ1.Content = juego.jugador1.gema;
                 actualizarimagenes();
             }
-            else if (HabMageJ2 == 1)
+            else if (HabDruidMageJ2 == 1)
             {
                 juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 1, 0);
-                HabMageJ2 = 0;
+                HabDruidMageJ2 = 0;
                 LabelGemasJ2.Content = juego.jugador2.gema;
+                if (juego.jugador2.nombreheroe == "Druid")
+                {
+                    LabelArmorJ2.Content = juego.jugador2.defensa;
+                    LabelArmorJ2.Visibility = Visibility.Visible;
+                    Escudo2.Visibility = Visibility.Visible;
+                }
                 actualizarimagenes();
             }
         }
@@ -5463,9 +5490,17 @@ namespace Hearthstone
             }
             else if (ataquearmaJ2 == 1)
             {
-                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 2, 0);
-                DAJ2 -= 1;
-                ataquearmaJ2 = 0;
+                if (armausadaJ2 == 0)
+                {
+                    DAJ2 -= 1;
+                    ataquearmaJ2 = 0;
+                    juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 2, 0, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ2 = 1;
                 actualizarimagenes();
             }
             else if (HabPriestJ1 == 1)
@@ -5475,11 +5510,17 @@ namespace Hearthstone
                 LabelGemasJ1.Content = juego.jugador1.gema;
                 actualizarimagenes();
             }
-            else if (HabMageJ2 == 1)
+            else if (HabDruidMageJ2 == 1)
             {
                 juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 2, 0);
-                HabMageJ2 = 0;
+                HabDruidMageJ2 = 0;
                 LabelGemasJ2.Content = juego.jugador2.gema;
+                if (juego.jugador2.nombreheroe == "Druid")
+                {
+                    LabelArmorJ2.Content = juego.jugador2.defensa;
+                    LabelArmorJ2.Visibility = Visibility.Visible;
+                    Escudo2.Visibility = Visibility.Visible;
+                }
                 actualizarimagenes();
             }
         }
@@ -5493,10 +5534,18 @@ namespace Hearthstone
                 enfrentamiento(CTJ1, CTJ2);
             }
             else if (ataquearmaJ2 == 1)
-            {
-                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 3, 0);
-                DAJ2 -= 1;
-                ataquearmaJ2 = 0;
+            {       
+                if (armausadaJ2 == 0)
+                {
+                    DAJ2 -= 1;
+                    ataquearmaJ2 = 0;
+                    juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 3, 0, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ2 = 1;
                 actualizarimagenes();
             }
             else if (HabPriestJ1 == 1)
@@ -5506,11 +5555,17 @@ namespace Hearthstone
                 LabelGemasJ1.Content = juego.jugador1.gema;
                 actualizarimagenes();
             }
-            else if (HabMageJ2 == 1)
+            else if (HabDruidMageJ2 == 1)
             {
                 juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 3, 0);
-                HabMageJ2 = 0;
+                HabDruidMageJ2 = 0;
                 LabelGemasJ2.Content = juego.jugador2.gema;
+                if (juego.jugador2.nombreheroe == "Druid")
+                {
+                    LabelArmorJ2.Content = juego.jugador2.defensa;
+                    LabelArmorJ2.Visibility = Visibility.Visible;
+                    Escudo2.Visibility = Visibility.Visible;
+                }
                 actualizarimagenes();
             }
         }
@@ -5524,10 +5579,18 @@ namespace Hearthstone
                 enfrentamiento(CTJ1, CTJ2);
             }
             else if (ataquearmaJ2 == 1)
-            {
-                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 4, 0);
-                DAJ2 -= 1;
-                ataquearmaJ2 = 0;
+            {  
+                if (armausadaJ2 == 0)
+                {
+                    DAJ2 -= 1;
+                    ataquearmaJ2 = 0;
+                    juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 4, 0, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ2 = 1;
                 actualizarimagenes();
             }
             else if (HabPriestJ1 == 1)
@@ -5537,11 +5600,17 @@ namespace Hearthstone
                 LabelGemasJ1.Content = juego.jugador1.gema;
                 actualizarimagenes();
             }
-            else if (HabMageJ2 == 1)
+            else if (HabDruidMageJ2 == 1)
             {
                 juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 4, 0);
-                HabMageJ2 = 0;
+                HabDruidMageJ2 = 0;
                 LabelGemasJ2.Content = juego.jugador2.gema;
+                if (juego.jugador2.nombreheroe == "Druid")
+                {
+                    LabelArmorJ2.Content = juego.jugador2.defensa;
+                    LabelArmorJ2.Visibility = Visibility.Visible;
+                    Escudo2.Visibility = Visibility.Visible;
+                }
                 actualizarimagenes();
             }
         }
@@ -5555,10 +5624,18 @@ namespace Hearthstone
                 enfrentamiento(CTJ1, CTJ2);
             }
             else if (ataquearmaJ2 == 1)
-            {
-                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 5, 0);
-                DAJ2 -= 1;
-                ataquearmaJ2 = 0;
+            {         
+                if (armausadaJ2 == 0)
+                {
+                    DAJ2 -= 1;
+                    ataquearmaJ2 = 0;
+                    juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 5, 0, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ2 = 1;
                 actualizarimagenes();
             }
             else if (HabPriestJ1 == 1)
@@ -5568,11 +5645,17 @@ namespace Hearthstone
                 LabelGemasJ1.Content = juego.jugador1.gema;
                 actualizarimagenes();
             }
-            else if (HabMageJ2 == 1)
+            else if (HabDruidMageJ2 == 1)
             {
                 juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 5, 0);
-                HabMageJ2 = 0;
+                HabDruidMageJ2 = 0;
                 LabelGemasJ2.Content = juego.jugador2.gema;
+                if (juego.jugador2.nombreheroe == "Druid")
+                {
+                    LabelArmorJ2.Content = juego.jugador2.defensa;
+                    LabelArmorJ2.Visibility = Visibility.Visible;
+                    Escudo2.Visibility = Visibility.Visible;
+                }
                 actualizarimagenes();
             }
         }
@@ -5586,11 +5669,20 @@ namespace Hearthstone
                 enfrentamiento(CTJ1, CTJ2);
             }
             else if (ataquearmaJ2 == 1)
-            {
-                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 6, 0);
-                DAJ2 -= 1;
-                ataquearmaJ2 = 0;
+            {               
+                if (armausadaJ2 == 0)
+                {
+                    DAJ2 -= 1;
+                    ataquearmaJ2 = 0;
+                    juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 6, 0, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ2 = 1;
                 actualizarimagenes();
+
             }
             else if (HabPriestJ1 == 1)
             {
@@ -5599,11 +5691,17 @@ namespace Hearthstone
                 LabelGemasJ1.Content = juego.jugador1.gema;
                 actualizarimagenes();
             }
-            else if (HabMageJ2 == 1)
+            else if (HabDruidMageJ2 == 1)
             {
                 juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 6, 0);
-                HabMageJ2 = 0;
+                HabDruidMageJ2 = 0;
                 LabelGemasJ2.Content = juego.jugador2.gema;
+                if (juego.jugador2.nombreheroe == "Druid")
+                {
+                    LabelArmorJ2.Content = juego.jugador2.defensa;
+                    LabelArmorJ2.Visibility = Visibility.Visible;
+                    Escudo2.Visibility = Visibility.Visible;
+                }
                 actualizarimagenes();
             }
         }
@@ -5617,10 +5715,18 @@ namespace Hearthstone
                 enfrentamiento(CTJ1, CTJ2);
             }
             else if (ataquearmaJ1 == 1)
-            {
-                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
-                DAJ1 -= 1;
-                ataquearmaJ1 = 0;
+            { 
+                if (armausadaJ1 == 0)
+                {
+                    DAJ1 -= 1;
+                    ataquearmaJ1 = 0;
+                    juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ1 = 1;
                 actualizarimagenes();
             }
             else if (HabPriestJ2 == 1)
@@ -5630,11 +5736,17 @@ namespace Hearthstone
                 LabelGemasJ2.Content = juego.jugador2.gema;
                 actualizarimagenes();
             }
-            else if (HabMageJ1 == 1)
+            else if (HabDruidMageJ1 == 1)
             {
                 juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
-                HabMageJ1 = 0;
+                HabDruidMageJ1 = 0;
                 LabelGemasJ1.Content = juego.jugador1.gema;
+                if (juego.jugador1.nombreheroe == "Druid")
+                {
+                    LabelArmorJ1.Content = juego.jugador1.defensa;
+                    LabelArmorJ1.Visibility = Visibility.Visible;
+                    Escudo1.Visibility = Visibility.Visible;
+                }
                 actualizarimagenes();
             }
         }
@@ -5648,10 +5760,18 @@ namespace Hearthstone
                 enfrentamiento(CTJ1, CTJ2);
             }
             else if (ataquearmaJ1 == 1)
-            {
-                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 1, 0);
-                DAJ1 -= 1;
-                ataquearmaJ1 = 0;
+            {       
+                if (armausadaJ1 == 0)
+                {
+                    DAJ1 -= 1;
+                    ataquearmaJ1 = 0;
+                    juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 1, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ1 = 1;
                 actualizarimagenes();
             }
             else if (HabPriestJ2 == 1)
@@ -5661,11 +5781,17 @@ namespace Hearthstone
                 LabelGemasJ2.Content = juego.jugador2.gema;
                 actualizarimagenes();
             }
-            else if (HabMageJ1 == 1)
+            else if (HabDruidMageJ1 == 1)
             {
-                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 0);
-                HabMageJ1 = 0;
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 1, 0);
+                HabDruidMageJ1 = 0;
                 LabelGemasJ1.Content = juego.jugador1.gema;
+                if (juego.jugador1.nombreheroe == "Druid")
+                {
+                    LabelArmorJ1.Content = juego.jugador1.defensa;
+                    LabelArmorJ1.Visibility = Visibility.Visible;
+                    Escudo1.Visibility = Visibility.Visible;
+                }
                 actualizarimagenes();
             }
         }
@@ -5679,10 +5805,18 @@ namespace Hearthstone
                 enfrentamiento(CTJ1, CTJ2);
             }
             else if (ataquearmaJ1 == 1)
-            {
-                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 2, 0);
-                DAJ1 -= 1;
-                ataquearmaJ1 = 0;
+            {               
+                if (armausadaJ1 == 0)
+                {
+                    DAJ1 -= 1;
+                    ataquearmaJ1 = 0;
+                    juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 2, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ1 = 1;
                 actualizarimagenes();
             }
             else if (HabPriestJ2 == 1)
@@ -5692,11 +5826,17 @@ namespace Hearthstone
                 LabelGemasJ2.Content = juego.jugador2.gema;
                 actualizarimagenes();
             }
-            else if (HabMageJ1 == 1)
+            else if (HabDruidMageJ1 == 1)
             {
                 juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 2, 0);
-                HabMageJ1 = 0;
+                HabDruidMageJ1 = 0;
                 LabelGemasJ1.Content = juego.jugador1.gema;
+                if (juego.jugador1.nombreheroe == "Druid")
+                {
+                    LabelArmorJ1.Content = juego.jugador1.defensa;
+                    LabelArmorJ1.Visibility = Visibility.Visible;
+                    Escudo1.Visibility = Visibility.Visible;
+                }
                 actualizarimagenes();
             }
         }
@@ -5710,10 +5850,18 @@ namespace Hearthstone
                 enfrentamiento(CTJ1, CTJ2);
             }
             else if (ataquearmaJ1 == 1)
-            {
-                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 3, 0);
-                DAJ1 -= 1;
-                ataquearmaJ1 = 0;
+            {            
+                if (armausadaJ1 == 0)
+                {
+                    DAJ1 -= 1;
+                    ataquearmaJ1 = 0;
+                    juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 3, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ1 = 1;
                 actualizarimagenes();
             }
             else if (HabPriestJ2 == 1)
@@ -5723,11 +5871,17 @@ namespace Hearthstone
                 LabelGemasJ2.Content = juego.jugador2.gema;
                 actualizarimagenes();
             }
-            else if (HabMageJ1 == 1)
+            else if (HabDruidMageJ1 == 1)
             {
                 juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 3, 0);
-                HabMageJ1 = 0;
+                HabDruidMageJ1 = 0;
                 LabelGemasJ1.Content = juego.jugador1.gema;
+                if (juego.jugador1.nombreheroe == "Druid")
+                {
+                    LabelArmorJ1.Content = juego.jugador1.defensa;
+                    LabelArmorJ1.Visibility = Visibility.Visible;
+                    Escudo1.Visibility = Visibility.Visible;
+                }
                 actualizarimagenes();
             }
         }
@@ -5741,10 +5895,18 @@ namespace Hearthstone
                 enfrentamiento(CTJ1, CTJ2);
             }
             else if (ataquearmaJ1 == 1)
-            {
-                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 4, 0);
-                DAJ1 -= 1;
-                ataquearmaJ1 = 0;
+            {               
+                if (armausadaJ1 == 0)
+                {
+                    DAJ1 -= 1;
+                    ataquearmaJ1 = 0;
+                    juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 4, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ1 = 1;
                 actualizarimagenes();
             }
             else if (HabPriestJ2 == 1)
@@ -5754,11 +5916,17 @@ namespace Hearthstone
                 LabelGemasJ2.Content = juego.jugador2.gema;
                 actualizarimagenes();
             }
-            else if (HabMageJ1 == 1)
+            else if (HabDruidMageJ1 == 1)
             {
                 juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 4, 0);
-                HabMageJ1 = 0;
+                HabDruidMageJ1 = 0;
                 LabelGemasJ1.Content = juego.jugador1.gema;
+                if (juego.jugador1.nombreheroe == "Druid")
+                {
+                    LabelArmorJ1.Content = juego.jugador1.defensa;
+                    LabelArmorJ1.Visibility = Visibility.Visible;
+                    Escudo1.Visibility = Visibility.Visible;
+                }
                 actualizarimagenes();
             }
         }
@@ -5772,10 +5940,18 @@ namespace Hearthstone
                 enfrentamiento(CTJ1, CTJ2);
             }
             else if (ataquearmaJ1 == 1)
-            {
-                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 5, 0);
-                DAJ1 -= 1;
-                ataquearmaJ1 = 0;
+            {              
+                if (armausadaJ1 == 0)
+                {
+                    DAJ1 -= 1;
+                    ataquearmaJ1 = 0;
+                    juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 5, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ1 = 1;
                 actualizarimagenes();
             }
             else if (HabPriestJ2 == 1)
@@ -5785,11 +5961,17 @@ namespace Hearthstone
                 LabelGemasJ2.Content = juego.jugador2.gema;
                 actualizarimagenes();
             }
-            else if (HabMageJ1 == 1)
+            else if (HabDruidMageJ1 == 1)
             {
                 juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 5, 0);
-                HabMageJ1 = 0;
+                HabDruidMageJ1 = 0;
                 LabelGemasJ1.Content = juego.jugador1.gema;
+                if (juego.jugador1.nombreheroe == "Druid")
+                {
+                    LabelArmorJ1.Content = juego.jugador1.defensa;
+                    LabelArmorJ1.Visibility = Visibility.Visible;
+                    Escudo1.Visibility = Visibility.Visible;
+                }
                 actualizarimagenes();
             }
         }
@@ -5803,10 +5985,18 @@ namespace Hearthstone
                 enfrentamiento(CTJ1, CTJ2);
             }
             else if (ataquearmaJ1 == 1)
-            {
-                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 6, 0);
-                DAJ1 -= 1;
-                ataquearmaJ1 = 0;
+            {               
+                if (armausadaJ1 == 0)
+                {
+                    DAJ1 -= 1;
+                    ataquearmaJ1 = 0;
+                    juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 6, 0);
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ1 = 1;
                 actualizarimagenes();
             }
             else if (HabPriestJ2 == 1)
@@ -5816,11 +6006,17 @@ namespace Hearthstone
                 LabelGemasJ2.Content = juego.jugador2.gema;
                 actualizarimagenes();
             }
-            else if (HabMageJ1 == 1)
+            else if (HabDruidMageJ1 == 1)
             {
                 juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 6, 0);
-                HabMageJ1 = 0;
+                HabDruidMageJ1 = 0;
                 LabelGemasJ1.Content = juego.jugador1.gema;
+                if (juego.jugador1.nombreheroe == "Druid")
+                {
+                    LabelArmorJ1.Content = juego.jugador1.defensa;
+                    LabelArmorJ1.Visibility = Visibility.Visible;
+                    Escudo1.Visibility = Visibility.Visible;
+                }
                 actualizarimagenes();
             }
         }
@@ -5901,13 +6097,13 @@ namespace Hearthstone
             if (juego.jugador1.turno == juego.dice)
             {
                 eleccion = 0;
-                juego.jugador1.Enfrentar(juego.jugador1, juego.jugador2, IJ1, IJ2, eleccion);
+                juego.jugador1.Enfrentar(juego.jugador1, juego.jugador2, IJ1, IJ2, eleccion, juego.dice);
             }
 
             else
             {
                 eleccion = 0;
-                juego.jugador2.Enfrentar(juego.jugador2, juego.jugador1, IJ2, IJ1, eleccion);
+                juego.jugador2.Enfrentar(juego.jugador2, juego.jugador1, IJ2, IJ1, eleccion, juego.dice);
             }
 
             actualizarimagenes();
@@ -5919,16 +6115,17 @@ namespace Hearthstone
         {
             Seguir.Visibility = Visibility.Visible;
             Comenzar.Visibility = Visibility.Hidden;
+            Comenzar2.Visibility = Visibility.Hidden;
             OtorgarMoneda();
             if (juego.jugador1.turno == juego.dice)
             {
-                Reniciar(juego.jugador1);
+                Reniciar(juego.jugador1, juego.jugador2);
                 LabelGemasJ1.Content = juego.jugador1.gema;
                 LabelVidaJ1.Content = juego.jugador1.vida;
             }
             else
             {
-                Reniciar(juego.jugador2);
+                Reniciar(juego.jugador2, juego.jugador1);
                 LabelGemasJ2.Content = juego.jugador2.gema;
                 LabelVidaJ2.Content = juego.jugador2.vida;
             }
@@ -6580,12 +6777,56 @@ namespace Hearthstone
                 IJ2 = 6;
             }
 
-            if (IJ2 != -1)
+            if (IJ2 != -1 && ataquearmaJ2 != 1)
             {
-                juego.jugador2.Enfrentar(juego.jugador2, juego.jugador1, IJ2, IJ1, eleccion);
+                juego.jugador2.Enfrentar(juego.jugador2, juego.jugador1, IJ2, IJ1, eleccion, juego.dice);
                 LabelVidaJ1.Content = juego.jugador1.vida;
                 LabelArmorJ1.Content = juego.jugador1.defensa;
+                actualizarimagenes();
             }
+
+            else if (ataquearmaJ2 == 1)
+            {
+                if (armausadaJ2 == 0)
+                {
+                    DAJ2 -= 1;
+                    ataquearmaJ2 = 0;
+                    juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 1);
+                } 
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ2 = 1;
+                LabelArmorJ1.Content = juego.jugador1.defensa;
+                LabelVidaJ1.Content = juego.jugador1.vida;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 1);
+                HabPriestJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                LabelVidaJ1.Content = juego.jugador1.vida;
+                actualizarimagenes();
+            }
+            else if (HabDruidMageJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 1);
+                HabDruidMageJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                if (juego.jugador2.nombreheroe == "Druid")
+                {
+                    LabelArmorJ2.Content = juego.jugador2.defensa;
+                    LabelArmorJ2.Visibility = Visibility.Visible;
+                    Escudo2.Visibility = Visibility.Visible;
+                }
+                LabelArmorJ1.Content = juego.jugador1.defensa;
+                LabelVidaJ1.Content = juego.jugador1.vida;
+                actualizarimagenes();
+            }
+
+            CTJ2 = "";
 
         }
 
@@ -6629,13 +6870,90 @@ namespace Hearthstone
                 IJ1 = 6;
             }
 
-            if (IJ1 != -1)
+            if (IJ1 != -1 && ataquearmaJ1 != 1)
             {
-                juego.jugador1.Enfrentar(juego.jugador1, juego.jugador2, IJ1, IJ2, eleccion);
+                juego.jugador1.Enfrentar(juego.jugador1, juego.jugador2, IJ1, IJ2, eleccion, juego.dice);
                 LabelVidaJ2.Content = juego.jugador2.vida;
                 LabelArmorJ2.Content = juego.jugador2.defensa;
+                actualizarimagenes();
+                
             }
+
+            if (ataquearmaJ1 == 1)
+            {
+                
+                if (armausadaJ1 == 0)
+                {
+                    DAJ1 -= 1;
+                    ataquearmaJ1 = 0;
+                    juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 1);
+                }
+                else
+                {
+                    MessageBox.Show("Ya utilisaste tu arma por este turno");
+                }
+                armausadaJ1 = 1;
+                LabelArmorJ2.Content = juego.jugador2.defensa;
+                LabelVidaJ2.Content = juego.jugador2.vida;
+                actualizarimagenes();
+            }
+            else if (HabPriestJ2 == 1)
+            {
+                juego.jugador2.HabilidadHeroe(juego.jugador2, juego.jugador1, 0, 0, 1);
+                HabPriestJ2 = 0;
+                LabelGemasJ2.Content = juego.jugador2.gema;
+                LabelVidaJ2.Content = juego.jugador1.vida;
+                actualizarimagenes();
+            }
+            else if (HabDruidMageJ1 == 1)
+            {
+                juego.jugador1.HabilidadHeroe(juego.jugador1, juego.jugador2, 0, 0, 1);
+                HabDruidMageJ1 = 0;
+                LabelGemasJ1.Content = juego.jugador1.gema;
+                if (juego.jugador1.nombreheroe == "Druid")
+                {
+                    LabelArmorJ1.Content = juego.jugador1.defensa;
+                    LabelArmorJ1.Visibility = Visibility.Visible;
+                    Escudo1.Visibility = Visibility.Visible;
+                }
+                LabelArmorJ2.Content = juego.jugador2.defensa;
+                LabelVidaJ2.Content = juego.jugador2.vida;
+                actualizarimagenes();
+            }
+
+            CTJ1 = "";
+            
+        }
+
+        private void Comenzar2_Click(object sender, RoutedEventArgs e)
+        {
+
+            CambioC4.Visibility = Visibility.Visible;
+            CambioC5.Visibility = Visibility.Visible;
+            CambioC6.Visibility = Visibility.Visible;
+            CambioC7.Visibility = Visibility.Visible;
+
+            MostrarCartasCambiot2(juego.jugador2);
+
+            CambioC1.Visibility = Visibility.Hidden;
+            CambioC2.Visibility = Visibility.Hidden;
+            CambioC3.Visibility = Visibility.Hidden;
+            CambioC8.Visibility = Visibility.Hidden;
+
+            Comenzar.Visibility = Visibility.Visible;
+            Comenzar2.Visibility = Visibility.Hidden;
+            MessageBox.Show("Seleccione las cartas que quiere cambiar");
+        }
+
+        private void RendirseJ2_Click(object sender, RoutedEventArgs e)
+        {
+            juego.jugador2.Rendirse(juego.jugador2, juego.jugador1);
+
+        }
+
+        private void RendirseJ1_Click(object sender, RoutedEventArgs e)
+        {
+            juego.jugador1.Rendirse(juego.jugador1, juego.jugador2);
         }
     }
-
 }

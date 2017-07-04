@@ -70,5 +70,15 @@ namespace Hearthstone
             }
         }
 
+        public void TotemHeal(Jugador jugador1)
+        {
+            foreach (Esbirro esbirro in jugador1.Tablerojugador)
+            {
+                if (esbirro.defensa < esbirro.maxdefensa)
+                {
+                    esbirro.defensa += 1;
+                }
+            }
+        }
     }
 }
