@@ -7080,7 +7080,7 @@ namespace Hearthstone
 
             else if (CTJ1 == "CT3J1")
             {
-                IJ2 = 1;
+                IJ1 = 2;
             }
 
             else if (CTJ1 == "CT4J1")
